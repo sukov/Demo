@@ -1,13 +1,19 @@
 PODS:
   - Alamofire (3.4.2)
+  - HanekeSwift (0.10.1)
   - SnapKit (0.15.0)
+  - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - HanekeSwift
   - SnapKit (~> 0.15.0)
+  - SVPullToRefresh
 
 SPEC CHECKSUMS:
   Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
 COCOAPODS: 0.39.0

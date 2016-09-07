@@ -5,3 +5,5 @@ use_frameworks!
 pod 'SnapKit', '~> 0.15.0'
 
 pod 'Alamofire', '~> 3.4'
+pod 'SVPullToRefresh'
+pod 'HanekeSwift'

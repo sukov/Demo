@@ -32,4 +32,91 @@ class NetworkManager {
 				}
 		}
 	}
+
+	func getHotImages(token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
+		let headers = ["Authorization": "Bearer \(token)"]
+		Alamofire.request(.GET, "https://api.imgur.com/3/gallery/hot/viral/\(pageNumber)", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
+			.validate()
+			.responseJSON { response in
+				var images: [[String: AnyObject]]
+				if (response.result.isSuccess) {
+					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
+							images = imagesFromJson
+							var i1: Int = 0
+							for i in 0..<images.count {
+								if (images[i - i1]["is_album"] as? Int == 1) {
+									images.removeAtIndex(i - i1)
+									i1 = i1 + 1
+								}
+							}
+							complete(images: images, error: nil)
+
+						}
+					} catch {
+						complete(images: nil, error: response.result.error)
+					}
+				} else {
+					complete(images: nil, error: response.result.error)
+				}
+		}
+	}
+
+	func getPopularImages(token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
+		let headers = ["Authorization": "Bearer \(token)"]
+		Alamofire.request(.GET, "https://api.imgur.com/3/gallery/top/viral/\(pageNumber)", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
+			.validate()
+			.responseJSON { response in
+				var images: [[String: AnyObject]]
+				if (response.result.isSuccess) {
+					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
+							images = imagesFromJson
+							var i1: Int = 0
+							for i in 0..<images.count {
+								if (images[i - i1]["is_album"] as? Int == 1) {
+									images.removeAtIndex(i - i1)
+									i1 = i1 + 1
+								}
+							}
+							complete(images: images, error: nil)
+
+						}
+					} catch {
+						complete(images: nil, error: response.result.error)
+					}
+				} else {
+					complete(images: nil, error: response.result.error)
+				}
+		}
+	}
+
+	func getUserImages(userName: String, token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
+		let headers = ["Authorization": "Bearer \(token)"]
+		Alamofire.request(.GET, "https://api.imgur.com/3/account/\(userName)/images", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
+			.validate()
+			.responseJSON { response in
+				var images: [[String: AnyObject]]
+				if (response.result.isSuccess) {
+					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
+							images = imagesFromJson
+							var i1: Int = 0
+							for i in 0..<images.count {
+								if (images[i - i1]["is_album"] as? Int == 1) {
+									images.removeAtIndex(i - i1)
+									i1 = i1 + 1
+								}
+							}
+							complete(images: images, error: nil)
+
+						}
+					} catch {
+						complete(images: nil, error: response.result.error)
+					}
+				} else {
+					complete(images: nil, error: response.result.error)
+				}
+		}
+	}
 }
