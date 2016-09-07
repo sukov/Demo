@@ -28,7 +28,12 @@ class MainAssembly {
 	}
 
 	// PostFeed
-	func getPostFeedController() -> PostFeedController {
-		return PostFeedController()
+	func getPostFeedPresenter() -> PostFeedPresenter {
+		return PostFeedPresenterImp(feed: .Popular)
 	}
+
+	func getPostFeedController() -> PostFeedController {
+		return PostFeedController(presenter: MainAssembly.sharedInstance.getPostFeedPresenter())
+	}
+
 }

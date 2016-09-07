@@ -54,7 +54,7 @@ class User: NSObject, NSCoding {
 		aCoder.encodeInt(Int32(userID), forKey: UserKeys.userID)
 		aCoder.encodeObject(userName, forKey: UserKeys.userName)
 		aCoder.encodeObject(accessToken, forKey: UserKeys.accessToken)
-		aCoder.encodeInt(Int32(expiresIn), forKey: UserKeys.expiresIn)
+		aCoder.encodeDouble(expiresIn, forKey: UserKeys.expiresIn)
 		aCoder.encodeObject(refreshToken, forKey: UserKeys.refreshToken)
 	}
 }
