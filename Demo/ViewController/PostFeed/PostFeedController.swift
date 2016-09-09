@@ -25,11 +25,16 @@ class PostFeedController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	deinit {
+		removeObservers()
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
 		setupConstraints()
 		setDelegates()
+		addObservers()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -44,7 +49,9 @@ class PostFeedController: UIViewController {
 
 	func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
+		floatingButton = UIButton()
 		collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: UICollectionViewFlowLayout())
+		floatingButton.setImage(UIImage(named: "floatingBtn"), forState: UIControlState.Normal)
 		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: "Cell")
 		collectionView.addPullToRefreshWithActionHandler { [weak self] in
 			self?.presenter.refreshData()
@@ -56,6 +63,7 @@ class PostFeedController: UIViewController {
 
 		collectionView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
 		view.addSubview(collectionView)
+		view.addSubview(floatingButton)
 	}
 
 	func setupConstraints() {
@@ -64,6 +72,13 @@ class PostFeedController: UIViewController {
 			make.top.equalTo(30)
 			make.bottom.equalTo(self.view)
 		}
+
+		floatingButton.snp_makeConstraints { (make) in
+			make.bottom.equalTo(self.view.snp_bottom).offset(-15)
+			make.right.equalTo(self.view.snp_right).offset(-15)
+			make.width.equalTo(40)
+			make.height.equalTo(40)
+		}
 	}
 
 	func setDelegates() {
@@ -71,6 +86,17 @@ class PostFeedController: UIViewController {
 		collectionView.dataSource = self
 	}
 
+	func addObservers() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromBackground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+	}
+
+	func removeObservers() {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
+	func returnedFromBackground() {
+		presenter.refreshData()
+	}
 }
 
 extension PostFeedController: PostFeedView {
@@ -92,11 +118,13 @@ extension PostFeedController: PostFeedView {
 	}
 }
 
-extension PostFeedController: UICollectionViewDelegateFlowLayout {
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		// full screen image with pinch to zoom
+extension PostFeedController: PostFeedCellDelegate {
+	func imageTapped(image: [String: AnyObject]) {
+		self.navigationController?.pushViewController(MainAssembly.sharedInstance.getZoomPhotoController(image), animated: true)
 	}
+}
 
+extension PostFeedController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		return CGSizeMake(view.frame.width - 10, 150)
 	}
@@ -110,6 +138,7 @@ extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PostFeedCell
 		cell.setContent(images![indexPath.item])
+		cell.delegate = self
 		return cell
 	}
 

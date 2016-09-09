@@ -32,8 +32,17 @@ class MainAssembly {
 		return PostFeedPresenterImp(feed: .Popular)
 	}
 
-	func getPostFeedController() -> PostFeedController {
-		return PostFeedController(presenter: MainAssembly.sharedInstance.getPostFeedPresenter())
+	func getPostFeedController() -> UIViewController {
+		return UINavigationController(rootViewController: PostFeedController(presenter: MainAssembly.sharedInstance.getPostFeedPresenter()))
 	}
 
+	// ZoomPhoto
+	func getZoomPhotoPresenter(image: [String: AnyObject]) -> ZoomPhotoPresenter {
+		return ZoomPhotoPresenterImp(image: image)
+	}
+
+	func getZoomPhotoController(image: [String: AnyObject]) -> ZoomPhotoController {
+		let presenter = getZoomPhotoPresenter(image)
+		return ZoomPhotoController(presenter: presenter)
+	}
 }

@@ -12,18 +12,28 @@ class PostFeedCell: UICollectionViewCell {
 	private var titleLabel: UILabel = UILabel()
 	private var descriptionText: UITextView = UITextView()
 	private var imageView: UIImageView = UIImageView()
+	private var image: [String: AnyObject]?
+	weak var delegate: PostFeedCellDelegate?
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = UIColor.whiteColor()
-		addSubview(titleLabel)
-		addSubview(descriptionText)
-		addSubview(imageView)
+		setupViews()
 		setupConstraints()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	func setupViews() {
+		backgroundColor = UIColor.whiteColor()
+		descriptionText.userInteractionEnabled = false
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+		imageView.userInteractionEnabled = true
+		imageView.addGestureRecognizer(tapGestureRecognizer)
+		addSubview(titleLabel)
+		addSubview(descriptionText)
+		addSubview(imageView)
 	}
 
 	func setupConstraints() {
@@ -44,7 +54,14 @@ class PostFeedCell: UICollectionViewCell {
 		}
 	}
 
+	func imageTapped() {
+		if let img = image {
+			delegate?.imageTapped(img)
+		}
+	}
+
 	func setContent(image: [String: AnyObject]) {
+		self.image = image
 		titleLabel.text = image["title"] as? String ?? ""
 		imageView.contentMode = UIViewContentMode.ScaleAspectFit
 		imageView.layoutIfNeeded()
@@ -60,4 +77,8 @@ class PostFeedCell: UICollectionViewCell {
 		descriptionText.text = ""
 	}
 
+}
+
+@objc protocol PostFeedCellDelegate {
+	func imageTapped(image: [String: AnyObject])
 }
