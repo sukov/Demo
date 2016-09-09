@@ -70,7 +70,7 @@ public class ImageScrollView: UIScrollView, UIScrollViewDelegate {
 
 		// center vertically
 		if frameToCenter.size.height < bounds.height {
-			frameToCenter.origin.y = (bounds.height - frameToCenter.size.height) / 2
+			frameToCenter.origin.y = (bounds.height - frameToCenter.size.height) / 3
 		}
 		else {
 			frameToCenter.origin.y = 0
@@ -217,9 +217,4 @@ public class ImageScrollView: UIScrollView, UIScrollViewDelegate {
 		return zoomRect
 	}
 
-	public func refresh() {
-		if let image = zoomView?.image {
-			// displayImage(image)
-		}
-	}
 }
