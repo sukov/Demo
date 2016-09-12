@@ -57,7 +57,6 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 	func attachView(view: PostFeedView) {
 		if (self.view == nil) {
 			self.view = view
-			getImages { }
 		}
 	}
 

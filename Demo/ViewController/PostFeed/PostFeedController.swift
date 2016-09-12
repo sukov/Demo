@@ -60,8 +60,9 @@ class PostFeedController: UIViewController {
 		collectionView.addInfiniteScrollingWithActionHandler { [weak self] in
 			self?.presenter.loadNew()
 		}
-
+		collectionView.triggerPullToRefresh()
 		collectionView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+
 		view.addSubview(collectionView)
 		view.addSubview(floatingButton)
 	}
@@ -69,7 +70,7 @@ class PostFeedController: UIViewController {
 	func setupConstraints() {
 		collectionView.snp_makeConstraints { (make) in
 			make.left.right.equalTo(self.view)
-			make.top.equalTo(30)
+			make.top.equalTo(self.view).offset(65)
 			make.bottom.equalTo(self.view)
 		}
 
@@ -79,6 +80,7 @@ class PostFeedController: UIViewController {
 			make.width.equalTo(40)
 			make.height.equalTo(40)
 		}
+
 	}
 
 	func setDelegates() {
