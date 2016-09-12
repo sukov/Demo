@@ -52,6 +52,7 @@ class PostFeedController: UIViewController {
 		floatingButton = UIButton()
 		collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: UICollectionViewFlowLayout())
 		floatingButton.setImage(UIImage(named: "floatingBtn"), forState: UIControlState.Normal)
+		floatingButton.addTarget(self, action: #selector(floatingButtonTapped), forControlEvents: .TouchUpInside)
 		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: "Cell")
 		collectionView.addPullToRefreshWithActionHandler { [weak self] in
 			self?.presenter.refreshData()
@@ -98,6 +99,10 @@ class PostFeedController: UIViewController {
 
 	func returnedFromBackground() {
 		presenter.refreshData()
+	}
+
+	func floatingButtonTapped() {
+		navigationController?.pushViewController(MainAssembly.sharedInstance.getCreatePostController(), animated: true)
 	}
 }
 

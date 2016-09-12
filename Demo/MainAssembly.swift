@@ -45,4 +45,13 @@ class MainAssembly {
 		let presenter = getZoomPhotoPresenter(image)
 		return ZoomPhotoController(presenter: presenter)
 	}
+
+	// CreatePost
+	func getCreatePostPresenter() -> CreatePostPresenter {
+		return CreatePostPresenterImp()
+	}
+
+	func getCreatePostController() -> CreatePostController {
+		return CreatePostController(presenter: MainAssembly.sharedInstance.getCreatePostPresenter())
+	}
 }

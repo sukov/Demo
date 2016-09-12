@@ -11,8 +11,9 @@ import UIKit
 import Alamofire
 
 class NetworkManager {
-	let clientID = "3c2821bc2936232"
-	let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
+	private let clientID = "3c2821bc2936232"
+	private let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
+	private var request: Alamofire.Request?
 
 	static var sharedInstance = NetworkManager()
 
@@ -119,4 +120,50 @@ class NetworkManager {
 				}
 		}
 	}
+
+	func uploadImage(image: UIImage, title: String, description: String, token: String, complete: (success: Bool) -> Void) {
+		let headers = ["Authorization": "Bearer \(token)"]
+		let parameters = ["title": title, "description": description]
+
+		Alamofire.upload(.POST, "https://api.imgur.com/3/upload", headers: headers, multipartFormData: {
+			multipartFormData in
+
+			multipartFormData.appendBodyPart(data: image.asData(), name: "image")
+
+			for (key, value) in parameters {
+				multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+			}
+
+			}, encodingCompletion: { [weak self]
+			encodingResult in
+
+			switch encodingResult {
+			case .Success(let upload, _, _):
+				upload.progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+					print(totalBytesRead)
+				})
+
+				self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
+
+					switch response.result {
+					case .Success:
+						complete(success: true)
+					case .Failure(let _):
+						complete(success: false)
+					}
+
+				}
+			case .Failure(let encodingError):
+				print(encodingError)
+			}
+			}
+
+		)
+
+	}
+
+	func cancelUpload() {
+		request?.cancel()
+	}
+
 }
