@@ -27,6 +27,6 @@ extension LoginPresenterImp: LoginPresenter {
 	}
 
 	@objc func login() {
-		NetworkManager.sharedInstance.requestToken()
+		TokenProvider.sharedInstance.requestToken()
 	}
 }

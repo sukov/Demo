@@ -11,159 +11,135 @@ import UIKit
 import Alamofire
 
 class NetworkManager {
-	private let clientID = "3c2821bc2936232"
-	private let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
 	private var request: Alamofire.Request?
+	private var lastUpload: (image: UIImage, title: String, description: String, token: String)?
+	private let requestGroup = dispatch_group_create();
+	private let refreshTokenGroup = dispatch_group_create();
+	private var allowRefreshToken: Bool = true
+	private var lock = NSLock()
 
 	static var sharedInstance = NetworkManager()
 
-	func requestToken() {
-		if let authURL = NSURL(string: "https://api.imgur.com/oauth2/authorize?client_id=3c2821bc2936232&response_type=token&state=APPLICATION_STATE") {
-			UIApplication.sharedApplication().openURL(authURL)
-		}
+	func activityIndicatorON() {
+		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 	}
 
-	func refreshToken() {
-		let URL = "https://api.imgur.com/oauth2/token?grant_type=refresh_token&client_id=3c2821bc2936232&client_secret=65c4223ede9163278443b6255eeb7f3959d52b20&refresh_token=373b97e505b3df6c17cef5abd1c961de690310de"
-		Alamofire.request(.POST, URL)
-			.validate()
-			.responseJSON { response in
-				do {
-					print(response.result.error)
-				}
-		}
+	func activityIndicatorOFF() {
+		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 	}
 
-	func getHotImages(token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
-		let headers = ["Authorization": "Bearer \(token)"]
-		Alamofire.request(.GET, "https://api.imgur.com/3/gallery/hot/viral/\(pageNumber)", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
-			.validate()
-			.responseJSON { response in
-				var images: [[String: AnyObject]]
-				if (response.result.isSuccess) {
-					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
-						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
-							images = imagesFromJson
-							var i1: Int = 0
-							for i in 0..<images.count {
-								if (images[i - i1]["is_album"] as? Int == 1) {
-									images.removeAtIndex(i - i1)
-									i1 = i1 + 1
+	func getPosts(postsType: PostsType, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
+		activityIndicatorON()
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+
+			self.lock.lock()
+			if (TokenProvider.sharedInstance.isTokenExpired()) {
+				TokenProvider.sharedInstance.refreshToken()
+			}
+
+			Group.sharedInstance.waitForGroupToFinnish(.RefreshToken)
+			self.lock.unlock()
+
+			var url: String
+			switch postsType {
+			case .Hot: url = "https://api.imgur.com/3/gallery/hot/viral/\(pageNumber)"
+			case .Popular: url = "https://api.imgur.com/3/gallery/top/viral/\(pageNumber)"
+			case .User: url = "https://api.imgur.com/3/account/\(UserManager.sharedInstance.user!.userName)/images/\(pageNumber)"
+			}
+
+			let headers = ["Authorization": "Bearer \(UserManager.sharedInstance.user!.accessToken)"]
+
+			Alamofire.request(.GET, url, parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
+				.validate()
+				.responseJSON { [weak self] response in
+					var images: [[String: AnyObject]]
+					if (response.result.isSuccess) {
+						do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
+							if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
+								images = imagesFromJson
+								var i1: Int = 0
+								for i in 0..<images.count {
+									if (images[i - i1]["is_album"] as? Int == 1) {
+										images.removeAtIndex(i - i1)
+										i1 = i1 + 1
+									}
 								}
-							}
-							complete(images: images, error: nil)
+								complete(images: images, error: nil)
 
+							}
+						} catch {
+							complete(images: nil, error: response.result.error)
 						}
-					} catch {
+					} else {
 						complete(images: nil, error: response.result.error)
 					}
-				} else {
-					complete(images: nil, error: response.result.error)
-				}
-		}
-	}
+					self?.activityIndicatorOFF()
 
-	func getPopularImages(token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
-		let headers = ["Authorization": "Bearer \(token)"]
-		Alamofire.request(.GET, "https://api.imgur.com/3/gallery/top/viral/\(pageNumber)", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
-			.validate()
-			.responseJSON { response in
-				var images: [[String: AnyObject]]
-				if (response.result.isSuccess) {
-					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
-						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
-							images = imagesFromJson
-							var i1: Int = 0
-							for i in 0..<images.count {
-								if (images[i - i1]["is_album"] as? Int == 1) {
-									images.removeAtIndex(i - i1)
-									i1 = i1 + 1
-								}
-							}
-							complete(images: images, error: nil)
-
-						}
-					} catch {
-						complete(images: nil, error: response.result.error)
-					}
-				} else {
-					complete(images: nil, error: response.result.error)
-				}
-		}
-	}
-
-	func getUserImages(userName: String, token: String, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
-		let headers = ["Authorization": "Bearer \(token)"]
-		Alamofire.request(.GET, "https://api.imgur.com/3/account/\(userName)/images", parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
-			.validate()
-			.responseJSON { response in
-				var images: [[String: AnyObject]]
-				if (response.result.isSuccess) {
-					do { let json = try NSJSONSerialization.JSONObjectWithData(response.data!, options: .AllowFragments)
-						if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
-							images = imagesFromJson
-							var i1: Int = 0
-							for i in 0..<images.count {
-								if (images[i - i1]["is_album"] as? Int == 1) {
-									images.removeAtIndex(i - i1)
-									i1 = i1 + 1
-								}
-							}
-							complete(images: images, error: nil)
-
-						}
-					} catch {
-						complete(images: nil, error: response.result.error)
-					}
-				} else {
-					complete(images: nil, error: response.result.error)
-				}
+			}
 		}
 	}
 
 	func uploadImage(image: UIImage, title: String, description: String, token: String, complete: (success: Bool) -> Void) {
+		activityIndicatorON()
+		lastUpload = (image: image, title: title, description: description, token: token)
 		let headers = ["Authorization": "Bearer \(token)"]
 		let parameters = ["title": title, "description": description]
 
-		Alamofire.upload(.POST, "https://api.imgur.com/3/upload", headers: headers, multipartFormData: {
-			multipartFormData in
-
-			multipartFormData.appendBodyPart(data: image.asData(), name: "image")
-
-			for (key, value) in parameters {
-				multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+		dispatch_group_notify(refreshTokenGroup, dispatch_get_main_queue()) { [weak self] in
+			if let _self = self {
+				dispatch_group_enter(_self.requestGroup)
 			}
+			Alamofire.upload(.POST, "https://api.imgur.com/3/upload", headers: headers, multipartFormData: {
+				multipartFormData in
 
-			}, encodingCompletion: { [weak self]
-			encodingResult in
+				multipartFormData.appendBodyPart(data: image.asData(), name: "image")
 
-			switch encodingResult {
-			case .Success(let upload, _, _):
-				upload.progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
-					print(totalBytesRead)
-				})
+				for (key, value) in parameters {
+					multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+				}
 
-				self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
+				}, encodingCompletion: { [weak self]
+				encodingResult in
 
-					switch response.result {
-					case .Success:
-						complete(success: true)
-					case .Failure(let _):
-						complete(success: false)
+				switch encodingResult {
+				case .Success(let upload, _, _):
+//				upload.progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+//					print(totalBytesRead)
+//				})
+
+					self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
+						switch response.result {
+						case .Success:
+							complete(success: true)
+						case .Failure(_):
+							NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.uploadFailed, object: nil)
+							complete(success: false)
+						}
 					}
+				case .Failure(_):
+					complete(success: false)
+				}
+				self?.activityIndicatorOFF()
+				if let _self = self {
+					dispatch_group_leave(_self.requestGroup)
+				}
 
 				}
-			case .Failure(let encodingError):
-				print(encodingError)
-			}
-			}
 
-		)
-
+			)
+		}
 	}
 
 	func cancelUpload() {
 		request?.cancel()
+	}
+
+	func retryLastUpload(complete: (success: Bool) -> Void) {
+		if let _lastUpload = lastUpload {
+			uploadImage(_lastUpload.image, title: _lastUpload.title, description: _lastUpload.description, token: _lastUpload.token, complete: { (success) in
+				complete(success: success)
+			})
+		}
 	}
 
 }

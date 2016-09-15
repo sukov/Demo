@@ -18,11 +18,13 @@
 		1F1DDB591D79BA1900F2366E /* LoginPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB551D79BA1900F2366E /* LoginPresenterImp.swift */; };
 		1F1DDB5A1D79BA1900F2366E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB561D79BA1900F2366E /* LoginView.swift */; };
 		1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB5C1D79BA2200F2366E /* User.swift */; };
+		1F3456111D87FE8300C210B8 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */; };
+		1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4800011D8AD335003A1B04 /* TokenProvider.swift */; };
+		1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48FFFA1D8A989F003A1B04 /* Group.swift */; };
 		1F4ABE1C1D86A97A00406374 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1B1D86A97A00406374 /* CreatePostController.swift */; };
 		1F4ABE1E1D86A98900406374 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1D1D86A98900406374 /* CreatePostView.swift */; };
 		1F4ABE201D86A9A300406374 /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1F1D86A9A300406374 /* CreatePostPresenter.swift */; };
 		1F4ABE221D86A9B400406374 /* CreatePostPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE211D86A9B400406374 /* CreatePostPresenterImp.swift */; };
-		1F4ABE261D86F6C500406374 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE251D86F6C500406374 /* ProgressBar.swift */; };
 		1F4E33011D82B04700D7ED4C /* ZoomPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33001D82B04700D7ED4C /* ZoomPhotoController.swift */; };
 		1F4E33031D82B05F00D7ED4C /* ZoomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33021D82B05F00D7ED4C /* ZoomPhotoView.swift */; };
 		1F4E33051D82B06C00D7ED4C /* ZoomPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33041D82B06C00D7ED4C /* ZoomPhotoPresenter.swift */; };
@@ -51,11 +53,13 @@
 		1F1DDB551D79BA1900F2366E /* LoginPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterImp.swift; sourceTree = "<group>"; };
 		1F1DDB561D79BA1900F2366E /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1F1DDB5C1D79BA2200F2366E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
+		1F4800011D8AD335003A1B04 /* TokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		1F48FFFA1D8A989F003A1B04 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		1F4ABE1B1D86A97A00406374 /* CreatePostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
 		1F4ABE1D1D86A98900406374 /* CreatePostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		1F4ABE1F1D86A9A300406374 /* CreatePostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
 		1F4ABE211D86A9B400406374 /* CreatePostPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenterImp.swift; sourceTree = "<group>"; };
-		1F4ABE251D86F6C500406374 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		1F4E33001D82B04700D7ED4C /* ZoomPhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoController.swift; sourceTree = "<group>"; };
 		1F4E33021D82B05F00D7ED4C /* ZoomPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoView.swift; sourceTree = "<group>"; };
 		1F4E33041D82B06C00D7ED4C /* ZoomPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenter.swift; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				1F1DDB281D79716600F2366E /* Demo */,
-				1F4E33081D82FE9400D7ED4C /* CustomViews */,
 				1F1DDB271D79716600F2366E /* Products */,
 				0FB084965BFA22FFEAC95F83 /* Pods */,
 				84FB3FFBDAB46487B2C61A40 /* Frameworks */,
@@ -125,6 +128,7 @@
 				1F1DDB291D79716600F2366E /* AppDelegate.swift */,
 				1F1DDB491D79A36E00F2366E /* Constants.swift */,
 				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
+				1F4800001D8AD335003A1B04 /* Token */,
 				1F4FD5B81D80437B005ED930 /* Misc */,
 				1F1349BF1D7EEF26001CFB46 /* Extensions */,
 				1F1DDB5E1D79BA3200F2366E /* Manager */,
@@ -152,6 +156,7 @@
 				1F6FDE7F1D7D7AA90003649B /* PostFeed */,
 				1F4E32FF1D82A57C00D7ED4C /* ZoomPhoto */,
 				1F4ABE1A1D86A87600406374 /* CreatePost */,
+				1F4E33081D82FE9400D7ED4C /* CustomViews */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,8 +184,17 @@
 			isa = PBXGroup;
 			children = (
 				1F1DDB4B1D79ADF600F2366E /* UserManager.swift */,
+				1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		1F4800001D8AD335003A1B04 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				1F4800011D8AD335003A1B04 /* TokenProvider.swift */,
+			);
+			path = Token;
 			sourceTree = "<group>";
 		};
 		1F4ABE1A1D86A87600406374 /* CreatePost */ = {
@@ -210,16 +224,16 @@
 			isa = PBXGroup;
 			children = (
 				1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */,
-				1F4ABE251D86F6C500406374 /* ProgressBar.swift */,
 			);
 			name = CustomViews;
-			path = Demo/CustomViews;
+			path = ../CustomViews;
 			sourceTree = "<group>";
 		};
 		1F4FD5B81D80437B005ED930 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
 				1F4FD5B91D8043B3005ED930 /* Pagination.swift */,
+				1F48FFFA1D8A989F003A1B04 /* Group.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -279,6 +293,12 @@
 				TargetAttributes = {
 					1F1DDB251D79716600F2366E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = KFR638643H;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -371,14 +391,16 @@
 				1F1DDB591D79BA1900F2366E /* LoginPresenterImp.swift in Sources */,
 				1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */,
 				1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */,
+				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
+				1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */,
 				1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */,
 				1F1DDB571D79BA1900F2366E /* LoginController.swift in Sources */,
 				1F1DDB5A1D79BA1900F2366E /* LoginView.swift in Sources */,
-				1F4ABE261D86F6C500406374 /* ProgressBar.swift in Sources */,
 				1F4E33051D82B06C00D7ED4C /* ZoomPhotoPresenter.swift in Sources */,
 				1F4ABE221D86A9B400406374 /* CreatePostPresenterImp.swift in Sources */,
 				1F1DDB581D79BA1900F2366E /* LoginPresenter.swift in Sources */,
 				1F1DDB3C1D7974F700F2366E /* MainAssembly.swift in Sources */,
+				1F3456111D87FE8300C210B8 /* LocalNotificationsManager.swift in Sources */,
 				1F1DDB481D797E9F00F2366E /* NetworkManager.swift in Sources */,
 				1F6FDE871D7DA50A0003649B /* PostFeedPresenterImp.swift in Sources */,
 				1F4ABE1E1D86A98900406374 /* CreatePostView.swift in Sources */,
@@ -484,11 +506,13 @@
 			baseConfigurationReference = 9EBCE29ABD830AA1464C65A1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shukov.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -497,11 +521,13 @@
 			baseConfigurationReference = 8775417E8EFBF5815894A91B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shukov.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

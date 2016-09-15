@@ -34,13 +34,8 @@ class UserManager {
 	}
 
 	func isLoggedIn() -> Bool {
-		if let u = user {
-			if (NSDate().timeIntervalSinceDate(u.tokenDate) > (u.expiresIn - 30)) {
-				NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.tokenExpired, object: nil)
-				return true
-			} else {
-				return true
-			}
+		if (user != nil) {
+			return true
 		} else {
 			return false
 		}
@@ -60,7 +55,6 @@ class UserManager {
 		user?.expiresIn = expiresIn
 		user?.tokenDate = NSDate()
 		saveUser()
-		NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userLoggedIn, object: nil)
 	}
 
 	func removeSavedUser() {
