@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
+	func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+	}
+
 	func addObservers() {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loggedIn), name: NotificationKeys.userLoggedIn, object: nil)
 	}

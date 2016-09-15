@@ -29,7 +29,7 @@ class MainAssembly {
 
 	// PostFeed
 	func getPostFeedPresenter() -> PostFeedPresenter {
-		return PostFeedPresenterImp(feed: .Popular)
+		return PostFeedPresenterImp(postType: .Popular)
 	}
 
 	func getPostFeedController() -> UIViewController {
