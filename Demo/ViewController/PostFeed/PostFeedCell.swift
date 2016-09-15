@@ -65,7 +65,9 @@ class PostFeedCell: UICollectionViewCell {
 		titleLabel.text = image["title"] as? String ?? ""
 		imageView.contentMode = UIViewContentMode.ScaleAspectFit
 		imageView.layoutIfNeeded()
-		imageView.hnk_setImageFromURL(NSURL(string: image["link"] as? String ?? "")!)
+        if let url = NSURL(string: image["link"] as? String ?? "") {
+            imageView.hnk_setImageFromURL(url)
+        }
 		descriptionText.text = image["description"] as? String ?? ""
 	}
 

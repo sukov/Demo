@@ -22,11 +22,14 @@ class TokenProvider {
 	}
 
 	func refreshToken() {
+        guard UserManager.sharedInstance.user != nil else {
+            return
+        }
+        
 		let params = ["refresh_token": UserManager.sharedInstance.user!.refreshToken, "client_id": clientID, "client_secret": clientSecret, "grant_type": "refresh_token"]
 
 		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			Group.sharedInstance.enter(.RefreshToken)
-			print("refreshTokenENTER")
 
 			let requestURL = NSURL(string: "https://api.imgur.com/oauth2/token")!
 			let request = NSMutableURLRequest(URL: requestURL)
@@ -41,19 +44,20 @@ class TokenProvider {
 			let task = session.dataTaskWithRequest(request) { (data, response, error) in
 				if (error == nil) {
 					do {
-						let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-						if let newToken = json as? [String: AnyObject] {
-							if (newToken["success"] as? Int != 0) {
-								print(newToken)
-								UserManager.sharedInstance.updateToken(
-									newToken[UserKeys.accessToken] as! String,
-									expiresIn: newToken[UserKeys.expiresIn] as! Double)
-							}
-						}
+                        if let _data = data {
+                            let json = try NSJSONSerialization.JSONObjectWithData(_data, options: .AllowFragments)
+                            if let newToken = json as? [String: AnyObject] {
+                                if (newToken["success"] as? Int != 0) {
+                                    UserManager.sharedInstance.updateToken(
+                                        newToken[UserKeys.accessToken] as! String,
+                                        expiresIn: newToken[UserKeys.expiresIn] as! Double)
+                                }
+                            }
 
+                        }
+						
 					} catch { }
 				}
-				print("refreshTokenLEAVE")
 				Group.sharedInstance.leave(.RefreshToken)
 			}
 			task.resume()

@@ -156,7 +156,9 @@ extension PostFeedController: UICollectionViewDelegateFlowLayout {
 extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PostFeedCell
-		cell.setContent(images![indexPath.item])
+        if let image = images?[indexPath.item] {
+            cell.setContent(image)
+        }
 		cell.delegate = self
 		return cell
 	}

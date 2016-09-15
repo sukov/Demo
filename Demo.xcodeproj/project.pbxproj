@@ -128,12 +128,12 @@
 				1F1DDB291D79716600F2366E /* AppDelegate.swift */,
 				1F1DDB491D79A36E00F2366E /* Constants.swift */,
 				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
+				1F1DDB501D79B95A00F2366E /* Network */,
+				1F1DDB5E1D79BA3200F2366E /* Manager */,
 				1F4800001D8AD335003A1B04 /* Token */,
 				1F4FD5B81D80437B005ED930 /* Misc */,
 				1F1349BF1D7EEF26001CFB46 /* Extensions */,
-				1F1DDB5E1D79BA3200F2366E /* Manager */,
 				1F1DDB5B1D79BA2200F2366E /* Model */,
-				1F1DDB501D79B95A00F2366E /* Network */,
 				1F1DDB511D79BA1900F2366E /* ViewController */,
 				1F1DDB301D79716600F2366E /* Assets.xcassets */,
 				1F1DDB351D79716600F2366E /* Info.plist */,
@@ -507,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -522,6 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

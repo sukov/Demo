@@ -39,7 +39,6 @@ class UserManager {
 		} else {
 			return false
 		}
-
 	}
 
 	func saveUser() {

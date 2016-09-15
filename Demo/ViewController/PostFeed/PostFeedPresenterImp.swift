@@ -32,10 +32,10 @@ class PostFeedPresenterImp {
 	func getImages(complete: () -> Void) {
 		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](images, error) in
 			if (error == nil) {
-				if let _images = images {
-					self?.images.appendContentsOf(_images)
+				if let _images = images, _self = self {
+					_self.images.appendContentsOf(_images)
 					complete()
-					self?.view?.showPictures(self!.images)
+					_self.view?.showPictures(_self.images)
 				}
 			}
 			complete()
