@@ -150,6 +150,7 @@ class CreatePostController: UIViewController {
 		if let img = selectedImageView.image {
 			presenter.postSubmit(img, title: postTitle?.text ?? "", description: postDescription?.text ?? "")
 		}
+		navigationController?.popViewControllerAnimated(true)
 	}
 
 	func selectImageButtonTapped() {

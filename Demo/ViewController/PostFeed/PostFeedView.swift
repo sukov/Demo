@@ -12,4 +12,5 @@ import Foundation
 	func stopRefreshing()
 	func startAnimating()
 	func stopAnimating()
+	func showAlert()
 }
