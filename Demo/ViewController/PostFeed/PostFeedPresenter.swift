@@ -9,6 +9,7 @@
 protocol PostFeedPresenter {
 	func attachView(view: PostFeedView)
 	func detachView(view: PostFeedView)
-    func refreshData()
-    func loadNew()
+	func refreshData()
+	func loadNew()
+	func retryUpload()
 }

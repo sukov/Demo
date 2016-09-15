@@ -123,6 +123,18 @@ extension PostFeedController: PostFeedView {
 	func stopAnimating() {
 		collectionView.infiniteScrollingView.stopAnimating()
 	}
+
+	func showAlert() {
+		let alert = UIAlertController(title: "Upload failed", message: "error image not uploaded. Would you like to retry?", preferredStyle: UIAlertControllerStyle.Alert)
+		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+		let retryAction = UIAlertAction(title: "Retry", style: .Default) { [weak self](alert) in
+			self?.presenter.retryUpload()
+		}
+		alert.addAction(defaultAction)
+		alert.addAction(retryAction)
+		presentViewController(alert, animated: true, completion: nil)
+	}
+
 }
 
 extension PostFeedController: PostFeedCellDelegate {

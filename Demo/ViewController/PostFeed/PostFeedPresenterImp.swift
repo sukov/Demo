@@ -5,8 +5,9 @@
 //  Created by WF | Gorjan Shukov on 9/5/16.
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
+import Foundation
 
-enum FeedType {
+enum PostsType: String {
 	case Hot
 	case Popular
 	case User
@@ -14,41 +15,44 @@ enum FeedType {
 
 class PostFeedPresenterImp {
 	weak private var view: PostFeedView?
-	private var feed: FeedType
+	private var postType: PostsType
 	private var pagination = Pagination()
 	private var images: [[String: AnyObject]]
 
-	init(feed: FeedType) {
-		self.feed = feed
+	init(postType: PostsType) {
+		self.postType = postType
 		images = []
+		addObservers()
+	}
+
+	deinit {
+		removeObservers()
 	}
 
 	func getImages(complete: () -> Void) {
-		switch feed {
-		case .Hot:
-			NetworkManager.sharedInstance.getHotImages(UserManager.sharedInstance.user!.accessToken, pageNumber: pagination.getPageNumber(), complete: { [weak self](images, error) in
-				if (error == nil) {
-					self?.images.appendContentsOf(images!)
+		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](images, error) in
+			if (error == nil) {
+				if let _images = images {
+					self?.images.appendContentsOf(_images)
 					complete()
 					self?.view?.showPictures(self!.images)
 				}
-			})
-		case .Popular:
-			NetworkManager.sharedInstance.getPopularImages((UserManager.sharedInstance.user?.accessToken)!, pageNumber: pagination.getPageNumber(), complete: { [weak self](images, error) in
-				if (error == nil) {
-					self?.images.appendContentsOf(images!)
-					complete()
-					self?.view?.showPictures(self!.images) }
-			})
-		case .User:
-			NetworkManager.sharedInstance.getUserImages(UserManager.sharedInstance.user!.userName, token: UserManager.sharedInstance.user!.accessToken, pageNumber: pagination.getPageNumber(), complete: { [weak self](images, error) in
-				if (error == nil) {
-					self?.images.appendContentsOf(images!)
-					complete()
-					self?.view?.showPictures(self!.images)
-				}
-			})
+			}
+			complete()
 		}
+
+	}
+
+	func addObservers() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(uploadFailed), name: NotificationKeys.uploadFailed, object: nil)
+	}
+
+	func removeObservers() {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
+	@objc func uploadFailed() {
+		view?.showAlert()
 	}
 }
 
@@ -71,8 +75,8 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 		pagination.nextPage()
 		getImages { [weak self] in
 			self?.view?.stopAnimating()
-		}
 
+		}
 	}
 
 	func refreshData() {
@@ -82,5 +86,15 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 			self?.view?.stopRefreshing()
 		}
 
+	}
+
+	func retryUpload() {
+		NetworkManager.sharedInstance.retryLastUpload { (success) in
+			if (success) {
+				LocalNotificationsManager.sharedInstance.displaySuccess()
+			} else {
+				LocalNotificationsManager.sharedInstance.displayFailure()
+			}
+		}
 	}
 }
