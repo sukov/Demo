@@ -14,8 +14,9 @@ class MainAssembly {
 
 	// Root
 	func getRootController() -> UIViewController {
-		let rController = UserManager.sharedInstance.isLoggedIn() ? MainAssembly.sharedInstance.getPostFeedController() : MainAssembly.sharedInstance.getLoginController()
+		let rController = UserManager.sharedInstance.isLoggedIn() ? MainAssembly.sharedInstance.getLeftMenuContainerController() : MainAssembly.sharedInstance.getLoginController()
 		return rController
+
 	}
 
 	// Login
@@ -25,6 +26,18 @@ class MainAssembly {
 
 	func getLoginController() -> LoginController {
 		return LoginController(presenter: MainAssembly.sharedInstance.getLoginPresenter())
+	}
+
+	// LeftMenu
+	func getLeftMenuController() -> LeftMenuController {
+		return LeftMenuController()
+	}
+
+	func getLeftMenuContainerController() -> LeftMenuContainerController {
+		let controller = LeftMenuContainerController(
+			rearViewController: MainAssembly.sharedInstance.getLeftMenuController(),
+			frontViewController: MainAssembly.sharedInstance.getPostFeedController())
+		return controller
 	}
 
 	// PostFeed

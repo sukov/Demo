@@ -32,6 +32,7 @@ class PostFeedController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
+		setupNavigationBar()
 		setupConstraints()
 		setDelegates()
 		addObservers()
@@ -45,6 +46,17 @@ class PostFeedController: UIViewController {
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		presenter.detachView(self)
+	}
+
+	func setupNavigationBar() {
+		let revealBtn = UIButton()
+		revealBtn.setImage(UIImage(named: "revealIcon"), forState: .Normal)
+		revealBtn.frame = CGRectMake(0, 0, 30, 30)
+		let revealBarButton = UIBarButtonItem()
+		revealBarButton.customView = revealBtn
+		navigationItem.leftBarButtonItem = revealBarButton
+		let revealController = revealViewController()
+		revealBtn.addTarget(revealController, action: #selector(revealController.revealToggle(_:)), forControlEvents: .TouchUpInside)
 	}
 
 	func setupViews() {
@@ -156,9 +168,9 @@ extension PostFeedController: UICollectionViewDelegateFlowLayout {
 extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PostFeedCell
-        if let image = images?[indexPath.item] {
-            cell.setContent(image)
-        }
+		if let image = images?[indexPath.item] {
+			cell.setContent(image)
+		}
 		cell.delegate = self
 		return cell
 	}

@@ -31,6 +31,9 @@
 		1F4E33071D82B0A000D7ED4C /* ZoomPhotoPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33061D82B0A000D7ED4C /* ZoomPhotoPresenterImp.swift */; };
 		1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */; };
 		1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4FD5B91D8043B3005ED930 /* Pagination.swift */; };
+		1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */; };
+		1F599A151D8BF449004D7F89 /* LeftMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */; };
+		1F599A171D8BF466004D7F89 /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A161D8BF466004D7F89 /* LeftMenuController.swift */; };
 		1F6FDE811D7D7AD60003649B /* PostFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE801D7D7AD60003649B /* PostFeedController.swift */; };
 		1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE821D7DA4D70003649B /* PostFeedView.swift */; };
 		1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */; };
@@ -66,6 +69,11 @@
 		1F4E33061D82B0A000D7ED4C /* ZoomPhotoPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenterImp.swift; sourceTree = "<group>"; };
 		1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		1F4FD5B91D8043B3005ED930 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		1F599A081D8BEE81004D7F89 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuContainerController.swift; sourceTree = "<group>"; };
+		1F599A161D8BF466004D7F89 /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
 		1F6FDE801D7D7AD60003649B /* PostFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedController.swift; sourceTree = "<group>"; };
 		1F6FDE821D7DA4D70003649B /* PostFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedView.swift; sourceTree = "<group>"; };
 		1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenter.swift; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				1F1DDB281D79716600F2366E /* Demo */,
+				1F599A061D8BEE44004D7F89 /* Libs */,
 				1F1DDB271D79716600F2366E /* Products */,
 				0FB084965BFA22FFEAC95F83 /* Pods */,
 				84FB3FFBDAB46487B2C61A40 /* Frameworks */,
@@ -125,6 +134,7 @@
 		1F1DDB281D79716600F2366E /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */,
 				1F1DDB291D79716600F2366E /* AppDelegate.swift */,
 				1F1DDB491D79A36E00F2366E /* Constants.swift */,
 				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
@@ -153,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				1F1DDB521D79BA1900F2366E /* Login */,
+				1F599A111D8BF376004D7F89 /* LeftMenu */,
 				1F6FDE7F1D7D7AA90003649B /* PostFeed */,
 				1F4E32FF1D82A57C00D7ED4C /* ZoomPhoto */,
 				1F4ABE1A1D86A87600406374 /* CreatePost */,
@@ -238,6 +249,32 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
+		1F599A061D8BEE44004D7F89 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				1F599A071D8BEE81004D7F89 /* SWRevealViewController */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		1F599A071D8BEE81004D7F89 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1F599A081D8BEE81004D7F89 /* SWRevealViewController.h */,
+				1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		1F599A111D8BF376004D7F89 /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */,
+				1F599A161D8BF466004D7F89 /* LeftMenuController.swift */,
+			);
+			path = LeftMenu;
+			sourceTree = "<group>";
+		};
 		1F6FDE7F1D7D7AA90003649B /* PostFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,7 +330,6 @@
 				TargetAttributes = {
 					1F1DDB251D79716600F2366E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KFR638643H;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -393,6 +429,7 @@
 				1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */,
 				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
 				1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */,
+				1F599A151D8BF449004D7F89 /* LeftMenuContainerController.swift in Sources */,
 				1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */,
 				1F1DDB571D79BA1900F2366E /* LoginController.swift in Sources */,
 				1F1DDB5A1D79BA1900F2366E /* LoginView.swift in Sources */,
@@ -407,6 +444,8 @@
 				1F1DDB2A1D79716600F2366E /* AppDelegate.swift in Sources */,
 				1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */,
 				1F4E33071D82B0A000D7ED4C /* ZoomPhotoPresenterImp.swift in Sources */,
+				1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */,
+				1F599A171D8BF466004D7F89 /* LeftMenuController.swift in Sources */,
 				1F6FDE811D7D7AD60003649B /* PostFeedController.swift in Sources */,
 				1F4E33011D82B04700D7ED4C /* ZoomPhotoController.swift in Sources */,
 				1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */,
@@ -514,6 +553,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shukov.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Demo/Demo-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -530,6 +571,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shukov.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Demo/Demo-Bridging-Header.h";
 			};
 			name = Release;
 		};

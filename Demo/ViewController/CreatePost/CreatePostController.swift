@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SnapKit
 
 class CreatePostController: UIViewController {
 	private var presenter: CreatePostPresenter
@@ -164,10 +165,10 @@ class CreatePostController: UIViewController {
 				AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { [weak self](granted: Bool) -> Void in
 					if granted == true {
 						// User granted
-                        if let _self = self {
-                            _self.imagePicker.sourceType = .PhotoLibrary
-                             _self.presentViewController( _self.imagePicker, animated: true, completion: nil)
-                        }
+						if let _self = self {
+							_self.imagePicker.sourceType = .PhotoLibrary
+							_self.presentViewController(_self.imagePicker, animated: true, completion: nil)
+						}
 					}
 					else {
 						// User Rejected
@@ -190,10 +191,10 @@ class CreatePostController: UIViewController {
 				AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { [weak self](granted: Bool) -> Void in
 					if granted == true {
 						// User granted
-                        if let _self = self {
-                            _self.imagePicker.sourceType = .Camera
-                            _self.presentViewController( _self.imagePicker, animated: true, completion: nil)
-                        }
+						if let _self = self {
+							_self.imagePicker.sourceType = .Camera
+							_self.presentViewController(_self.imagePicker, animated: true, completion: nil)
+						}
 
 					}
 					else {
