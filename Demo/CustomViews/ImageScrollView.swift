@@ -62,7 +62,8 @@ public class ImageScrollView: UIScrollView, UIScrollViewDelegate {
 
 		// center horizontally
 		if frameToCenter.size.width < bounds.width {
-			frameToCenter.origin.x = (bounds.width - frameToCenter.size.width) / 2
+			// frameToCenter.origin.x = (bounds.width - frameToCenter.size.width) / 2
+			frameToCenter.origin.x = 0
 		}
 		else {
 			frameToCenter.origin.x = 0
@@ -70,7 +71,8 @@ public class ImageScrollView: UIScrollView, UIScrollViewDelegate {
 
 		// center vertically
 		if frameToCenter.size.height < bounds.height {
-			frameToCenter.origin.y = (bounds.height - frameToCenter.size.height) / 3
+			// frameToCenter.origin.y = (bounds.height - frameToCenter.size.height) / 2
+			frameToCenter.origin.y = 0
 		}
 		else {
 			frameToCenter.origin.y = 0

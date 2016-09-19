@@ -17,20 +17,25 @@ class ZoomPhotoController: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 	}
 
+	deinit {
+		presenter.detachView(self)
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
 		setupConstraints()
+		presenter.attachView(self)
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		presenter.attachView(self)
+
 	}
 
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
-		presenter.detachView(self)
+
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -47,7 +52,7 @@ class ZoomPhotoController: UIViewController {
 	func setupConstraints() {
 		imageScrollView.snp_makeConstraints { (make) in
 			make.left.right.bottom.equalTo(self.view)
-			make.top.equalTo(self.view).offset(65)
+			make.top.equalTo(view).offset(60)
 		}
 
 	}
