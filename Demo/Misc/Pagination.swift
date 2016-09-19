@@ -10,7 +10,7 @@ class Pagination {
 	private var pageNum: Int
 
 	init() {
-		pageNum = 1
+		pageNum = 0
 	}
 
 	func nextPage() {
@@ -22,6 +22,6 @@ class Pagination {
 	}
 
 	func resetPageNumber() {
-		pageNum = 1
+		pageNum = 0
 	}
 }
