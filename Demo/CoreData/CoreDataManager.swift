@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class CoreDataManager {
+	static var sharedInstance = CoreDataManager()
+	let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
+	func savePost(postData: [String: AnyObject]) {
+		// TO-DO
+	}
+
+	func getPosts(type: PostsType) -> [String: AnyObject] {
+		// TO-DO
+		return [:]
+	}
+}

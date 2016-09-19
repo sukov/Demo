@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class CacheManager {
+// To-DO save entire dictionaries
+}
