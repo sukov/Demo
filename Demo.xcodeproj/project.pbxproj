@@ -34,6 +34,9 @@
 		1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */; };
 		1F599A151D8BF449004D7F89 /* LeftMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */; };
 		1F599A171D8BF466004D7F89 /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A161D8BF466004D7F89 /* LeftMenuController.swift */; };
+		1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */; };
+		1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E799A1D90243E004B9088 /* CoreDataManager.swift */; };
+		1F6E799D1D903759004B9088 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E799C1D903759004B9088 /* CacheManager.swift */; };
 		1F6FDE811D7D7AD60003649B /* PostFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE801D7D7AD60003649B /* PostFeedController.swift */; };
 		1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE821D7DA4D70003649B /* PostFeedView.swift */; };
 		1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */; };
@@ -74,6 +77,9 @@
 		1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuContainerController.swift; sourceTree = "<group>"; };
 		1F599A161D8BF466004D7F89 /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
+		1F6E79981D901EB6004B9088 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		1F6E799A1D90243E004B9088 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1F6E799C1D903759004B9088 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1F6FDE801D7D7AD60003649B /* PostFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedController.swift; sourceTree = "<group>"; };
 		1F6FDE821D7DA4D70003649B /* PostFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedView.swift; sourceTree = "<group>"; };
 		1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenter.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				1F1DDB291D79716600F2366E /* AppDelegate.swift */,
 				1F1DDB491D79A36E00F2366E /* Constants.swift */,
 				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
+				1F6E79961D901EA6004B9088 /* CoreData */,
 				1F1DDB501D79B95A00F2366E /* Network */,
 				1F1DDB5E1D79BA3200F2366E /* Manager */,
 				1F4800001D8AD335003A1B04 /* Token */,
@@ -196,6 +203,7 @@
 			children = (
 				1F1DDB4B1D79ADF600F2366E /* UserManager.swift */,
 				1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */,
+				1F6E799C1D903759004B9088 /* CacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -275,6 +283,15 @@
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
+		1F6E79961D901EA6004B9088 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1F6E799A1D90243E004B9088 /* CoreDataManager.swift */,
+				1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1F6FDE7F1D7D7AA90003649B /* PostFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +347,7 @@
 				TargetAttributes = {
 					1F1DDB251D79716600F2366E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = KFR638643H;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -436,10 +454,13 @@
 				1F4E33051D82B06C00D7ED4C /* ZoomPhotoPresenter.swift in Sources */,
 				1F4ABE221D86A9B400406374 /* CreatePostPresenterImp.swift in Sources */,
 				1F1DDB581D79BA1900F2366E /* LoginPresenter.swift in Sources */,
+				1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */,
 				1F1DDB3C1D7974F700F2366E /* MainAssembly.swift in Sources */,
 				1F3456111D87FE8300C210B8 /* LocalNotificationsManager.swift in Sources */,
 				1F1DDB481D797E9F00F2366E /* NetworkManager.swift in Sources */,
+				1F6E799D1D903759004B9088 /* CacheManager.swift in Sources */,
 				1F6FDE871D7DA50A0003649B /* PostFeedPresenterImp.swift in Sources */,
+				1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */,
 				1F4ABE1E1D86A98900406374 /* CreatePostView.swift in Sources */,
 				1F1DDB2A1D79716600F2366E /* AppDelegate.swift in Sources */,
 				1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */,
@@ -598,6 +619,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F6E79981D901EB6004B9088 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 1F6E79981D901EB6004B9088 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F1DDB1E1D79716600F2366E /* Project object */;
 }

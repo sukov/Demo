@@ -36,17 +36,17 @@ class MainAssembly {
 	func getLeftMenuContainerController() -> LeftMenuContainerController {
 		let controller = LeftMenuContainerController(
 			rearViewController: MainAssembly.sharedInstance.getLeftMenuController(),
-			frontViewController: MainAssembly.sharedInstance.getPostFeedController())
+			frontViewController: MainAssembly.sharedInstance.getPostFeedController(.Hot))
 		return controller
 	}
 
 	// PostFeed
-	func getPostFeedPresenter() -> PostFeedPresenter {
-		return PostFeedPresenterImp(postType: .Popular)
+	func getPostFeedPresenter(postType: PostsType) -> PostFeedPresenter {
+		return PostFeedPresenterImp(postType: postType)
 	}
 
-	func getPostFeedController() -> UIViewController {
-		return UINavigationController(rootViewController: PostFeedController(presenter: MainAssembly.sharedInstance.getPostFeedPresenter()))
+	func getPostFeedController(postType: PostsType) -> UIViewController {
+		return UINavigationController(rootViewController: PostFeedController(presenter: MainAssembly.sharedInstance.getPostFeedPresenter(postType)))
 	}
 
 	// ZoomPhoto

@@ -29,11 +29,11 @@ class NetworkManager {
 	}
 
 	func getPosts(postsType: PostsType, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
-        guard UserManager.sharedInstance.user != nil else {
-            complete(images: nil, error: nil)
-            return
-        }
-        
+		guard UserManager.sharedInstance.user != nil else {
+			complete(images: nil, error: nil)
+			return
+		}
+
 		activityIndicatorON()
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 
@@ -60,20 +60,20 @@ class NetworkManager {
 					var images: [[String: AnyObject]]
 					if (response.result.isSuccess) {
 						do {
-                            if let data = response.data {
-                                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                                if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
-                                    images = imagesFromJson
-                                    var i1: Int = 0
-                                    for i in 0..<images.count {
-                                        if (images[i - i1]["is_album"] as? Int == 1) {
-                                            images.removeAtIndex(i - i1)
-                                            i1 = i1 + 1
-                                        }
-                                    }
-                                    complete(images: images, error: nil)
-                            }
-                            							}
+							if let data = response.data {
+								let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+								if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
+									images = imagesFromJson
+									var i1: Int = 0
+									for i in 0..<images.count {
+										if (images[i - i1]["is_album"] as? Int == 1) {
+											images.removeAtIndex(i - i1)
+											i1 = i1 + 1
+										}
+									}
+									complete(images: images, error: nil)
+								}
+							}
 						} catch {
 							complete(images: nil, error: response.result.error)
 						}
