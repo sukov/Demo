@@ -6,6 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 import Foundation
+import Haneke
 
 enum PostsType: String {
 	case Hot
@@ -84,6 +85,7 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 		pagination.resetPageNumber()
 		getImages { [weak self] in
 			self?.view?.stopRefreshing()
+
 		}
 
 	}

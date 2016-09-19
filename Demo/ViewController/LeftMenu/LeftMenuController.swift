@@ -29,10 +29,18 @@ class LeftMenuController: UIViewController {
 		popularPostsButton = UIButton()
 		userPostsButton = UIButton()
 		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
-		profileImageView.backgroundColor = UIColor.redColor()
 		usernameLabel.sizeToFit()
 		settingsButton.setImage(UIImage(named: "gearIcon"), forState: .Normal)
 		settingsButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+		hotPostsButton.setTitle("Hot posts", forState: .Normal)
+		hotPostsButton.backgroundColor = UIColor.blueColor()
+		popularPostsButton.setTitle("Popular posts", forState: .Normal)
+		popularPostsButton.backgroundColor = UIColor.blueColor()
+		userPostsButton.setTitle("User posts", forState: .Normal)
+		userPostsButton.backgroundColor = UIColor.blueColor()
+		hotPostsButton.addTarget(self, action: #selector(hotPostsButtonTapped), forControlEvents: .TouchUpInside)
+		popularPostsButton.addTarget(self, action: #selector(popularPostsButtonTapped), forControlEvents: .TouchUpInside)
+		userPostsButton.addTarget(self, action: #selector(userPostsButtonTapped), forControlEvents: .TouchUpInside)
 
 		view.addSubview(profileImageView)
 		view.addSubview(usernameLabel)
@@ -63,6 +71,23 @@ class LeftMenuController: UIViewController {
 			make.height.equalTo(30)
 		}
 
+		hotPostsButton.snp_makeConstraints { (make) in
+			make.top.equalTo(usernameLabel.snp_bottom).offset(20)
+			make.left.right.equalTo(self.view)
+			make.height.equalTo(40)
+		}
+
+		popularPostsButton.snp_makeConstraints { (make) in
+			make.top.equalTo(hotPostsButton.snp_bottom).offset(10)
+			make.left.right.equalTo(self.view)
+			make.height.equalTo(40)
+		}
+
+		userPostsButton.snp_makeConstraints { (make) in
+			make.top.equalTo(popularPostsButton.snp_bottom).offset(10)
+			make.left.right.equalTo(self.view)
+			make.height.equalTo(40)
+		}
 	}
 
 	func setContent() {
@@ -70,5 +95,17 @@ class LeftMenuController: UIViewController {
 		profileImageView.hnk_setImageFromURL(NSURL(
 			string: "https://thenypost.files.wordpress.com/2015/08/spongebob-e1441057213584.jpg?quality=90&strip=all&w=664&h=441&crop=1")!)
 		usernameLabel.text = UserManager.sharedInstance.user?.userName
+	}
+
+	func hotPostsButtonTapped() {
+		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.Hot), animated: true)
+	}
+
+	func popularPostsButtonTapped() {
+		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.Popular), animated: true)
+	}
+
+	func userPostsButtonTapped() {
+		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.User), animated: true)
 	}
 }

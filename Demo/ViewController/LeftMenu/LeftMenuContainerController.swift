@@ -11,7 +11,7 @@ class LeftMenuContainerController: SWRevealViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		revealViewController()
-		view.addGestureRecognizer(self.panGestureRecognizer())
+		view.addGestureRecognizer(panGestureRecognizer())
 		rearViewRevealWidth = UIScreen.mainScreen().bounds.width / 1.5
 		rearViewRevealOverdraw = 0
 		view.backgroundColor = UIColor.whiteColor()
