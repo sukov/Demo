@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Haneke
 
 class ZoomPhotoPresenterImp {
 	weak private var view: ZoomPhotoView?

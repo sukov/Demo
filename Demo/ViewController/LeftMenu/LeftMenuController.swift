@@ -92,7 +92,7 @@ class LeftMenuController: UIViewController {
 
 	func setContent() {
 		profileImageView.layoutIfNeeded()
-		profileImageView.hnk_setImageFromURL(NSURL(
+		profileImageView.sd_setImageWithURL(NSURL(
 			string: "https://thenypost.files.wordpress.com/2015/08/spongebob-e1441057213584.jpg?quality=90&strip=all&w=664&h=441&crop=1")!)
 		usernameLabel.text = UserManager.sharedInstance.user?.userName
 	}

@@ -12,7 +12,7 @@ class CoreDataManager {
 	static var sharedInstance = CoreDataManager()
 	let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
-	func savePost(postData: [String: AnyObject]) {
+	func savePost(postData: [String: String]) {
 		// TO-DO
 	}
 

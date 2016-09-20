@@ -6,7 +6,6 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 import Foundation
-import Haneke
 
 enum PostsType: String {
 	case Hot

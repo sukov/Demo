@@ -6,7 +6,6 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 import UIKit
-import Haneke
 
 class ZoomPhotoController: UIViewController {
 	private var presenter: ZoomPhotoPresenter

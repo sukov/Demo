@@ -1,18 +1,30 @@
 PODS:
   - Alamofire (3.4.2)
-  - HanekeSwift (0.10.1)
+  - SDWebImage (4.0.0-beta):
+    - SDWebImage/Core (= 4.0.0-beta)
+  - SDWebImage/Core (4.0.0-beta)
   - SnapKit (0.15.0)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - HanekeSwift
+  - SDWebImage (from `https://github.com/rs/SDWebImage.git`, branch `4.x`)
   - SnapKit (~> 0.15.0)
   - SVPullToRefresh
 
+EXTERNAL SOURCES:
+  SDWebImage:
+    :branch: 4.x
+    :git: https://github.com/rs/SDWebImage.git
+
+CHECKOUT OPTIONS:
+  SDWebImage:
+    :commit: 36e5e3c10d707a5bcbd4e522bc3140af4afc240b
+    :git: https://github.com/rs/SDWebImage.git
+
 SPEC CHECKSUMS:
   Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
-  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  SDWebImage: 835b541a1946d371dea2ab41da591dd8d1f93865
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 

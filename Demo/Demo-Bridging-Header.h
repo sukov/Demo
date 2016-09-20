@@ -10,5 +10,4 @@
 #define Demo_Bridging_Header_h
 #import "SWRevealViewController.h"
 
-
 #endif /* Demo_Bridging_Header_h */

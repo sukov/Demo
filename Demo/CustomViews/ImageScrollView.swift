@@ -149,7 +149,7 @@ public class ImageScrollView: UIScrollView, UIScrollViewDelegate {
 		}
 
 		zoomView = UIImageView(frame: CGRectMake(0, 0, imageSize.width, imageSize.height))
-		zoomView?.hnk_setImageFromURL(imageLink)
+		zoomView?.sd_setImageWithURL(imageLink)
 		zoomView!.userInteractionEnabled = true
 		addSubview(zoomView!)
 

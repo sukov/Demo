@@ -9,5 +9,18 @@
 import Foundation
 
 class CacheManager {
-// To-DO save entire dictionaries
+	static var sharedInstance = CacheManager()
+	private let cache: NSCache
+
+	init() {
+		cache = NSCache()
+	}
+
+	func cachePosts(posts: [String: AnyObject], type: PostsType) {
+		cache.setObject(posts, forKey: type.rawValue)
+	}
+
+	func getCachedPosts(type: PostsType) -> [String: AnyObject]? {
+		return cache.objectForKey(type.rawValue) as? [String: AnyObject]
+	}
 }

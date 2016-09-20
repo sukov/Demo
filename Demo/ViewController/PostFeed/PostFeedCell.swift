@@ -6,7 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 import UIKit
-import Haneke
+import SDWebImage
 
 class PostFeedCell: UICollectionViewCell {
 	private var titleLabel: UILabel = UILabel()
@@ -66,7 +66,7 @@ class PostFeedCell: UICollectionViewCell {
 		imageView.contentMode = UIViewContentMode.ScaleAspectFit
 		imageView.layoutIfNeeded()
 		if let url = NSURL(string: image["link"] as? String ?? "") {
-			imageView.hnk_setImageFromURL(url)
+			imageView.sd_setImageWithURL(url)
 		}
 		descriptionText.text = image["description"] as? String ?? ""
 	}
@@ -75,7 +75,7 @@ class PostFeedCell: UICollectionViewCell {
 		super.prepareForReuse()
 		imageView.image = nil
 		titleLabel.text = ""
-		imageView.hnk_cancelSetImage()
+		imageView.sd_cancelCurrentImageLoad()
 		descriptionText.text = ""
 	}
 

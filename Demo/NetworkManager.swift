@@ -99,7 +99,7 @@ class NetworkManager {
 			Alamofire.upload(.POST, "https://api.imgur.com/3/upload", headers: headers, multipartFormData: {
 				multipartFormData in
 
-				multipartFormData.appendBodyPart(data: image.asData(), name: "image")
+				multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "image")
 
 				for (key, value) in parameters {
 					multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)

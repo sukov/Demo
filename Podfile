@@ -6,4 +6,4 @@ pod 'SnapKit', '~> 0.15.0'
 
 pod 'Alamofire', '~> 3.4'
 pod 'SVPullToRefresh'
-pod 'HanekeSwift'
+pod 'SDWebImage', :git => 'https://github.com/rs/SDWebImage.git', :branch => ‘4.x’
