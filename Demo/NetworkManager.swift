@@ -12,7 +12,7 @@ import Alamofire
 
 class NetworkManager {
 	private var request: Alamofire.Request?
-	private var lastUpload: (image: UIImage, title: String, description: String, token: String)?
+	private var lastUpload: (image: UIImage, title: String, description: String)?
 	private let requestGroup = dispatch_group_create();
 	private let refreshTokenGroup = dispatch_group_create();
 	private var allowRefreshToken: Bool = true
@@ -86,16 +86,25 @@ class NetworkManager {
 		}
 	}
 
-	func uploadImage(image: UIImage, title: String, description: String, token: String, complete: (success: Bool) -> Void) {
-		activityIndicatorON()
-		lastUpload = (image: image, title: title, description: description, token: token)
-		let headers = ["Authorization": "Bearer \(token)"]
-		let parameters = ["title": title, "description": description]
+	func uploadImage(image: UIImage, title: String, description: String, complete: (success: Bool) -> Void) {
 
-		dispatch_group_notify(refreshTokenGroup, dispatch_get_main_queue()) { [weak self] in
-			if let _self = self {
-				dispatch_group_enter(_self.requestGroup)
+		activityIndicatorON()
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+
+			self.lock.lock()
+			if (TokenProvider.sharedInstance.isTokenExpired()) {
+				TokenProvider.sharedInstance.refreshToken()
 			}
+
+			Group.sharedInstance.waitForGroupToFinnish(.RefreshToken)
+			self.lock.unlock()
+
+			let token = UserManager.sharedInstance.user!.accessToken
+
+			self.lastUpload = (image: image, title: title, description: description)
+			let headers = ["Authorization": "Bearer \(token)"]
+			let parameters = ["title": title, "description": description]
+
 			Alamofire.upload(.POST, "https://api.imgur.com/3/upload", headers: headers, multipartFormData: {
 				multipartFormData in
 
@@ -127,14 +136,14 @@ class NetworkManager {
 					complete(success: false)
 				}
 				self?.activityIndicatorOFF()
-				if let _self = self {
-					dispatch_group_leave(_self.requestGroup)
-				}
-
 				}
 
 			)
 		}
+	}
+
+	func cancelAllRequests() {
+		Alamofire.Manager.sharedInstance.session.invalidateAndCancel()
 	}
 
 	func cancelUpload() {
@@ -143,7 +152,7 @@ class NetworkManager {
 
 	func retryLastUpload(complete: (success: Bool) -> Void) {
 		if let _lastUpload = lastUpload {
-			uploadImage(_lastUpload.image, title: _lastUpload.title, description: _lastUpload.description, token: _lastUpload.token, complete: { (success) in
+			uploadImage(_lastUpload.image, title: _lastUpload.title, description: _lastUpload.description, complete: { (success) in
 				complete(success: success)
 			})
 		}
