@@ -35,7 +35,6 @@ class PostFeedPresenterImp {
 			if (error == nil) {
 				self?.pagination.connectionIsON()
 				if let _images = images, _self = self {
-					print(_images.count)
 					if (_self.pagination.getPageNumber() == 0) {
 						_self.images = []
 						CacheManager.sharedInstance.clearCachedPosts(_self.postType)

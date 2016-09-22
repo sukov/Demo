@@ -57,30 +57,21 @@ class CreatePostController: UIViewController {
 		selectedImageView = UIImageView()
 		postTitle = UITextField()
 		postDescription = UITextField()
-
 		selectedImageView.layer.borderWidth = 1
 		selectedImageView.layer.borderColor = UIColor.grayColor().CGColor
 		postTitle.attributedPlaceholder = NSAttributedString(string: "Title",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
 		postDescription.attributedPlaceholder = NSAttributedString(string: "Description",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
-		cancelPostButton.backgroundColor = UIColor.blueColor()
-		cancelPostButton.setTitle("Cancel", forState: .Normal)
-		cancelPostButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		cancelPostButton.addTarget(self, action: #selector(cancelButtonTapped), forControlEvents: .TouchUpInside)
-		selectImageButton.backgroundColor = UIColor.blueColor()
-		selectImageButton.setTitle("Select Image", forState: .Normal)
-		selectImageButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+		cancelPostButton.customBlueButton("Cancel")
+		selectImageButton.customBlueButton("Select image")
 		selectImageButton.layer.cornerRadius = 5
-		selectImageButton.addTarget(self, action: #selector(selectImageButtonTapped), forControlEvents: .TouchUpInside)
-		submitPostButton.backgroundColor = UIColor.blueColor()
-		submitPostButton.setTitle("Post", forState: .Normal)
-		submitPostButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		submitPostButton.addTarget(self, action: #selector(submitPostButtonTapped), forControlEvents: .TouchUpInside)
-		takePhotoButton.backgroundColor = UIColor.blueColor()
-		takePhotoButton.setTitle("Take a photo", forState: .Normal)
-		takePhotoButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+		submitPostButton.customBlueButton("Post")
+		takePhotoButton.customBlueButton("Take photo")
 		takePhotoButton.layer.cornerRadius = 5
+		cancelPostButton.addTarget(self, action: #selector(cancelButtonTapped), forControlEvents: .TouchUpInside)
+		selectImageButton.addTarget(self, action: #selector(selectImageButtonTapped), forControlEvents: .TouchUpInside)
+		submitPostButton.addTarget(self, action: #selector(submitPostButtonTapped), forControlEvents: .TouchUpInside)
 		takePhotoButton.addTarget(self, action: #selector(takePhotoButtonTapped), forControlEvents: .TouchUpInside)
 
 		view.addSubview(submitPostButton)
