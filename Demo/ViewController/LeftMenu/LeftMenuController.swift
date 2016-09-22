@@ -90,6 +90,7 @@ class LeftMenuController: UIViewController {
 		}
 	}
 
+	// This goes to Presenter
 	func setContent() {
 		profileImageView.layoutIfNeeded()
 		profileImageView.sd_setImageWithURL(NSURL(

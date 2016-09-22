@@ -13,14 +13,28 @@ struct NotificationKeys {
 }
 
 struct UserKeys {
-	static var userID = "account_id"
-	static var userName = "account_username"
-	static var accessToken = "access_token"
-	static var expiresIn = "expires_in"
-	static var tokenDate = "tokenDate"
-	static var refreshToken = "refresh_token"
+	static let userID = "account_id"
+	static let userName = "account_username"
+	static let accessToken = "access_token"
+	static let expiresIn = "expires_in"
+	static let tokenDate = "tokenDate"
+	static let refreshToken = "refresh_token"
 }
 
 struct UserDefaultsKeys {
-	static var user = "user"
+	static let user = "user"
+}
+
+struct PostKeys {
+	static let title = "title"
+	static let link = "link"
+	static let description = "description"
+}
+
+struct CoreDataKeys {
+	static let postEntity = "Post"
+	static let postType = "type"
+	static let title = "title"
+	static let link = "link"
+	static let description = "descrip"
 }

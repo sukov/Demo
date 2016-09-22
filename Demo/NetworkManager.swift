@@ -122,7 +122,6 @@ class NetworkManager {
 //				upload.progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
 //					print(totalBytesRead)
 //				})
-
 					self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
 						switch response.result {
 						case .Success:
@@ -146,7 +145,7 @@ class NetworkManager {
 		Alamofire.Manager.sharedInstance.session.invalidateAndCancel()
 	}
 
-	func cancelUpload() {
+	func cancelLastUpload() {
 		request?.cancel()
 	}
 
