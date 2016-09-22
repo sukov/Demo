@@ -28,9 +28,9 @@ class NetworkManager {
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 	}
 
-	func getPosts(postsType: PostsType, pageNumber: Int, complete: (images: [[String: AnyObject]]?, error: NSError?) -> Void) {
+	func getPosts(postsType: PostsType, pageNumber: Int, complete: (posts: [[String: AnyObject]]?, error: NSError?) -> Void) {
 		guard UserManager.sharedInstance.user != nil else {
-			complete(images: nil, error: nil)
+			complete(posts: nil, error: nil)
 			return
 		}
 
@@ -57,28 +57,28 @@ class NetworkManager {
 			Alamofire.request(.GET, url, parameters: ["": ""], encoding: ParameterEncoding.URL, headers: headers)
 				.validate()
 				.responseJSON { [weak self] response in
-					var images: [[String: AnyObject]]
+					var posts: [[String: AnyObject]]
 					if (response.result.isSuccess) {
 						do {
 							if let data = response.data {
 								let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-								if let imagesFromJson = json["data"] as? [[String: AnyObject]] {
-									images = imagesFromJson
+								if let postsFromJson = json["data"] as? [[String: AnyObject]] {
+									posts = postsFromJson
 									var i1: Int = 0
-									for i in 0..<images.count {
-										if (images[i - i1]["is_album"] as? Int == 1) {
-											images.removeAtIndex(i - i1)
+									for i in 0..<posts.count {
+										if (posts[i - i1]["is_album"] as? Int == 1) {
+											posts.removeAtIndex(i - i1)
 											i1 = i1 + 1
 										}
 									}
-									complete(images: images, error: nil)
+									complete(posts: posts, error: nil)
 								}
 							}
 						} catch {
-							complete(images: nil, error: response.result.error)
+							complete(posts: nil, error: response.result.error)
 						}
 					} else {
-						complete(images: nil, error: response.result.error)
+						complete(posts: nil, error: response.result.error)
 					}
 					self?.activityIndicatorOFF()
 
@@ -87,6 +87,10 @@ class NetworkManager {
 	}
 
 	func uploadImage(image: UIImage, title: String, description: String, complete: (success: Bool) -> Void) {
+		guard UserManager.sharedInstance.user != nil else {
+			complete(success: false)
+			return
+		}
 
 		activityIndicatorON()
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
