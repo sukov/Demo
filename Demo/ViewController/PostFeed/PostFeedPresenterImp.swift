@@ -6,6 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 import Foundation
+import SDWebImage
 
 enum PostsType: String {
 	case Hot
@@ -32,15 +33,39 @@ class PostFeedPresenterImp {
 	func getImages(complete: () -> Void) {
 		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](images, error) in
 			if (error == nil) {
+				self?.pagination.connectionIsON()
 				if let _images = images, _self = self {
-					_self.images.appendContentsOf(_images)
-					complete()
-					_self.view?.showPictures(_self.images)
+					print(_images.count)
+					if (_self.pagination.getPageNumber() == 0) {
+						_self.images = []
+						CacheManager.sharedInstance.clearCachedPosts(_self.postType)
+						SDWebImageManager.sharedManager().imageCache?.cleanDisk()
+						_self.images.appendContentsOf(_images)
+						complete()
+						_self.view?.showPictures(_self.images)
+						_self.view?.scrollToTop()
+					} else {
+						_self.images.appendContentsOf(_images)
+						complete()
+						_self.view?.showPictures(_self.images)
+					}
+					CacheManager.sharedInstance.cachePosts(_images, type: _self.postType)
+				}
+			} else {
+				if (error?.code == -1009) {
+					self?.pagination.connectionIsOFF()
+					if images != nil {
+						complete()
+						return
+					}
+					if let _self = self, _images = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
+						complete()
+						_self.view?.showPictures(_images)
+					}
 				}
 			}
 			complete()
 		}
-
 	}
 
 	func addObservers() {
@@ -75,16 +100,13 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 		pagination.nextPage()
 		getImages { [weak self] in
 			self?.view?.stopAnimating()
-
 		}
 	}
 
 	func refreshData() {
-		images = []
 		pagination.resetPageNumber()
 		getImages { [weak self] in
 			self?.view?.stopRefreshing()
-
 		}
 
 	}

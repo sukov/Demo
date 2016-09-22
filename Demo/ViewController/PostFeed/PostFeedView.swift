@@ -13,4 +13,5 @@ import Foundation
 	func startAnimating()
 	func stopAnimating()
 	func showAlert()
+	func scrollToTop()
 }

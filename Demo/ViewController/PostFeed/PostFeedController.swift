@@ -27,10 +27,12 @@ class PostFeedController: UIViewController {
 
 	deinit {
 		removeObservers()
+		presenter.detachView(self)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		presenter.attachView(self)
 		setupViews()
 		setupNavigationBar()
 		setupConstraints()
@@ -40,12 +42,12 @@ class PostFeedController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		presenter.attachView(self)
+
 	}
 
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
-		presenter.detachView(self)
+
 	}
 
 	func setupNavigationBar() {
@@ -145,6 +147,10 @@ extension PostFeedController: PostFeedView {
 		alert.addAction(defaultAction)
 		alert.addAction(retryAction)
 		presentViewController(alert, animated: true, completion: nil)
+	}
+
+	func scrollToTop() {
+		collectionView.setContentOffset(CGPointZero, animated: true)
 	}
 
 }
