@@ -28,16 +28,12 @@ extension CreatePostPresenterImp: CreatePostPresenter {
 	}
 
 	@objc func postSubmit(image: UIImage, title: String, description: String) {
-        if let user = UserManager.sharedInstance.user {
-            NetworkManager.sharedInstance.uploadImage(image, title: title, description: description, token: user.accessToken, complete: { success in
-                if (success) {
-                    LocalNotificationsManager.sharedInstance.displaySuccess()
-                } else {
-                    LocalNotificationsManager.sharedInstance.displayFailure()
-                }
-                }
-            )
-        }
-        }
-		
+		NetworkManager.sharedInstance.uploadImage(image, title: title, description: description, complete: { success in
+			if (success) {
+				LocalNotificationsManager.sharedInstance.displaySuccess()
+			} else {
+				LocalNotificationsManager.sharedInstance.displayFailure()
+			}
+		})
+	}
 }
