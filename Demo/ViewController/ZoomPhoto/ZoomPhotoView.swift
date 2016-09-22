@@ -8,5 +8,5 @@
 import UIKit
 
 @objc protocol ZoomPhotoView {
-	func showPicture(image: [String: AnyObject])
+	func showImage(url: NSURL, size: CGSize)
 }

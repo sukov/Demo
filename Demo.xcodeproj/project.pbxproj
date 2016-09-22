@@ -308,9 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				1FDE359A1D9403B50092389C /* ZoomPhotoController.swift */,
+				1FDE359D1D9403B50092389C /* ZoomPhotoView.swift */,
 				1FDE359B1D9403B50092389C /* ZoomPhotoPresenter.swift */,
 				1FDE359C1D9403B50092389C /* ZoomPhotoPresenterImp.swift */,
-				1FDE359D1D9403B50092389C /* ZoomPhotoView.swift */,
 			);
 			path = ZoomPhoto;
 			sourceTree = "<group>";

@@ -50,12 +50,12 @@ class MainAssembly {
 	}
 
 	// ZoomPhoto
-	func getZoomPhotoPresenter(image: [String: AnyObject]) -> ZoomPhotoPresenter {
-		return ZoomPhotoPresenterImp(image: image)
+	func getZoomPhotoPresenter(imageUrl: NSURL, imageSize: CGSize) -> ZoomPhotoPresenter {
+		return ZoomPhotoPresenterImp(imageUrl: imageUrl, imageSize: imageSize)
 	}
 
-	func getZoomPhotoController(image: [String: AnyObject]) -> ZoomPhotoController {
-		let presenter = getZoomPhotoPresenter(image)
+	func getZoomPhotoController(imageUrl: NSURL, imageSize: CGSize) -> ZoomPhotoController {
+		let presenter = getZoomPhotoPresenter(imageUrl, imageSize: imageSize)
 		return ZoomPhotoController(presenter: presenter)
 	}
 

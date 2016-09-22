@@ -14,7 +14,7 @@ class PostFeedController: UIViewController {
 	private var presenter: PostFeedPresenter
 	private var collectionView: UICollectionView!
 	private var floatingButton: UIButton!
-	private var images: [[String: AnyObject]]?
+	private var posts: [[String: AnyObject]]?
 
 	init(presenter: PostFeedPresenter) {
 		self.presenter = presenter
@@ -121,8 +121,8 @@ class PostFeedController: UIViewController {
 }
 
 extension PostFeedController: PostFeedView {
-	func showPictures(images: [[String: AnyObject]]) {
-		self.images = images
+	func showPosts(posts: [[String: AnyObject]]) {
+		self.posts = posts
 		collectionView.reloadData()
 	}
 
@@ -156,8 +156,11 @@ extension PostFeedController: PostFeedView {
 }
 
 extension PostFeedController: PostFeedCellDelegate {
-	func imageTapped(image: [String: AnyObject]) {
-		self.navigationController?.pushViewController(MainAssembly.sharedInstance.getZoomPhotoController(image), animated: true)
+	func imageTapped(imageUrl: NSURL, imageSize: CGSize) {
+		self.navigationController?.pushViewController(MainAssembly.sharedInstance.getZoomPhotoController(
+			imageUrl,
+			imageSize: imageSize),
+			animated: true)
 	}
 }
 
@@ -174,7 +177,7 @@ extension PostFeedController: UICollectionViewDelegateFlowLayout {
 extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PostFeedCell
-		if let image = images?[indexPath.item] {
+		if let image = posts?[indexPath.item] {
 			cell.setContent(image)
 		}
 		cell.delegate = self
@@ -182,7 +185,7 @@ extension PostFeedController: UICollectionViewDataSource {
 	}
 
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return images?.count ?? 0
+		return posts?.count ?? 0
 	}
 
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

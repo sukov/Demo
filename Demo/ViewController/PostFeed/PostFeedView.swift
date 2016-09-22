@@ -8,7 +8,7 @@
 import Foundation
 
 @objc protocol PostFeedView {
-	func showPictures(images: [[String: AnyObject]])
+	func showPosts(posts: [[String: AnyObject]])
 	func stopRefreshing()
 	func startAnimating()
 	func stopAnimating()

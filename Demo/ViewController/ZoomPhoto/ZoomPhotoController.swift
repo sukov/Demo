@@ -58,10 +58,7 @@ class ZoomPhotoController: UIViewController {
 }
 
 extension ZoomPhotoController: ZoomPhotoView {
-	func showPicture(image: [String: AnyObject]) {
-		if let imageLink = NSURL(string: image["link"] as? String ?? "") {
-			let imageSize = CGSizeMake(image["width"] as? CGFloat ?? 200, image["height"] as? CGFloat ?? 200)
-			imageScrollView.displayImage(imageLink, imageSize: imageSize)
-		}
+	func showImage(url: NSURL, size: CGSize) {
+		imageScrollView.displayImage(url, imageSize: size)
 	}
 }

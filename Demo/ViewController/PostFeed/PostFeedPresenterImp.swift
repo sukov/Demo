@@ -18,11 +18,11 @@ class PostFeedPresenterImp {
 	weak private var view: PostFeedView?
 	private var postType: PostsType
 	private var pagination = Pagination()
-	private var images: [[String: AnyObject]]
+	private var posts: [[String: AnyObject]]
 
 	init(postType: PostsType) {
 		self.postType = postType
-		images = []
+		posts = []
 		addObservers()
 	}
 
@@ -30,36 +30,36 @@ class PostFeedPresenterImp {
 		removeObservers()
 	}
 
-	func getImages(complete: () -> Void) {
-		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](images, error) in
+	func getposts(complete: () -> Void) {
+		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](posts, error) in
 			if (error == nil) {
 				self?.pagination.connectionIsON()
-				if let _images = images, _self = self {
+				if let _posts = posts, _self = self {
 					if (_self.pagination.getPageNumber() == 0) {
-						_self.images = []
+						_self.posts = []
 						CacheManager.sharedInstance.clearCachedPosts(_self.postType)
 						SDWebImageManager.sharedManager().imageCache?.cleanDisk()
-						_self.images.appendContentsOf(_images)
+						_self.posts.appendContentsOf(_posts)
 						complete()
-						_self.view?.showPictures(_self.images)
+						_self.view?.showPosts(_self.posts)
 						_self.view?.scrollToTop()
 					} else {
-						_self.images.appendContentsOf(_images)
+						_self.posts.appendContentsOf(_posts)
 						complete()
-						_self.view?.showPictures(_self.images)
+						_self.view?.showPosts(_self.posts)
 					}
-					CacheManager.sharedInstance.cachePosts(_images, type: _self.postType)
+					CacheManager.sharedInstance.cachePosts(_posts, type: _self.postType)
 				}
 			} else {
 				if (error?.code == -1009) {
 					self?.pagination.connectionIsOFF()
-					if images != nil {
+					if posts != nil {
 						complete()
 						return
 					}
-					if let _self = self, _images = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
+					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
 						complete()
-						_self.view?.showPictures(_images)
+						_self.view?.showPosts(_posts)
 					}
 				}
 			}
@@ -97,14 +97,14 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 	func loadNew() {
 		view?.startAnimating()
 		pagination.nextPage()
-		getImages { [weak self] in
+		getposts { [weak self] in
 			self?.view?.stopAnimating()
 		}
 	}
 
 	func refreshData() {
 		pagination.resetPageNumber()
-		getImages { [weak self] in
+		getposts { [weak self] in
 			self?.view?.stopRefreshing()
 		}
 

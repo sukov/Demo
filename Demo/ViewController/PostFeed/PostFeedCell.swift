@@ -12,7 +12,7 @@ class PostFeedCell: UICollectionViewCell {
 	private var titleLabel: UILabel = UILabel()
 	private var descriptionText: UITextView = UITextView()
 	private var imageView: UIImageView = UIImageView()
-	private var image: [String: AnyObject]?
+	private var post: [String: AnyObject]?
 	weak var delegate: PostFeedCellDelegate?
 
 	override init(frame: CGRect) {
@@ -55,20 +55,24 @@ class PostFeedCell: UICollectionViewCell {
 	}
 
 	func imageTapped() {
-		if let img = image {
-			delegate?.imageTapped(img)
+		if let link = post?[PostKeys.imageLink] as? String,
+			width = post?[PostKeys.width] as? CGFloat,
+			height = post?[PostKeys.height] as? CGFloat {
+				if let url = NSURL(string: link) {
+					delegate?.imageTapped(url, imageSize: CGSizeMake(width, height))
+				}
 		}
 	}
 
-	func setContent(image: [String: AnyObject]) {
-		self.image = image
-		titleLabel.text = image["title"] as? String ?? ""
+	func setContent(post: [String: AnyObject]) {
+		self.post = post
+		titleLabel.text = post[PostKeys.title] as? String ?? ""
 		imageView.contentMode = UIViewContentMode.ScaleAspectFit
 		imageView.layoutIfNeeded()
-		if let url = NSURL(string: image["link"] as? String ?? "") {
+		if let url = NSURL(string: post[PostKeys.imageLink] as? String ?? "") {
 			imageView.sd_setImageWithURL(url)
 		}
-		descriptionText.text = image["description"] as? String ?? ""
+		descriptionText.text = post[PostKeys.description] as? String ?? ""
 	}
 
 	override func prepareForReuse() {
@@ -82,5 +86,5 @@ class PostFeedCell: UICollectionViewCell {
 }
 
 @objc protocol PostFeedCellDelegate {
-	func imageTapped(image: [String: AnyObject])
+	func imageTapped(imageUrl: NSURL, imageSize: CGSize)
 }

@@ -27,8 +27,10 @@ struct UserDefaultsKeys {
 
 struct PostKeys {
 	static let title = "title"
-	static let link = "link"
+	static let imageLink = "link"
 	static let description = "description"
+	static let width = "width"
+	static let height = "height"
 }
 
 struct CoreDataKeys {

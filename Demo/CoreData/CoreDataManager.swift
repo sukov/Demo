@@ -19,7 +19,7 @@ class CoreDataManager {
 		for postData in postsData {
 			let newPost = NSManagedObject(entity: postEntity!, insertIntoManagedObjectContext: managedContext)
 			newPost.setValue(postData[PostKeys.title] as? String ?? "", forKey: CoreDataKeys.title)
-			newPost.setValue(postData[PostKeys.link] as? String ?? "", forKey: CoreDataKeys.link)
+			newPost.setValue(postData[PostKeys.imageLink] as? String ?? "", forKey: CoreDataKeys.link)
 			newPost.setValue(postData[PostKeys.description] as? String ?? "", forKey: CoreDataKeys.description)
 			newPost.setValue(type.rawValue, forKey: CoreDataKeys.postType)
 		}
@@ -60,7 +60,7 @@ class CoreDataManager {
 			for postManagedObject in postsManagedObjects {
 				var post = [String: AnyObject]()
 				post[PostKeys.title] = postManagedObject.valueForKey(CoreDataKeys.title) as? String ?? ""
-				post[PostKeys.link] = postManagedObject.valueForKey(CoreDataKeys.link) as? String ?? ""
+				post[PostKeys.imageLink] = postManagedObject.valueForKey(CoreDataKeys.link) as? String ?? ""
 				post[PostKeys.description] = postManagedObject.valueForKey(CoreDataKeys.description) as? String ?? ""
 				posts.append(post)
 			}

@@ -11,10 +11,12 @@ import UIKit
 
 class ZoomPhotoPresenterImp {
 	weak private var view: ZoomPhotoView?
-	private var image: [String: AnyObject]
+	private var imageUrl: NSURL
+	private var imageSize: CGSize
 
-	init(image: [String: AnyObject]) {
-		self.image = image
+	init(imageUrl: NSURL, imageSize: CGSize) {
+		self.imageUrl = imageUrl
+		self.imageSize = imageSize
 	}
 }
 
@@ -22,7 +24,7 @@ extension ZoomPhotoPresenterImp: ZoomPhotoPresenter {
 	func attachView(view: ZoomPhotoView) {
 		if (self.view == nil) {
 			self.view = view
-			view.showPicture(image)
+			view.showImage(imageUrl, size: imageSize)
 		}
 	}
 
