@@ -7,17 +7,88 @@
 //
 
 import Foundation
+import CoreData
 
 class CoreDataManager {
 	static var sharedInstance = CoreDataManager()
 	let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
-	func savePost(postData: [String: String]) {
-		// TO-DO
+	func savePosts(postsData: [[String: AnyObject]], type: PostsType) {
+		let postEntity = NSEntityDescription.entityForName(CoreDataKeys.postEntity, inManagedObjectContext: managedContext)
+
+		for postData in postsData {
+			let newPost = NSManagedObject(entity: postEntity!, insertIntoManagedObjectContext: managedContext)
+			newPost.setValue(postData[PostKeys.title] as? String ?? "", forKey: CoreDataKeys.title)
+			newPost.setValue(postData[PostKeys.link] as? String ?? "", forKey: CoreDataKeys.link)
+			newPost.setValue(postData[PostKeys.description] as? String ?? "", forKey: CoreDataKeys.description)
+			newPost.setValue(type.rawValue, forKey: CoreDataKeys.postType)
+		}
+		do {
+			try managedContext.save()
+		} catch { }
 	}
 
-	func getPosts(type: PostsType) -> [String: AnyObject] {
-		// TO-DO
-		return [:]
+	func removePosts(type: PostsType) {
+		let fetchRequest = NSFetchRequest(entityName: CoreDataKeys.postEntity)
+		fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
+		let coord = (UIApplication.sharedApplication().delegate as! AppDelegate).persistentStoreCoordinator
+		let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+		do {
+			try coord.executeRequest(deleteRequest, withContext: self.managedContext)
+		} catch let error as NSError {
+			debugPrint(error)
+		}
+
 	}
+
+	func removeAllPosts() {
+		let fetchRequest = NSFetchRequest(entityName: CoreDataKeys.postEntity)
+		let coord = (UIApplication.sharedApplication().delegate as! AppDelegate).persistentStoreCoordinator
+		let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+		do {
+			try coord.executeRequest(deleteRequest, withContext: self.managedContext)
+		} catch let error as NSError {
+			debugPrint(error)
+		}
+	}
+
+	func getPosts(type: PostsType) -> [[String: AnyObject]]? {
+		if let postsManagedObjects = getPostsManagedObjects(type) {
+			var posts = [[String: AnyObject]]()
+			for postManagedObject in postsManagedObjects {
+				var post = [String: AnyObject]()
+				post[PostKeys.title] = postManagedObject.valueForKey(CoreDataKeys.title) as? String ?? ""
+				post[PostKeys.link] = postManagedObject.valueForKey(CoreDataKeys.link) as? String ?? ""
+				post[PostKeys.description] = postManagedObject.valueForKey(CoreDataKeys.description) as? String ?? ""
+				posts.append(post)
+			}
+			return posts
+		} else { return nil }
+	}
+
+	private func getPostsManagedObjects(type: PostsType) -> [NSManagedObject]? {
+		let fetchRequest = NSFetchRequest(entityName: CoreDataKeys.postEntity)
+		fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
+
+		var posts: [NSManagedObject]?
+
+		do {
+			let results =
+				try managedContext.executeFetchRequest(fetchRequest)
+			posts = results as? [NSManagedObject]
+		} catch {
+			let postsByTypeEntity = NSEntityDescription.entityForName(CoreDataKeys.postEntity, inManagedObjectContext: managedContext)
+			let newType = NSManagedObject(entity: postsByTypeEntity!, insertIntoManagedObjectContext: managedContext)
+			newType.setValue(type.rawValue, forKey: CoreDataKeys.postType)
+			do {
+				try managedContext.save()
+			} catch { }
+
+			return nil
+		}
+		return posts
+	}
+
 }
