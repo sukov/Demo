@@ -86,9 +86,9 @@ class NetworkManager {
 		}
 	}
 
-	func uploadImage(image: UIImage, title: String, description: String, complete: (success: Bool) -> Void) {
+	func uploadImage(image: UIImage, title: String, description: String, complete: (error: Int?) -> Void) {
 		guard UserManager.sharedInstance.user != nil else {
-			complete(success: false)
+			complete(error: ErrorNumbers.user)
 			return
 		}
 
@@ -129,14 +129,19 @@ class NetworkManager {
 					self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
 						switch response.result {
 						case .Success:
-							complete(success: true)
+							complete(error: nil)
 						case .Failure(_):
-							NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.uploadFailed, object: nil)
-							complete(success: false)
+							NSNotificationCenter.defaultCenter().postNotificationName(
+								NotificationKeys.uploadFailed,
+								object: nil,
+								userInfo: ["error": response.result.error?.code ?? (-1)])
+							complete(error: response.result.error?.code)
 						}
 					}
 				case .Failure(_):
-					complete(success: false)
+					// TO DOOOOOO -____---
+					print("does it")
+					complete(error: nil)
 				}
 				self?.activityIndicatorOFF()
 				}
@@ -153,10 +158,10 @@ class NetworkManager {
 		request?.cancel()
 	}
 
-	func retryLastUpload(complete: (success: Bool) -> Void) {
+	func retryLastUpload(complete: (error: Int?) -> Void) {
 		if let _lastUpload = lastUpload {
 			uploadImage(_lastUpload.image, title: _lastUpload.title, description: _lastUpload.description, complete: { (success) in
-				complete(success: success)
+				complete(error: success)
 			})
 		}
 	}

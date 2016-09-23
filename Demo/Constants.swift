@@ -47,3 +47,8 @@ struct ImageNames {
 	static let imgurLogo = "imgurLogo"
 	static let revealIcon = "revealIcon"
 }
+
+struct ErrorNumbers {
+	static let user = 0
+	static let connection = -1009
+}

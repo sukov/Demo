@@ -51,7 +51,7 @@ class PostFeedPresenterImp {
 					CacheManager.sharedInstance.cachePosts(_posts, type: _self.postType)
 				}
 			} else {
-				if (error?.code == -1009) {
+				if (error?.code == ErrorNumbers.connection) {
 					self?.pagination.connectionIsOFF()
 					if posts != nil {
 						complete()
@@ -68,33 +68,45 @@ class PostFeedPresenterImp {
 	}
 
 	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(uploadFailed), name: NotificationKeys.uploadFailed, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshData), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(uploadFailed(_:)), name: NotificationKeys.uploadFailed, object: nil)
 	}
 
 	func removeObservers() {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 
-	@objc func uploadFailed() {
-		view?.showAlert()
+	@objc func uploadFailed(sender: NSNotification) {
+		if ((sender.userInfo?["error"] as? Int) == ErrorNumbers.connection) {
+			view?.showSettingsAlert()
+			AlertFactory.settingsActionClosure = { [weak self] in
+				self?.view?.showRetryAlert()
+			}
+		} else {
+			view?.showRetryAlert()
+			AlertFactory.retryActionClosure = { [weak self] in
+				self?.retryUpload()
+			}
+		}
 	}
 }
 
 extension PostFeedPresenterImp: PostFeedPresenter {
 
-	func attachView(view: PostFeedView) {
+	@objc func attachView(view: PostFeedView) {
 		if (self.view == nil) {
 			self.view = view
 		}
 	}
 
-	func detachView(view: PostFeedView) {
+	@objc func detachView(view: PostFeedView) {
 		if (self.view === view) {
 			self.view = nil
 		}
 	}
 
-	func loadNew() {
+	@objc func loadNew() {
 		view?.startAnimating()
 		pagination.nextPage()
 		getposts { [weak self] in
@@ -102,7 +114,7 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 		}
 	}
 
-	func refreshData() {
+	@objc func refreshData() {
 		pagination.resetPageNumber()
 		getposts { [weak self] in
 			self?.view?.stopRefreshing()
@@ -110,9 +122,9 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 
 	}
 
-	func retryUpload() {
-		NetworkManager.sharedInstance.retryLastUpload { (success) in
-			if (success) {
+	@objc func retryUpload() {
+		NetworkManager.sharedInstance.retryLastUpload { (error) in
+			if (error == nil) {
 				LocalNotificationsManager.sharedInstance.displaySuccess()
 			} else {
 				LocalNotificationsManager.sharedInstance.displayFailure()

@@ -6,7 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 
-protocol PostFeedPresenter {
+@objc protocol PostFeedPresenter {
 	func attachView(view: PostFeedView)
 	func detachView(view: PostFeedView)
 	func refreshData()

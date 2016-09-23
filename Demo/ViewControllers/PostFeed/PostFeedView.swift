@@ -12,6 +12,7 @@ import Foundation
 	func stopRefreshing()
 	func startAnimating()
 	func stopAnimating()
-	func showAlert()
+	func showRetryAlert()
+	func showSettingsAlert()
 	func scrollToTop()
 }

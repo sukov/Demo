@@ -27,7 +27,6 @@ class PostFeedController: UIViewController {
 	}
 
 	deinit {
-		removeObservers()
 		presenter.detachView(self)
 	}
 
@@ -38,12 +37,10 @@ class PostFeedController: UIViewController {
 		setupNavigationBar()
 		setupConstraints()
 		setDelegates()
-		addObservers()
 	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-
 	}
 
 	override func viewWillDisappear(animated: Bool) {
@@ -104,14 +101,6 @@ class PostFeedController: UIViewController {
 		collectionView.dataSource = self
 	}
 
-	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromBackground), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
-	}
-
-	func removeObservers() {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-	}
-
 	func returnedFromBackground() {
 		presenter.refreshData()
 	}
@@ -139,15 +128,12 @@ extension PostFeedController: PostFeedView {
 		collectionView.infiniteScrollingView.stopAnimating()
 	}
 
-	func showAlert() {
-		let alert = UIAlertController(title: "Upload failed", message: "error image not uploaded. Would you like to retry?", preferredStyle: UIAlertControllerStyle.Alert)
-		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-		let retryAction = UIAlertAction(title: "Retry", style: .Default) { [weak self](alert) in
-			self?.presenter.retryUpload()
-		}
-		alert.addAction(defaultAction)
-		alert.addAction(retryAction)
-		presentViewController(alert, animated: true, completion: nil)
+	func showRetryAlert() {
+		presentViewController(AlertFactory.retryUpload(), animated: true, completion: nil)
+	}
+
+	func showSettingsAlert() {
+		presentViewController(AlertFactory.settings(), animated: true, completion: nil)
 	}
 
 	func scrollToTop() {

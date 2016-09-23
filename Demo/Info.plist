@@ -24,10 +24,11 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.shukov.Demo</string>
+			<string>shukov</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.shukov.Demo</string>
+				<string>prefs</string>
 			</array>
 		</dict>
 	</array>
@@ -55,6 +56,10 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>com.shukov.Demo</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
