@@ -67,4 +67,13 @@ class MainAssembly {
 	func getCreatePostController() -> CreatePostController {
 		return CreatePostController(presenter: MainAssembly.sharedInstance.getCreatePostPresenter())
 	}
+
+	// Settings
+	func getSettingsPresenter() -> SettingsPresenter {
+		return SettingsPresenterImp()
+	}
+
+	func getSettingsController() -> SettingsController {
+		return SettingsController(presenter: MainAssembly.sharedInstance.getSettingsPresenter())
+	}
 }

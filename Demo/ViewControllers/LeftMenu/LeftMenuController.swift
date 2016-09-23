@@ -32,6 +32,7 @@ class LeftMenuController: UIViewController {
 		usernameLabel.sizeToFit()
 		settingsButton.setImage(UIImage(named: ImageNames.gearIcon), forState: .Normal)
 		settingsButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+		settingsButton.addTarget(self, action: #selector(settingsButtonTapped), forControlEvents: .TouchUpInside)
 		hotPostsButton.customBlueButton("Hot posts")
 		popularPostsButton.customBlueButton("Popular posts")
 		userPostsButton.customBlueButton("User posts")
@@ -93,6 +94,17 @@ class LeftMenuController: UIViewController {
 		profileImageView.sd_setImageWithURL(NSURL(
 			string: "https://thenypost.files.wordpress.com/2015/08/spongebob-e1441057213584.jpg?quality=90&strip=all&w=664&h=441&crop=1")!)
 		usernameLabel.text = UserManager.sharedInstance.user?.userName
+	}
+
+	func settingsButtonTapped() {
+		if let navigationViewControllers = (revealViewController().frontViewController as? UINavigationController)?.viewControllers {
+			if (!(navigationViewControllers[navigationViewControllers.count - 1] is SettingsController)) {
+				(revealViewController().frontViewController as? UINavigationController)?.pushViewController(
+					MainAssembly.sharedInstance.getSettingsController(),
+					animated: true)
+			}
+		}
+		revealViewController().revealToggleAnimated(false)
 	}
 
 	func hotPostsButtonTapped() {
