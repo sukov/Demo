@@ -38,6 +38,8 @@ struct CoreDataKeys {
 	static let postType = "type"
 	static let title = "title"
 	static let link = "link"
+	static let width = "width"
+	static let height = "height"
 	static let description = "descrip"
 }
 

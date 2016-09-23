@@ -21,6 +21,8 @@ class CoreDataManager {
 			newPost.setValue(postData[PostKeys.title] as? String ?? "", forKey: CoreDataKeys.title)
 			newPost.setValue(postData[PostKeys.imageLink] as? String ?? "", forKey: CoreDataKeys.link)
 			newPost.setValue(postData[PostKeys.description] as? String ?? "", forKey: CoreDataKeys.description)
+			newPost.setValue(postData[PostKeys.width] as? Float ?? 250, forKey: CoreDataKeys.width)
+			newPost.setValue(postData[PostKeys.height] as? Float ?? 350, forKey: CoreDataKeys.height)
 			newPost.setValue(type.rawValue, forKey: CoreDataKeys.postType)
 		}
 		do {
@@ -62,6 +64,8 @@ class CoreDataManager {
 				post[PostKeys.title] = postManagedObject.valueForKey(CoreDataKeys.title) as? String ?? ""
 				post[PostKeys.imageLink] = postManagedObject.valueForKey(CoreDataKeys.link) as? String ?? ""
 				post[PostKeys.description] = postManagedObject.valueForKey(CoreDataKeys.description) as? String ?? ""
+				post[PostKeys.width] = postManagedObject.valueForKey(CoreDataKeys.width) as? Float ?? 250
+				post[PostKeys.height] = postManagedObject.valueForKey(CoreDataKeys.height) as? Float ?? 350
 				posts.append(post)
 			}
 			return posts
