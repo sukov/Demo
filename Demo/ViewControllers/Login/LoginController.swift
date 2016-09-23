@@ -43,7 +43,7 @@ class LoginController: UIViewController {
 		loginButton = UIButton()
 
 		view.backgroundColor = UIColor.whiteColor()
-		imgurImageView.image = UIImage(named: "imgurLogo")
+		imgurImageView.image = UIImage(named: ImageNames.imgurLogo)
 		loginButton.customBlueButton("Login with imgur")
 		loginButton.addTarget(presenter, action: #selector(LoginPresenter.login), forControlEvents: .TouchUpInside)
 

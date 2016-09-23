@@ -7,94 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F098E6D1D940437009157B7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F098E6C1D940437009157B7 /* SettingsView.swift */; };
-		1F098E6F1D940445009157B7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F098E6E1D940445009157B7 /* SettingsPresenter.swift */; };
-		1F098E711D94044D009157B7 /* SettingsPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F098E701D94044D009157B7 /* SettingsPresenterImp.swift */; };
-		1F098E731D940894009157B7 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F098E721D940894009157B7 /* UIButton.swift */; };
 		1F1DDB2A1D79716600F2366E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB291D79716600F2366E /* AppDelegate.swift */; };
 		1F1DDB311D79716600F2366E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1DDB301D79716600F2366E /* Assets.xcassets */; };
 		1F1DDB3C1D7974F700F2366E /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */; };
 		1F1DDB481D797E9F00F2366E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB471D797E9F00F2366E /* NetworkManager.swift */; };
 		1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB491D79A36E00F2366E /* Constants.swift */; };
-		1F1DDB4C1D79ADF600F2366E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB4B1D79ADF600F2366E /* UserManager.swift */; };
-		1F1DDB571D79BA1900F2366E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB531D79BA1900F2366E /* LoginController.swift */; };
-		1F1DDB581D79BA1900F2366E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB541D79BA1900F2366E /* LoginPresenter.swift */; };
-		1F1DDB591D79BA1900F2366E /* LoginPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB551D79BA1900F2366E /* LoginPresenterImp.swift */; };
-		1F1DDB5A1D79BA1900F2366E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB561D79BA1900F2366E /* LoginView.swift */; };
 		1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB5C1D79BA2200F2366E /* User.swift */; };
-		1F3456111D87FE8300C210B8 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */; };
+		1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616721D9526AC00F6D7B4 /* CacheManager.swift */; };
+		1F4616751D9526AC00F6D7B4 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */; };
+		1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616761D9526EA00F6D7B4 /* UserManager.swift */; };
+		1F4616971D95270C00F6D7B4 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167A1D95270C00F6D7B4 /* CreatePostController.swift */; };
+		1F4616981D95270C00F6D7B4 /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167B1D95270C00F6D7B4 /* CreatePostPresenter.swift */; };
+		1F4616991D95270C00F6D7B4 /* CreatePostPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167C1D95270C00F6D7B4 /* CreatePostPresenterImp.swift */; };
+		1F46169A1D95270C00F6D7B4 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167D1D95270C00F6D7B4 /* CreatePostView.swift */; };
+		1F46169B1D95270C00F6D7B4 /* LeftMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167F1D95270C00F6D7B4 /* LeftMenuContainerController.swift */; };
+		1F46169C1D95270C00F6D7B4 /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */; };
+		1F46169D1D95270C00F6D7B4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616821D95270C00F6D7B4 /* LoginController.swift */; };
+		1F46169E1D95270C00F6D7B4 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616831D95270C00F6D7B4 /* LoginPresenter.swift */; };
+		1F46169F1D95270C00F6D7B4 /* LoginPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616841D95270C00F6D7B4 /* LoginPresenterImp.swift */; };
+		1F4616A01D95270C00F6D7B4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616851D95270C00F6D7B4 /* LoginView.swift */; };
+		1F4616A11D95270C00F6D7B4 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616871D95270C00F6D7B4 /* PostFeedCell.swift */; };
+		1F4616A21D95270C00F6D7B4 /* PostFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616881D95270C00F6D7B4 /* PostFeedController.swift */; };
+		1F4616A31D95270C00F6D7B4 /* PostFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616891D95270C00F6D7B4 /* PostFeedPresenter.swift */; };
+		1F4616A41D95270C00F6D7B4 /* PostFeedPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46168A1D95270C00F6D7B4 /* PostFeedPresenterImp.swift */; };
+		1F4616A51D95270C00F6D7B4 /* PostFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46168B1D95270C00F6D7B4 /* PostFeedView.swift */; };
+		1F4616A61D95270C00F6D7B4 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46168D1D95270C00F6D7B4 /* SettingsController.swift */; };
+		1F4616A71D95270C00F6D7B4 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46168E1D95270C00F6D7B4 /* SettingsPresenter.swift */; };
+		1F4616A81D95270C00F6D7B4 /* SettingsPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46168F1D95270C00F6D7B4 /* SettingsPresenterImp.swift */; };
+		1F4616A91D95270C00F6D7B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616901D95270C00F6D7B4 /* SettingsView.swift */; };
+		1F4616AB1D95270C00F6D7B4 /* ZoomPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616931D95270C00F6D7B4 /* ZoomPhotoController.swift */; };
+		1F4616AC1D95270C00F6D7B4 /* ZoomPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616941D95270C00F6D7B4 /* ZoomPhotoPresenter.swift */; };
+		1F4616AD1D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616951D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift */; };
+		1F4616AE1D95270C00F6D7B4 /* ZoomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616961D95270C00F6D7B4 /* ZoomPhotoView.swift */; };
+		1F4616B11D9528AA00F6D7B4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616B01D9528AA00F6D7B4 /* UIButton.swift */; };
 		1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4800011D8AD335003A1B04 /* TokenProvider.swift */; };
 		1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48FFFA1D8A989F003A1B04 /* Group.swift */; };
-		1F4ABE1C1D86A97A00406374 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1B1D86A97A00406374 /* CreatePostController.swift */; };
-		1F4ABE1E1D86A98900406374 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1D1D86A98900406374 /* CreatePostView.swift */; };
-		1F4ABE201D86A9A300406374 /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE1F1D86A9A300406374 /* CreatePostPresenter.swift */; };
-		1F4ABE221D86A9B400406374 /* CreatePostPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4ABE211D86A9B400406374 /* CreatePostPresenterImp.swift */; };
 		1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */; };
 		1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4FD5B91D8043B3005ED930 /* Pagination.swift */; };
 		1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */; };
-		1F599A151D8BF449004D7F89 /* LeftMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */; };
-		1F599A171D8BF466004D7F89 /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A161D8BF466004D7F89 /* LeftMenuController.swift */; };
 		1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */; };
 		1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E799A1D90243E004B9088 /* CoreDataManager.swift */; };
-		1F6E799D1D903759004B9088 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E799C1D903759004B9088 /* CacheManager.swift */; };
-		1F6FDE811D7D7AD60003649B /* PostFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE801D7D7AD60003649B /* PostFeedController.swift */; };
-		1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE821D7DA4D70003649B /* PostFeedView.swift */; };
-		1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */; };
-		1F6FDE871D7DA50A0003649B /* PostFeedPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE861D7DA50A0003649B /* PostFeedPresenterImp.swift */; };
-		1F6FDE891D7DB5E90003649B /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6FDE881D7DB5E90003649B /* PostFeedCell.swift */; };
-		1FDE359E1D9403B50092389C /* ZoomPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE359A1D9403B50092389C /* ZoomPhotoController.swift */; };
-		1FDE359F1D9403B50092389C /* ZoomPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE359B1D9403B50092389C /* ZoomPhotoPresenter.swift */; };
-		1FDE35A01D9403B50092389C /* ZoomPhotoPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE359C1D9403B50092389C /* ZoomPhotoPresenterImp.swift */; };
-		1FDE35A11D9403B50092389C /* ZoomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE359D1D9403B50092389C /* ZoomPhotoView.swift */; };
-		1FF862491D93FCCF0045A678 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF862481D93FCCF0045A678 /* SettingsController.swift */; };
 		B27EE0D5D61C8BF792B3D3EB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764E732C90B2B7DA3535689B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F098E6C1D940437009157B7 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		1F098E6E1D940445009157B7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		1F098E701D94044D009157B7 /* SettingsPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterImp.swift; sourceTree = "<group>"; };
-		1F098E721D940894009157B7 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButton.swift; path = Demo/ViewController/Settings/UIButton.swift; sourceTree = SOURCE_ROOT; };
 		1F1DDB261D79716600F2366E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1DDB291D79716600F2366E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F1DDB301D79716600F2366E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F1DDB351D79716600F2366E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
+		1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainAssembly.swift; path = ../MainAssembly.swift; sourceTree = "<group>"; };
 		1F1DDB471D797E9F00F2366E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Demo/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
-		1F1DDB491D79A36E00F2366E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		1F1DDB4B1D79ADF600F2366E /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = ../UserManager.swift; sourceTree = "<group>"; };
-		1F1DDB531D79BA1900F2366E /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		1F1DDB541D79BA1900F2366E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		1F1DDB551D79BA1900F2366E /* LoginPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterImp.swift; sourceTree = "<group>"; };
-		1F1DDB561D79BA1900F2366E /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1F1DDB491D79A36E00F2366E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		1F1DDB5C1D79BA2200F2366E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
+		1F4616721D9526AC00F6D7B4 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
+		1F4616761D9526EA00F6D7B4 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1F46167A1D95270C00F6D7B4 /* CreatePostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
+		1F46167B1D95270C00F6D7B4 /* CreatePostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
+		1F46167C1D95270C00F6D7B4 /* CreatePostPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenterImp.swift; sourceTree = "<group>"; };
+		1F46167D1D95270C00F6D7B4 /* CreatePostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		1F46167F1D95270C00F6D7B4 /* LeftMenuContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuContainerController.swift; sourceTree = "<group>"; };
+		1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
+		1F4616821D95270C00F6D7B4 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1F4616831D95270C00F6D7B4 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		1F4616841D95270C00F6D7B4 /* LoginPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterImp.swift; sourceTree = "<group>"; };
+		1F4616851D95270C00F6D7B4 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1F4616871D95270C00F6D7B4 /* PostFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedCell.swift; sourceTree = "<group>"; };
+		1F4616881D95270C00F6D7B4 /* PostFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedController.swift; sourceTree = "<group>"; };
+		1F4616891D95270C00F6D7B4 /* PostFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenter.swift; sourceTree = "<group>"; };
+		1F46168A1D95270C00F6D7B4 /* PostFeedPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenterImp.swift; sourceTree = "<group>"; };
+		1F46168B1D95270C00F6D7B4 /* PostFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedView.swift; sourceTree = "<group>"; };
+		1F46168D1D95270C00F6D7B4 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		1F46168E1D95270C00F6D7B4 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		1F46168F1D95270C00F6D7B4 /* SettingsPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterImp.swift; sourceTree = "<group>"; };
+		1F4616901D95270C00F6D7B4 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1F4616931D95270C00F6D7B4 /* ZoomPhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoController.swift; sourceTree = "<group>"; };
+		1F4616941D95270C00F6D7B4 /* ZoomPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenter.swift; sourceTree = "<group>"; };
+		1F4616951D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenterImp.swift; sourceTree = "<group>"; };
+		1F4616961D95270C00F6D7B4 /* ZoomPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoView.swift; sourceTree = "<group>"; };
+		1F4616B01D9528AA00F6D7B4 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1F4800011D8AD335003A1B04 /* TokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		1F48FFFA1D8A989F003A1B04 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		1F4ABE1B1D86A97A00406374 /* CreatePostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
-		1F4ABE1D1D86A98900406374 /* CreatePostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
-		1F4ABE1F1D86A9A300406374 /* CreatePostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
-		1F4ABE211D86A9B400406374 /* CreatePostPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenterImp.swift; sourceTree = "<group>"; };
 		1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		1F4FD5B91D8043B3005ED930 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1F599A081D8BEE81004D7F89 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
-		1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuContainerController.swift; sourceTree = "<group>"; };
-		1F599A161D8BF466004D7F89 /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
 		1F6E79981D901EB6004B9088 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		1F6E799A1D90243E004B9088 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1F6E799C1D903759004B9088 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		1F6FDE801D7D7AD60003649B /* PostFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedController.swift; sourceTree = "<group>"; };
-		1F6FDE821D7DA4D70003649B /* PostFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedView.swift; sourceTree = "<group>"; };
-		1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenter.swift; sourceTree = "<group>"; };
-		1F6FDE861D7DA50A0003649B /* PostFeedPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedPresenterImp.swift; sourceTree = "<group>"; };
-		1F6FDE881D7DB5E90003649B /* PostFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedCell.swift; sourceTree = "<group>"; };
-		1FDE359A1D9403B50092389C /* ZoomPhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoController.swift; sourceTree = "<group>"; };
-		1FDE359B1D9403B50092389C /* ZoomPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenter.swift; sourceTree = "<group>"; };
-		1FDE359C1D9403B50092389C /* ZoomPhotoPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoPresenterImp.swift; sourceTree = "<group>"; };
-		1FDE359D1D9403B50092389C /* ZoomPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomPhotoView.swift; sourceTree = "<group>"; };
-		1FF862481D93FCCF0045A678 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		764E732C90B2B7DA3535689B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8775417E8EFBF5815894A91B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9EBCE29ABD830AA1464C65A1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,14 +119,6 @@
 				8775417E8EFBF5815894A91B /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		1F1349BF1D7EEF26001CFB46 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1F098E721D940894009157B7 /* UIButton.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1F1DDB1D1D79716600F2366E = {
@@ -154,16 +146,14 @@
 			children = (
 				1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */,
 				1F1DDB291D79716600F2366E /* AppDelegate.swift */,
-				1F1DDB491D79A36E00F2366E /* Constants.swift */,
-				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
 				1F6E79961D901EA6004B9088 /* CoreData */,
 				1F1DDB501D79B95A00F2366E /* Network */,
-				1F1DDB5E1D79BA3200F2366E /* Manager */,
+				1F1DDB5B1D79BA2200F2366E /* Model */,
+				1F4616711D9526AC00F6D7B4 /* Managers */,
 				1F4800001D8AD335003A1B04 /* Token */,
 				1F4FD5B81D80437B005ED930 /* Misc */,
-				1F1349BF1D7EEF26001CFB46 /* Extensions */,
-				1F1DDB5B1D79BA2200F2366E /* Model */,
-				1F1DDB511D79BA1900F2366E /* ViewController */,
+				1F4616AF1D9528AA00F6D7B4 /* Extensions */,
+				1F4616781D95270C00F6D7B4 /* ViewControllers */,
 				1F1DDB301D79716600F2366E /* Assets.xcassets */,
 				1F1DDB351D79716600F2366E /* Info.plist */,
 			);
@@ -178,30 +168,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		1F1DDB511D79BA1900F2366E /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1F1DDB521D79BA1900F2366E /* Login */,
-				1F599A111D8BF376004D7F89 /* LeftMenu */,
-				1F6FDE7F1D7D7AA90003649B /* PostFeed */,
-				1FDE35991D9403B50092389C /* ZoomPhoto */,
-				1F4ABE1A1D86A87600406374 /* CreatePost */,
-				1FF862471D93FB310045A678 /* Settings */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		1F1DDB521D79BA1900F2366E /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				1F1DDB531D79BA1900F2366E /* LoginController.swift */,
-				1F1DDB541D79BA1900F2366E /* LoginPresenter.swift */,
-				1F1DDB551D79BA1900F2366E /* LoginPresenterImp.swift */,
-				1F1DDB561D79BA1900F2366E /* LoginView.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		1F1DDB5B1D79BA2200F2366E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,14 +176,100 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1F1DDB5E1D79BA3200F2366E /* Manager */ = {
+		1F4616711D9526AC00F6D7B4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				1F1DDB4B1D79ADF600F2366E /* UserManager.swift */,
-				1F3456101D87FE8300C210B8 /* LocalNotificationsManager.swift */,
-				1F6E799C1D903759004B9088 /* CacheManager.swift */,
+				1F4616761D9526EA00F6D7B4 /* UserManager.swift */,
+				1F4616721D9526AC00F6D7B4 /* CacheManager.swift */,
+				1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */,
 			);
-			path = Manager;
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1F4616781D95270C00F6D7B4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F4616791D95270C00F6D7B4 /* CreatePost */,
+				1F46167E1D95270C00F6D7B4 /* LeftMenu */,
+				1F4616811D95270C00F6D7B4 /* Login */,
+				1F4616861D95270C00F6D7B4 /* PostFeed */,
+				1F46168C1D95270C00F6D7B4 /* Settings */,
+				1F4616921D95270C00F6D7B4 /* ZoomPhoto */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1F4616791D95270C00F6D7B4 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				1F46167A1D95270C00F6D7B4 /* CreatePostController.swift */,
+				1F46167B1D95270C00F6D7B4 /* CreatePostPresenter.swift */,
+				1F46167C1D95270C00F6D7B4 /* CreatePostPresenterImp.swift */,
+				1F46167D1D95270C00F6D7B4 /* CreatePostView.swift */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		1F46167E1D95270C00F6D7B4 /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1F46167F1D95270C00F6D7B4 /* LeftMenuContainerController.swift */,
+				1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */,
+			);
+			path = LeftMenu;
+			sourceTree = "<group>";
+		};
+		1F4616811D95270C00F6D7B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1F4616821D95270C00F6D7B4 /* LoginController.swift */,
+				1F4616831D95270C00F6D7B4 /* LoginPresenter.swift */,
+				1F4616841D95270C00F6D7B4 /* LoginPresenterImp.swift */,
+				1F4616851D95270C00F6D7B4 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1F4616861D95270C00F6D7B4 /* PostFeed */ = {
+			isa = PBXGroup;
+			children = (
+				1F4616871D95270C00F6D7B4 /* PostFeedCell.swift */,
+				1F4616881D95270C00F6D7B4 /* PostFeedController.swift */,
+				1F4616891D95270C00F6D7B4 /* PostFeedPresenter.swift */,
+				1F46168A1D95270C00F6D7B4 /* PostFeedPresenterImp.swift */,
+				1F46168B1D95270C00F6D7B4 /* PostFeedView.swift */,
+			);
+			path = PostFeed;
+			sourceTree = "<group>";
+		};
+		1F46168C1D95270C00F6D7B4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1F46168D1D95270C00F6D7B4 /* SettingsController.swift */,
+				1F46168E1D95270C00F6D7B4 /* SettingsPresenter.swift */,
+				1F46168F1D95270C00F6D7B4 /* SettingsPresenterImp.swift */,
+				1F4616901D95270C00F6D7B4 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1F4616921D95270C00F6D7B4 /* ZoomPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				1F4616931D95270C00F6D7B4 /* ZoomPhotoController.swift */,
+				1F4616941D95270C00F6D7B4 /* ZoomPhotoPresenter.swift */,
+				1F4616951D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift */,
+				1F4616961D95270C00F6D7B4 /* ZoomPhotoView.swift */,
+			);
+			path = ZoomPhoto;
+			sourceTree = "<group>";
+		};
+		1F4616AF1D9528AA00F6D7B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F4616B01D9528AA00F6D7B4 /* UIButton.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1F4800001D8AD335003A1B04 /* Token */ = {
@@ -226,17 +278,6 @@
 				1F4800011D8AD335003A1B04 /* TokenProvider.swift */,
 			);
 			path = Token;
-			sourceTree = "<group>";
-		};
-		1F4ABE1A1D86A87600406374 /* CreatePost */ = {
-			isa = PBXGroup;
-			children = (
-				1F4ABE1B1D86A97A00406374 /* CreatePostController.swift */,
-				1F4ABE1D1D86A98900406374 /* CreatePostView.swift */,
-				1F4ABE1F1D86A9A300406374 /* CreatePostPresenter.swift */,
-				1F4ABE211D86A9B400406374 /* CreatePostPresenterImp.swift */,
-			);
-			path = CreatePost;
 			sourceTree = "<group>";
 		};
 		1F4E33081D82FE9400D7ED4C /* CustomViews */ = {
@@ -251,6 +292,8 @@
 		1F4FD5B81D80437B005ED930 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
+				1F1DDB491D79A36E00F2366E /* Constants.swift */,
 				1F4FD5B91D8043B3005ED930 /* Pagination.swift */,
 				1F48FFFA1D8A989F003A1B04 /* Group.swift */,
 			);
@@ -274,15 +317,6 @@
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
-		1F599A111D8BF376004D7F89 /* LeftMenu */ = {
-			isa = PBXGroup;
-			children = (
-				1F599A141D8BF449004D7F89 /* LeftMenuContainerController.swift */,
-				1F599A161D8BF466004D7F89 /* LeftMenuController.swift */,
-			);
-			path = LeftMenu;
-			sourceTree = "<group>";
-		};
 		1F6E79961D901EA6004B9088 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,40 +324,6 @@
 				1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		1F6FDE7F1D7D7AA90003649B /* PostFeed */ = {
-			isa = PBXGroup;
-			children = (
-				1F6FDE801D7D7AD60003649B /* PostFeedController.swift */,
-				1F6FDE821D7DA4D70003649B /* PostFeedView.swift */,
-				1F6FDE841D7DA4F40003649B /* PostFeedPresenter.swift */,
-				1F6FDE861D7DA50A0003649B /* PostFeedPresenterImp.swift */,
-				1F6FDE881D7DB5E90003649B /* PostFeedCell.swift */,
-			);
-			path = PostFeed;
-			sourceTree = "<group>";
-		};
-		1FDE35991D9403B50092389C /* ZoomPhoto */ = {
-			isa = PBXGroup;
-			children = (
-				1FDE359A1D9403B50092389C /* ZoomPhotoController.swift */,
-				1FDE359D1D9403B50092389C /* ZoomPhotoView.swift */,
-				1FDE359B1D9403B50092389C /* ZoomPhotoPresenter.swift */,
-				1FDE359C1D9403B50092389C /* ZoomPhotoPresenterImp.swift */,
-			);
-			path = ZoomPhoto;
-			sourceTree = "<group>";
-		};
-		1FF862471D93FB310045A678 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				1FF862481D93FCCF0045A678 /* SettingsController.swift */,
-				1F098E6C1D940437009157B7 /* SettingsView.swift */,
-				1F098E6E1D940445009157B7 /* SettingsPresenter.swift */,
-				1F098E701D94044D009157B7 /* SettingsPresenterImp.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		84FB3FFBDAB46487B2C61A40 /* Frameworks */ = {
@@ -460,45 +460,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F1DDB4C1D79ADF600F2366E /* UserManager.swift in Sources */,
-				1F6FDE891D7DB5E90003649B /* PostFeedCell.swift in Sources */,
-				1F4ABE1C1D86A97A00406374 /* CreatePostController.swift in Sources */,
-				1F1DDB591D79BA1900F2366E /* LoginPresenterImp.swift in Sources */,
+				1F4616A91D95270C00F6D7B4 /* SettingsView.swift in Sources */,
+				1F46169E1D95270C00F6D7B4 /* LoginPresenter.swift in Sources */,
+				1F4616A41D95270C00F6D7B4 /* PostFeedPresenterImp.swift in Sources */,
+				1F46169A1D95270C00F6D7B4 /* CreatePostView.swift in Sources */,
+				1F46169C1D95270C00F6D7B4 /* LeftMenuController.swift in Sources */,
+				1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */,
 				1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */,
-				1F6FDE851D7DA4F40003649B /* PostFeedPresenter.swift in Sources */,
+				1F4616A21D95270C00F6D7B4 /* PostFeedController.swift in Sources */,
+				1F46169B1D95270C00F6D7B4 /* LeftMenuContainerController.swift in Sources */,
+				1F4616A61D95270C00F6D7B4 /* SettingsController.swift in Sources */,
 				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
 				1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */,
-				1F599A151D8BF449004D7F89 /* LeftMenuContainerController.swift in Sources */,
-				1F6FDE831D7DA4D70003649B /* PostFeedView.swift in Sources */,
-				1FDE359F1D9403B50092389C /* ZoomPhotoPresenter.swift in Sources */,
-				1F1DDB571D79BA1900F2366E /* LoginController.swift in Sources */,
-				1F1DDB5A1D79BA1900F2366E /* LoginView.swift in Sources */,
-				1F4ABE221D86A9B400406374 /* CreatePostPresenterImp.swift in Sources */,
-				1F098E731D940894009157B7 /* UIButton.swift in Sources */,
-				1F1DDB581D79BA1900F2366E /* LoginPresenter.swift in Sources */,
-				1FDE35A01D9403B50092389C /* ZoomPhotoPresenterImp.swift in Sources */,
-				1F098E6F1D940445009157B7 /* SettingsPresenter.swift in Sources */,
-				1FDE35A11D9403B50092389C /* ZoomPhotoView.swift in Sources */,
 				1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */,
-				1FDE359E1D9403B50092389C /* ZoomPhotoController.swift in Sources */,
+				1F4616A01D95270C00F6D7B4 /* LoginView.swift in Sources */,
+				1F4616B11D9528AA00F6D7B4 /* UIButton.swift in Sources */,
+				1F46169D1D95270C00F6D7B4 /* LoginController.swift in Sources */,
+				1F4616AE1D95270C00F6D7B4 /* ZoomPhotoView.swift in Sources */,
 				1F1DDB3C1D7974F700F2366E /* MainAssembly.swift in Sources */,
-				1F3456111D87FE8300C210B8 /* LocalNotificationsManager.swift in Sources */,
-				1F098E6D1D940437009157B7 /* SettingsView.swift in Sources */,
 				1F1DDB481D797E9F00F2366E /* NetworkManager.swift in Sources */,
-				1F6E799D1D903759004B9088 /* CacheManager.swift in Sources */,
-				1FF862491D93FCCF0045A678 /* SettingsController.swift in Sources */,
-				1F6FDE871D7DA50A0003649B /* PostFeedPresenterImp.swift in Sources */,
 				1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */,
-				1F4ABE1E1D86A98900406374 /* CreatePostView.swift in Sources */,
+				1F4616A81D95270C00F6D7B4 /* SettingsPresenterImp.swift in Sources */,
+				1F4616751D9526AC00F6D7B4 /* LocalNotificationsManager.swift in Sources */,
+				1F4616A51D95270C00F6D7B4 /* PostFeedView.swift in Sources */,
 				1F1DDB2A1D79716600F2366E /* AppDelegate.swift in Sources */,
-				1F098E711D94044D009157B7 /* SettingsPresenterImp.swift in Sources */,
 				1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */,
 				1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */,
-				1F599A171D8BF466004D7F89 /* LeftMenuController.swift in Sources */,
-				1F6FDE811D7D7AD60003649B /* PostFeedController.swift in Sources */,
+				1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */,
+				1F4616A31D95270C00F6D7B4 /* PostFeedPresenter.swift in Sources */,
 				1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */,
-				1F4ABE201D86A9A300406374 /* CreatePostPresenter.swift in Sources */,
+				1F4616AC1D95270C00F6D7B4 /* ZoomPhotoPresenter.swift in Sources */,
+				1F4616991D95270C00F6D7B4 /* CreatePostPresenterImp.swift in Sources */,
+				1F46169F1D95270C00F6D7B4 /* LoginPresenterImp.swift in Sources */,
+				1F4616971D95270C00F6D7B4 /* CreatePostController.swift in Sources */,
+				1F4616A71D95270C00F6D7B4 /* SettingsPresenter.swift in Sources */,
+				1F4616981D95270C00F6D7B4 /* CreatePostPresenter.swift in Sources */,
+				1F4616A11D95270C00F6D7B4 /* PostFeedCell.swift in Sources */,
+				1F4616AD1D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift in Sources */,
 				1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */,
+				1F4616AB1D95270C00F6D7B4 /* ZoomPhotoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,3 +40,10 @@ struct CoreDataKeys {
 	static let link = "link"
 	static let description = "descrip"
 }
+
+struct ImageNames {
+	static let floatingBtn = "floatingBtn"
+	static let gearIcon = "gearIcon"
+	static let imgurLogo = "imgurLogo"
+	static let revealIcon = "revealIcon"
+}

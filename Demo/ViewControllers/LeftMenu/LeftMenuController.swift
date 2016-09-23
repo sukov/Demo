@@ -30,7 +30,7 @@ class LeftMenuController: UIViewController {
 		userPostsButton = UIButton()
 		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
 		usernameLabel.sizeToFit()
-		settingsButton.setImage(UIImage(named: "gearIcon"), forState: .Normal)
+		settingsButton.setImage(UIImage(named: ImageNames.gearIcon), forState: .Normal)
 		settingsButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		hotPostsButton.customBlueButton("Hot posts")
 		popularPostsButton.customBlueButton("Popular posts")

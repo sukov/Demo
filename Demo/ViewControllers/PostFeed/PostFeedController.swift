@@ -15,6 +15,7 @@ class PostFeedController: UIViewController {
 	private var collectionView: UICollectionView!
 	private var floatingButton: UIButton!
 	private var posts: [[String: AnyObject]]?
+	private let cellID = "postFeedCellID"
 
 	init(presenter: PostFeedPresenter) {
 		self.presenter = presenter
@@ -52,7 +53,7 @@ class PostFeedController: UIViewController {
 
 	func setupNavigationBar() {
 		let revealBtn = UIButton()
-		revealBtn.setImage(UIImage(named: "revealIcon"), forState: .Normal)
+		revealBtn.setImage(UIImage(named: ImageNames.revealIcon), forState: .Normal)
 		revealBtn.frame = CGRectMake(0, 0, 30, 30)
 		let revealBarButton = UIBarButtonItem()
 		revealBarButton.customView = revealBtn
@@ -65,9 +66,9 @@ class PostFeedController: UIViewController {
 		view.backgroundColor = UIColor.whiteColor()
 		floatingButton = UIButton()
 		collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: UICollectionViewFlowLayout())
-		floatingButton.setImage(UIImage(named: "floatingBtn"), forState: UIControlState.Normal)
+		floatingButton.setImage(UIImage(named: ImageNames.floatingBtn), forState: UIControlState.Normal)
 		floatingButton.addTarget(self, action: #selector(floatingButtonTapped), forControlEvents: .TouchUpInside)
-		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: cellID)
 		collectionView.addPullToRefreshWithActionHandler { [weak self] in
 			self?.presenter.refreshData()
 		}
@@ -152,7 +153,6 @@ extension PostFeedController: PostFeedView {
 	func scrollToTop() {
 		collectionView.setContentOffset(CGPointZero, animated: true)
 	}
-
 }
 
 extension PostFeedController: PostFeedCellDelegate {
@@ -176,7 +176,7 @@ extension PostFeedController: UICollectionViewDelegateFlowLayout {
 
 extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PostFeedCell
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! PostFeedCell
 		if let image = posts?[indexPath.item] {
 			cell.setContent(image)
 		}
