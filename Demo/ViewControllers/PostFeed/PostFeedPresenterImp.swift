@@ -40,13 +40,9 @@ class PostFeedPresenterImp {
 						CacheManager.sharedInstance.clearCachedPosts(_self.postType)
 						SDWebImageManager.sharedManager().imageCache?.cleanDisk()
 						_self.posts.appendContentsOf(_posts)
-						complete()
-						_self.view?.showPosts(_self.posts)
 						_self.view?.scrollToTop()
 					} else {
 						_self.posts.appendContentsOf(_posts)
-						complete()
-						_self.view?.showPosts(_self.posts)
 					}
 					CacheManager.sharedInstance.cachePosts(_posts, type: _self.postType)
 				}
@@ -54,12 +50,10 @@ class PostFeedPresenterImp {
 				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingON()) {
 					self?.pagination.connectionIsOFF()
 					if posts != nil {
-						complete()
 						return
 					}
 					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
-						complete()
-						_self.view?.showPosts(_posts)
+						_self.posts = _posts
 					}
 				} else if (error?.code >= 500 && error?.code <= 599) {
 					self?.view?.showLoginPage()
@@ -112,16 +106,21 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 		view?.startAnimating()
 		pagination.nextPage()
 		getposts { [weak self] in
-			self?.view?.stopAnimating()
+			if let _self = self {
+				_self.view?.stopAnimating()
+				_self.view?.showPosts(_self.posts)
+			}
 		}
 	}
 
 	@objc func refreshData() {
 		pagination.resetPageNumber()
 		getposts { [weak self] in
-			self?.view?.stopRefreshing()
+			if let _self = self {
+				_self.view?.stopRefreshing()
+				_self.view?.showPosts(_self.posts)
+			}
 		}
-
 	}
 
 	@objc func retryUpload() {
