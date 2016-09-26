@@ -51,7 +51,7 @@ class PostFeedPresenterImp {
 					CacheManager.sharedInstance.cachePosts(_posts, type: _self.postType)
 				}
 			} else {
-				if (error?.code == ErrorNumbers.connection) {
+				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingON()) {
 					self?.pagination.connectionIsOFF()
 					if posts != nil {
 						complete()
@@ -61,6 +61,8 @@ class PostFeedPresenterImp {
 						complete()
 						_self.view?.showPosts(_posts)
 					}
+				} else {
+					self?.view?.showLoginPage()
 				}
 			}
 			complete()

@@ -15,4 +15,5 @@ import Foundation
 	func showRetryAlert()
 	func showSettingsAlert()
 	func scrollToTop()
+	func showLoginPage()
 }
