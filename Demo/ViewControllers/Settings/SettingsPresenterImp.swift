@@ -32,6 +32,7 @@ extension SettingsPresenterImp: SettingsPresenter {
 		SDWebImageManager.sharedManager().imageCache?.clearMemory()
 		SDWebImageManager.sharedManager().imageCache?.clearDisk()
 		UserManager.sharedInstance.removeSavedUser()
+		NetworkManager.sharedInstance.cancelAllRequests()
 		view?.showLoginPage()
 	}
 
