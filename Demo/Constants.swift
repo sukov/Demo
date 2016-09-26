@@ -5,6 +5,7 @@
 //  Created by WF | Gorjan Shukov on 9/2/16.
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
+let userDefaults = NSUserDefaults.standardUserDefaults()
 
 struct NotificationKeys {
 	static let userLoggedIn = "userLoggedIn"
@@ -23,6 +24,7 @@ struct UserKeys {
 
 struct UserDefaultsKeys {
 	static let user = "user"
+	static let caching = "caching"
 }
 
 struct PostKeys {

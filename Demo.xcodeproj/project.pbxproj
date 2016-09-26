@@ -248,9 +248,9 @@
 			isa = PBXGroup;
 			children = (
 				1F46168D1D95270C00F6D7B4 /* SettingsController.swift */,
+				1F4616901D95270C00F6D7B4 /* SettingsView.swift */,
 				1F46168E1D95270C00F6D7B4 /* SettingsPresenter.swift */,
 				1F46168F1D95270C00F6D7B4 /* SettingsPresenterImp.swift */,
-				1F4616901D95270C00F6D7B4 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

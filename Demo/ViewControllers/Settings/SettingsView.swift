@@ -9,5 +9,6 @@
 import Foundation
 
 @objc protocol SettingsView {
-
+	func showLoginPage()
+	func setSwitch(value: Bool)
 }

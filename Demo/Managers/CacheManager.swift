@@ -15,7 +15,7 @@ class CacheManager {
 
 	init() {
 		cache = NSCache()
-		isCachingOn = true
+		isCachingOn = userDefaults.boolForKey(UserDefaultsKeys.caching)
 	}
 
 	func cachePosts(posts: [[String: AnyObject]], type: PostsType) {
@@ -32,6 +32,11 @@ class CacheManager {
 	func clearCachedPosts(type: PostsType) {
 		cache.removeObjectForKey(type.rawValue)
 		CoreDataManager.sharedInstance.removePosts(type)
+	}
+
+	func clearAllCache() {
+		cache.removeAllObjects()
+		CoreDataManager.sharedInstance.removeAllPosts()
 	}
 
 	func getCachedPosts(type: PostsType) -> [[String: AnyObject]]? {
@@ -54,9 +59,15 @@ class CacheManager {
 
 	func setCachingON() {
 		isCachingOn = true
+		userDefaults.setBool(true, forKey: UserDefaultsKeys.caching)
 	}
 
 	func setCachingOFF() {
 		isCachingOn = false
+		userDefaults.setBool(false, forKey: UserDefaultsKeys.caching)
+	}
+
+	func isCachingON() -> Bool {
+		return isCachingOn
 	}
 }

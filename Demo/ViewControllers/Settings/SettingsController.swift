@@ -44,8 +44,10 @@ class SettingsController: UIViewController {
 		syncSwitch = UISwitch()
 		syncLabel = UILabel()
 		logoutButton = UIButton()
+		syncSwitch.addTarget(presenter, action: #selector(presenter.syncSwitched(_:)), forControlEvents: .ValueChanged)
 		syncLabel.text = "Sync"
 		logoutButton.customBlueButton("Logout")
+		logoutButton.addTarget(presenter, action: #selector(presenter.logOut), forControlEvents: .TouchUpInside)
 
 		view.addSubview(syncSwitch)
 		view.addSubview(syncLabel)
@@ -72,5 +74,11 @@ class SettingsController: UIViewController {
 }
 
 extension SettingsController: SettingsView {
+	func showLoginPage() {
+		presentViewController(MainAssembly.sharedInstance.getLoginController(), animated: true, completion: nil)
+	}
 
+	func setSwitch(value: Bool) {
+		syncSwitch.setOn(value, animated: false)
+	}
 }

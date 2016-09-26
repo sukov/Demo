@@ -7,22 +7,39 @@
 //
 
 import Foundation
+import SDWebImage
 
 class SettingsPresenterImp {
 	weak private var view: SettingsView?
-
 }
 
 extension SettingsPresenterImp: SettingsPresenter {
-	func attachView(view: SettingsView) {
+	@objc func attachView(view: SettingsView) {
 		if (self.view == nil) {
 			self.view = view
+			view.setSwitch(CacheManager.sharedInstance.isCachingON())
 		}
 	}
 
-	func detachView(view: SettingsView) {
+	@objc func detachView(view: SettingsView) {
 		if (self.view === view) {
 			self.view = nil
+		}
+	}
+
+	@objc func logOut() {
+		CacheManager.sharedInstance.clearAllCache()
+		SDWebImageManager.sharedManager().imageCache?.clearMemory()
+		SDWebImageManager.sharedManager().imageCache?.clearDisk()
+		UserManager.sharedInstance.removeSavedUser()
+		view?.showLoginPage()
+	}
+
+	@objc func syncSwitched(sender: UISwitch) {
+		if (sender.on) {
+			CacheManager.sharedInstance.setCachingON()
+		} else {
+			CacheManager.sharedInstance.setCachingOFF()
 		}
 	}
 }

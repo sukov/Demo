@@ -10,7 +10,6 @@ import Foundation
 
 class UserManager {
 	static var sharedInstance = UserManager()
-	let userDefaults = NSUserDefaults.standardUserDefaults()
 	var user: User?
 
 	init() {
@@ -57,6 +56,7 @@ class UserManager {
 	}
 
 	func removeSavedUser() {
+		user = nil
 		let encodedData = NSKeyedArchiver.archivedDataWithRootObject("nil")
 		userDefaults.setObject(encodedData, forKey: UserDefaultsKeys.user)
 		userDefaults.synchronize()

@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol SettingsPresenter {
+@objc protocol SettingsPresenter {
 	func attachView(view: SettingsView)
 	func detachView(view: SettingsView)
+	func logOut()
+	func syncSwitched(sender: UISwitch)
 }
