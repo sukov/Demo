@@ -66,6 +66,7 @@ class PostFeedController: UIViewController {
 		floatingButton.setImage(UIImage(named: ImageNames.floatingBtn), forState: UIControlState.Normal)
 		floatingButton.addTarget(self, action: #selector(floatingButtonTapped), forControlEvents: .TouchUpInside)
 		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: cellID)
+		collectionView.alwaysBounceVertical = true
 		collectionView.addPullToRefreshWithActionHandler { [weak self] in
 			self?.presenter.refreshData()
 		}
@@ -138,6 +139,10 @@ extension PostFeedController: PostFeedView {
 
 	func scrollToTop() {
 		collectionView.setContentOffset(CGPointZero, animated: true)
+	}
+
+	func showLoginPage() {
+		presentViewController(MainAssembly.sharedInstance.getLoginController(), animated: true, completion: nil)
 	}
 }
 
