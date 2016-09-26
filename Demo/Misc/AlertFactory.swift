@@ -13,7 +13,6 @@ class AlertFactory {
 	static var settingsActionClosure: Optional < () -> Void >
 
 	static func retryUpload() -> UIAlertController {
-
 		let alert = UIAlertController(title: "Upload failed", message: "Error image not uploaded. Would you like to retry?", preferredStyle: UIAlertControllerStyle.Alert)
 		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
 		let retryAction = UIAlertAction(title: "Retry", style: .Default) { (alert) in
@@ -37,5 +36,4 @@ class AlertFactory {
 
 		return alert
 	}
-
 }

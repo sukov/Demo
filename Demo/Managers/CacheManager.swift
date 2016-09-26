@@ -25,7 +25,6 @@ class CacheManager {
 		} else {
 			cache.setObject(posts, forKey: type.rawValue)
 		}
-
 		CoreDataManager.sharedInstance.savePosts(posts, type: type)
 	}
 

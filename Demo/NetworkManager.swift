@@ -80,7 +80,6 @@ class NetworkManager {
 						complete(posts: nil, error: response.result.error)
 					}
 					self?.activityIndicatorOFF()
-
 			}
 		}
 	}

@@ -53,7 +53,6 @@ class TokenProvider {
 										expiresIn: newToken[UserKeys.expiresIn] as! Double)
 								}
 							}
-
 						}
 
 					} catch { }
@@ -62,7 +61,6 @@ class TokenProvider {
 			}
 			task.resume()
 		}
-
 	}
 
 	func isTokenExpired() -> Bool {
@@ -73,5 +71,4 @@ class TokenProvider {
 		}
 		return false
 	}
-
 }

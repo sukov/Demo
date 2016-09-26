@@ -41,7 +41,6 @@ class CoreDataManager {
 		} catch let error as NSError {
 			debugPrint(error)
 		}
-
 	}
 
 	func removeAllPosts() {
@@ -94,5 +93,4 @@ class CoreDataManager {
 		}
 		return posts
 	}
-
 }

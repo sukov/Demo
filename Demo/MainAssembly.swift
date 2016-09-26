@@ -16,7 +16,6 @@ class MainAssembly {
 	func getRootController() -> UIViewController {
 		let rController = UserManager.sharedInstance.isLoggedIn() ? MainAssembly.sharedInstance.getLeftMenuContainerController() : MainAssembly.sharedInstance.getLoginController()
 		return rController
-
 	}
 
 	// Login

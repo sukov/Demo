@@ -82,7 +82,6 @@ class PostFeedCell: UICollectionViewCell {
 		imageView.sd_cancelCurrentImageLoad()
 		descriptionText.text = ""
 	}
-
 }
 
 @objc protocol PostFeedCellDelegate {

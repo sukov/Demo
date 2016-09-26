@@ -61,5 +61,4 @@ class UserManager {
 		userDefaults.setObject(encodedData, forKey: UserDefaultsKeys.user)
 		userDefaults.synchronize()
 	}
-
 }

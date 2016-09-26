@@ -57,6 +57,7 @@ class PostFeedPresenterImp {
 					}
 				} else if (error?.code >= 500 || error?.code < 0) {
 					self?.view?.showLoginPage()
+					UserManager.sharedInstance.removeSavedUser()
 				}
 			}
 			complete()
@@ -79,11 +80,13 @@ class PostFeedPresenterImp {
 			AlertFactory.settingsActionClosure = { [weak self] in
 				self?.view?.showRetryAlert()
 			}
-		} else if ((sender.userInfo?["error"] as? Int) >= 400 && (sender.userInfo?["error"] as? Int) <= 599) {
+		} else if ((sender.userInfo?["error"] as? Int) >= 400 && (sender.userInfo?["error"] as? Int) <= 499) {
 			view?.showRetryAlert()
 			AlertFactory.retryActionClosure = { [weak self] in
 				self?.retryUpload()
 			}
+		} else {
+			view?.showLoginPage()
 		}
 	}
 }

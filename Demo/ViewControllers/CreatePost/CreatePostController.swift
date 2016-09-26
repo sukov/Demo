@@ -153,8 +153,7 @@ class CreatePostController: UIViewController {
 				// Already Authorized
 				imagePicker.sourceType = .PhotoLibrary
 				presentViewController(imagePicker, animated: true, completion: nil)
-			}
-			else {
+			} else {
 				AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { [weak self](granted: Bool) -> Void in
 					if granted == true {
 						// User granted
@@ -162,15 +161,12 @@ class CreatePostController: UIViewController {
 							_self.imagePicker.sourceType = .PhotoLibrary
 							_self.presentViewController(_self.imagePicker, animated: true, completion: nil)
 						}
-					}
-					else {
+					} else {
 						// User Rejected
 					}
 				});
 			}
-
 		}
-
 	}
 
 	func takePhotoButtonTapped() {
@@ -179,8 +175,7 @@ class CreatePostController: UIViewController {
 				// Already Authorized
 				imagePicker.sourceType = .Camera
 				presentViewController(imagePicker, animated: true, completion: nil)
-			}
-			else {
+			} else {
 				AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { [weak self](granted: Bool) -> Void in
 					if granted == true {
 						// User granted
@@ -188,14 +183,11 @@ class CreatePostController: UIViewController {
 							_self.imagePicker.sourceType = .Camera
 							_self.presentViewController(_self.imagePicker, animated: true, completion: nil)
 						}
-
-					}
-					else {
+					} else {
 						// User Rejected
 					}
 				});
 			}
-
 		}
 	}
 }

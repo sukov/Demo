@@ -26,10 +26,6 @@ class PostFeedController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	deinit {
-
-	}
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
@@ -95,7 +91,6 @@ class PostFeedController: UIViewController {
 			make.width.equalTo(40)
 			make.height.equalTo(40)
 		}
-
 	}
 
 	func setDelegates() {

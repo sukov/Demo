@@ -36,5 +36,4 @@ class Group {
 	func waitForGroupToFinnish(groupType: GroupType) {
 		dispatch_group_wait(groups[groupType.rawValue], DISPATCH_TIME_FOREVER)
 	}
-
 }
