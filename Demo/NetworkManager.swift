@@ -11,7 +11,6 @@ import UIKit
 import Alamofire
 
 class NetworkManager {
-	private var request: Alamofire.Request?
 	private var lastUpload: (image: UIImage, title: String, description: String)?
 	private let requestGroup = dispatch_group_create();
 	private let refreshTokenGroup = dispatch_group_create();
@@ -126,7 +125,7 @@ class NetworkManager {
 //				upload.progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
 //					print(totalBytesRead)
 //				})
-					self?.request = upload.responseData { (response: Response<NSData, NSError>) -> Void in
+					upload.responseData { (response: Response<NSData, NSError>) -> Void in
 						switch response.result {
 						case .Success:
 							complete(error: nil)
@@ -139,23 +138,18 @@ class NetworkManager {
 						}
 					}
 				case .Failure(_):
-					// TO DOOOOOO -____---
-					print("does it")
 					complete(error: nil)
 				}
 				self?.activityIndicatorOFF()
 				}
-
 			)
 		}
 	}
 
 	func cancelAllRequests() {
-		Alamofire.Manager.sharedInstance.session.invalidateAndCancel()
-	}
-
-	func cancelLastUpload() {
-		request?.cancel()
+		Alamofire.Manager.sharedInstance.session.getAllTasksWithCompletionHandler { (tasks) in
+			tasks.forEach { $0.cancel() }
+		}
 	}
 
 	func retryLastUpload(complete: (error: Int?) -> Void) {

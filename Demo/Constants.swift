@@ -55,4 +55,5 @@ struct ImageNames {
 struct ErrorNumbers {
 	static let user = 0
 	static let connection = -1009
+	static let canceled = -999
 }

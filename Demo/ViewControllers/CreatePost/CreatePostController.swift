@@ -61,8 +61,10 @@ class CreatePostController: UIViewController {
 		selectedImageView.layer.borderColor = UIColor.grayColor().CGColor
 		postTitle.attributedPlaceholder = NSAttributedString(string: "Title",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
+		postTitle.delegate = self
 		postDescription.attributedPlaceholder = NSAttributedString(string: "Description",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
+		postDescription.delegate = self
 		cancelPostButton.customBlueButton("Cancel")
 		selectImageButton.customBlueButton("Select image")
 		selectImageButton.layer.cornerRadius = 5
@@ -209,5 +211,12 @@ extension CreatePostController: UIImagePickerControllerDelegate, UINavigationCon
 
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
+	}
+}
+
+extension CreatePostController: UITextFieldDelegate {
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
 	}
 }

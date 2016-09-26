@@ -61,7 +61,7 @@ class PostFeedPresenterImp {
 						complete()
 						_self.view?.showPosts(_posts)
 					}
-				} else {
+				} else if (error?.code >= 500 && error?.code <= 599) {
 					self?.view?.showLoginPage()
 				}
 			}
@@ -85,7 +85,7 @@ class PostFeedPresenterImp {
 			AlertFactory.settingsActionClosure = { [weak self] in
 				self?.view?.showRetryAlert()
 			}
-		} else {
+		} else if ((sender.userInfo?["error"] as? Int) >= 400 && (sender.userInfo?["error"] as? Int) <= 599) {
 			view?.showRetryAlert()
 			AlertFactory.retryActionClosure = { [weak self] in
 				self?.retryUpload()
