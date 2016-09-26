@@ -55,7 +55,7 @@ class PostFeedPresenterImp {
 					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
 						_self.posts = _posts
 					}
-				} else if (error?.code >= 500 && error?.code <= 599) {
+				} else if (error?.code >= 500 || error?.code < 0) {
 					self?.view?.showLoginPage()
 				}
 			}

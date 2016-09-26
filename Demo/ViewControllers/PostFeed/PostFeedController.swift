@@ -27,12 +27,11 @@ class PostFeedController: UIViewController {
 	}
 
 	deinit {
-		presenter.detachView(self)
+
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		presenter.attachView(self)
 		setupViews()
 		setupNavigationBar()
 		setupConstraints()
@@ -41,10 +40,12 @@ class PostFeedController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		presenter.attachView(self)
 	}
 
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
+		presenter.detachView(self)
 
 	}
 
