@@ -12,8 +12,6 @@ import Alamofire
 
 class NetworkManager {
 	private var lastUpload: (image: UIImage, title: String, description: String)?
-	private let requestGroup = dispatch_group_create();
-	private let refreshTokenGroup = dispatch_group_create();
 	private var allowRefreshToken: Bool = true
 	private var lock = NSLock()
 

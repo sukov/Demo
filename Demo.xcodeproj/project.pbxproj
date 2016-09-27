@@ -19,7 +19,6 @@
 		1F4616971D95270C00F6D7B4 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167A1D95270C00F6D7B4 /* CreatePostController.swift */; };
 		1F4616981D95270C00F6D7B4 /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167B1D95270C00F6D7B4 /* CreatePostPresenter.swift */; };
 		1F4616991D95270C00F6D7B4 /* CreatePostPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167C1D95270C00F6D7B4 /* CreatePostPresenterImp.swift */; };
-		1F46169B1D95270C00F6D7B4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F46167F1D95270C00F6D7B4 /* MainController.swift */; };
 		1F46169C1D95270C00F6D7B4 /* LeftMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */; };
 		1F46169D1D95270C00F6D7B4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616821D95270C00F6D7B4 /* LoginController.swift */; };
 		1F46169E1D95270C00F6D7B4 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616831D95270C00F6D7B4 /* LoginPresenter.swift */; };
@@ -42,6 +41,7 @@
 		1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4800011D8AD335003A1B04 /* TokenProvider.swift */; };
 		1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48FFFA1D8A989F003A1B04 /* Group.swift */; };
 		1F49A2151D9AAE4D00971BDE /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49A2141D9AAE4D00971BDE /* Token.swift */; };
+		1F49A2181D9AC80E00971BDE /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49A2171D9AC80E00971BDE /* MainController.swift */; };
 		1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */; };
 		1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4FD5B91D8043B3005ED930 /* Pagination.swift */; };
 		1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */; };
@@ -65,7 +65,6 @@
 		1F46167A1D95270C00F6D7B4 /* CreatePostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
 		1F46167B1D95270C00F6D7B4 /* CreatePostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
 		1F46167C1D95270C00F6D7B4 /* CreatePostPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenterImp.swift; sourceTree = "<group>"; };
-		1F46167F1D95270C00F6D7B4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuController.swift; sourceTree = "<group>"; };
 		1F4616821D95270C00F6D7B4 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1F4616831D95270C00F6D7B4 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		1F4800011D8AD335003A1B04 /* TokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		1F48FFFA1D8A989F003A1B04 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		1F49A2141D9AAE4D00971BDE /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		1F49A2171D9AC80E00971BDE /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		1F4FD5B91D8043B3005ED930 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1F599A081D8BEE81004D7F89 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -191,10 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				1F4616811D95270C00F6D7B4 /* Login */,
+				1F49A2161D9AC7E700971BDE /* Main */,
 				1F46167E1D95270C00F6D7B4 /* LeftMenu */,
 				1F4616861D95270C00F6D7B4 /* PostFeed */,
-				1F4616791D95270C00F6D7B4 /* CreatePost */,
 				1F4616921D95270C00F6D7B4 /* ZoomPhoto */,
+				1F4616791D95270C00F6D7B4 /* CreatePost */,
 				1F46168C1D95270C00F6D7B4 /* Settings */,
 			);
 			path = ViewControllers;
@@ -213,7 +214,6 @@
 		1F46167E1D95270C00F6D7B4 /* LeftMenu */ = {
 			isa = PBXGroup;
 			children = (
-				1F46167F1D95270C00F6D7B4 /* MainController.swift */,
 				1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */,
 			);
 			path = LeftMenu;
@@ -277,6 +277,14 @@
 				1F4800011D8AD335003A1B04 /* TokenProvider.swift */,
 			);
 			path = Token;
+			sourceTree = "<group>";
+		};
+		1F49A2161D9AC7E700971BDE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1F49A2171D9AC80E00971BDE /* MainController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		1F4E33081D82FE9400D7ED4C /* CustomViews */ = {
@@ -467,7 +475,6 @@
 				1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */,
 				1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */,
 				1F4616A21D95270C00F6D7B4 /* PostFeedController.swift in Sources */,
-				1F46169B1D95270C00F6D7B4 /* MainController.swift in Sources */,
 				1F4616A61D95270C00F6D7B4 /* SettingsController.swift in Sources */,
 				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
 				1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */,
@@ -484,6 +491,7 @@
 				1F4616A51D95270C00F6D7B4 /* PostFeedView.swift in Sources */,
 				1F1DDB2A1D79716600F2366E /* AppDelegate.swift in Sources */,
 				1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */,
+				1F49A2181D9AC80E00971BDE /* MainController.swift in Sources */,
 				1F49A2151D9AAE4D00971BDE /* Token.swift in Sources */,
 				1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */,
 				1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */,
