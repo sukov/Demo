@@ -6,7 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 
-class LeftMenuContainerController: SWRevealViewController {
+class MainController: SWRevealViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

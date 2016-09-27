@@ -49,7 +49,7 @@ class CacheManager {
 	}
 
 	func loadDiscCache(type: PostsType) -> [[String: AnyObject]]? {
-		if let savedCache = CoreDataManager.sharedInstance.getPosts(type) {
+		if let savedCache = CoreDataManager.sharedInstance.getPostsByType(type) {
 			cache.setObject(savedCache, forKey: type.rawValue)
 			return savedCache
 		}

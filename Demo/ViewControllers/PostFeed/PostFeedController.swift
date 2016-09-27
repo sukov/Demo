@@ -31,7 +31,6 @@ class PostFeedController: UIViewController {
 		setupViews()
 		setupNavigationBar()
 		setupConstraints()
-		setDelegates()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -42,7 +41,6 @@ class PostFeedController: UIViewController {
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		presenter.detachView(self)
-
 	}
 
 	func setupNavigationBar() {
@@ -58,12 +56,16 @@ class PostFeedController: UIViewController {
 
 	func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
+
 		floatingButton = UIButton()
-		collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: UICollectionViewFlowLayout())
 		floatingButton.setImage(UIImage(named: ImageNames.floatingBtn), forState: UIControlState.Normal)
 		floatingButton.addTarget(self, action: #selector(floatingButtonTapped), forControlEvents: .TouchUpInside)
+
+		collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: UICollectionViewFlowLayout())
 		collectionView.registerClass(PostFeedCell.self, forCellWithReuseIdentifier: cellID)
 		collectionView.alwaysBounceVertical = true
+		collectionView.delegate = self
+		collectionView.dataSource = self
 		collectionView.addPullToRefreshWithActionHandler { [weak self] in
 			self?.presenter.refreshData()
 		}
@@ -91,11 +93,6 @@ class PostFeedController: UIViewController {
 			make.width.equalTo(40)
 			make.height.equalTo(40)
 		}
-	}
-
-	func setDelegates() {
-		collectionView.delegate = self
-		collectionView.dataSource = self
 	}
 
 	func returnedFromBackground() {
@@ -178,5 +175,4 @@ extension PostFeedController: UICollectionViewDataSource {
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
-
 }

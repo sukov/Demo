@@ -27,10 +27,12 @@ class PostFeedCell: UICollectionViewCell {
 
 	func setupViews() {
 		backgroundColor = UIColor.whiteColor()
+
 		descriptionText.userInteractionEnabled = false
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
 		imageView.userInteractionEnabled = true
 		imageView.addGestureRecognizer(tapGestureRecognizer)
+
 		addSubview(titleLabel)
 		addSubview(descriptionText)
 		addSubview(imageView)
@@ -68,7 +70,6 @@ class PostFeedCell: UICollectionViewCell {
 		self.post = post
 		titleLabel.text = post[PostKeys.title] as? String ?? ""
 		imageView.contentMode = UIViewContentMode.ScaleAspectFit
-		imageView.layoutIfNeeded()
 		if let url = NSURL(string: post[PostKeys.imageLink] as? String ?? "") {
 			imageView.sd_setImageWithURL(url)
 		}

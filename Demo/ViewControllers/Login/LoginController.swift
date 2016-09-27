@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, LoginView {
 	private var presenter: LoginPresenter
 	private var imgurImageView: UIImageView!
 	private var loginButton: UIButton!
@@ -39,11 +39,12 @@ class LoginController: UIViewController {
 	}
 
 	func setupViews() {
-		imgurImageView = UIImageView()
-		loginButton = UIButton()
-
 		view.backgroundColor = UIColor.whiteColor()
+
+		imgurImageView = UIImageView()
 		imgurImageView.image = UIImage(named: ImageNames.imgurLogo)
+
+		loginButton = UIButton()
 		loginButton.customBlueButton("Login with imgur")
 		loginButton.addTarget(presenter, action: #selector(LoginPresenter.login), forControlEvents: .TouchUpInside)
 
@@ -68,6 +69,7 @@ class LoginController: UIViewController {
 	}
 }
 
-extension LoginController: LoginView {
+@objc protocol LoginView {
 
 }
+

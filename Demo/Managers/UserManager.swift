@@ -10,49 +10,30 @@ import Foundation
 
 class UserManager {
 	static var sharedInstance = UserManager()
-	var user: User?
+	var user: User? {
+		didSet {
+			saveUser()
+		}
+	}
 
 	init() {
 		if let decoded = userDefaults.objectForKey(UserDefaultsKeys.user) as? NSData {
 			let user = NSKeyedUnarchiver.unarchiveObjectWithData(decoded)
 			self.user = user as? User
+			TokenProvider.sharedInstance.token = self.user?.token
 		}
-	}
-
-	func parseToken(url: NSURL) {
-		var userDict: [String: String] = [String: String]()
-		for param: String in url.absoluteString.componentsSeparatedByString("#")[1].componentsSeparatedByString("&") {
-			var item = param.componentsSeparatedByString("=")
-			userDict[item[0]] = item[1]
-		}
-
-		userDict[UserKeys.tokenDate] = String(NSDate().timeIntervalSince1970)
-		user = User(userDict: userDict)
-		saveUser()
-		NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userLoggedIn, object: nil)
 	}
 
 	func isLoggedIn() -> Bool {
-		if (user != nil) {
-			return true
-		} else {
-			return false
-		}
+		return UserManager.sharedInstance.user != nil
 	}
 
-	func saveUser() {
-		if let u = user {
-			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(u)
+	private func saveUser() {
+		if let user = user {
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(user)
 			userDefaults.setObject(encodedData, forKey: UserDefaultsKeys.user)
 			userDefaults.synchronize()
 		}
-	}
-
-	func updateToken(token: String, expiresIn: Double) {
-		user?.accessToken = token
-		user?.expiresIn = expiresIn
-		user?.tokenDate = NSDate()
-		saveUser()
 	}
 
 	func removeSavedUser() {

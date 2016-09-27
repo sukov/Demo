@@ -33,8 +33,10 @@ class ZoomPhotoController: UIViewController {
 
 	func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
+
 		imageScrollView = ImageScrollView(frame: view.frame)
 		imageScrollView.backgroundColor = UIColor.whiteColor()
+
 		view.addSubview(imageScrollView)
 	}
 
@@ -43,7 +45,6 @@ class ZoomPhotoController: UIViewController {
 			make.left.right.bottom.equalTo(self.view)
 			make.top.equalTo(view).offset(60)
 		}
-
 	}
 }
 

@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import SnapKit
 
-class CreatePostController: UIViewController {
+class CreatePostController: UIViewController, CreatePostView {
 	private var presenter: CreatePostPresenter
 	private var imagePicker: UIImagePickerController!
 	private var cancelPostButton: UIButton!
@@ -49,31 +49,39 @@ class CreatePostController: UIViewController {
 
 	func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
+
 		imagePicker = UIImagePickerController()
-		submitPostButton = UIButton()
-		cancelPostButton = UIButton()
-		selectImageButton = UIButton()
-		takePhotoButton = UIButton()
+
 		selectedImageView = UIImageView()
-		postTitle = UITextField()
-		postDescription = UITextField()
 		selectedImageView.layer.borderWidth = 1
 		selectedImageView.layer.borderColor = UIColor.grayColor().CGColor
+
+		postTitle = UITextField()
 		postTitle.attributedPlaceholder = NSAttributedString(string: "Title",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
 		postTitle.delegate = self
+
+		postDescription = UITextField()
 		postDescription.attributedPlaceholder = NSAttributedString(string: "Description",
 			attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
 		postDescription.delegate = self
+
+		submitPostButton = UIButton()
+		submitPostButton.customBlueButton("Post")
+		submitPostButton.addTarget(self, action: #selector(submitPostButtonTapped), forControlEvents: .TouchUpInside)
+
+		cancelPostButton = UIButton()
 		cancelPostButton.customBlueButton("Cancel")
+		cancelPostButton.addTarget(self, action: #selector(cancelButtonTapped), forControlEvents: .TouchUpInside)
+
+		selectImageButton = UIButton()
 		selectImageButton.customBlueButton("Select image")
 		selectImageButton.layer.cornerRadius = 5
-		submitPostButton.customBlueButton("Post")
+		selectImageButton.addTarget(self, action: #selector(selectImageButtonTapped), forControlEvents: .TouchUpInside)
+
+		takePhotoButton = UIButton()
 		takePhotoButton.customBlueButton("Take photo")
 		takePhotoButton.layer.cornerRadius = 5
-		cancelPostButton.addTarget(self, action: #selector(cancelButtonTapped), forControlEvents: .TouchUpInside)
-		selectImageButton.addTarget(self, action: #selector(selectImageButtonTapped), forControlEvents: .TouchUpInside)
-		submitPostButton.addTarget(self, action: #selector(submitPostButtonTapped), forControlEvents: .TouchUpInside)
 		takePhotoButton.addTarget(self, action: #selector(takePhotoButtonTapped), forControlEvents: .TouchUpInside)
 
 		view.addSubview(submitPostButton)
@@ -192,7 +200,7 @@ class CreatePostController: UIViewController {
 	}
 }
 
-extension CreatePostController: CreatePostView {
+@objc protocol CreatePostView {
 }
 
 extension CreatePostController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -30,7 +30,7 @@ class PostFeedPresenterImp {
 		removeObservers()
 	}
 
-	func getposts(complete: () -> Void) {
+	func getPosts(complete: () -> Void) {
 		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](posts, error) in
 			if (error == nil) {
 				self?.pagination.connectionIsON()
@@ -65,9 +65,15 @@ class PostFeedPresenterImp {
 	}
 
 	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshData), name: UIApplicationWillEnterForegroundNotification, object: UIApplication.sharedApplication())
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: #selector(refreshData),
+			name: UIApplicationWillEnterForegroundNotification,
+			object: UIApplication.sharedApplication())
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(uploadFailed(_:)), name: NotificationKeys.uploadFailed, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: #selector(uploadFailed(_:)),
+			name: NotificationKeys.uploadFailed,
+			object: nil)
 	}
 
 	func removeObservers() {
@@ -108,17 +114,17 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 	@objc func loadNew() {
 		view?.startAnimating()
 		pagination.nextPage()
-		getposts { [weak self] in
+		getPosts { [weak self] in
 			if let _self = self {
-				_self.view?.stopAnimating()
 				_self.view?.showPosts(_self.posts)
+				_self.view?.stopAnimating()
 			}
 		}
 	}
 
 	@objc func refreshData() {
 		pagination.resetPageNumber()
-		getposts { [weak self] in
+		getPosts { [weak self] in
 			if let _self = self {
 				_self.view?.stopRefreshing()
 				_self.view?.showPosts(_self.posts)

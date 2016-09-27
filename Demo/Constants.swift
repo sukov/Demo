@@ -16,6 +16,10 @@ struct NotificationKeys {
 struct UserKeys {
 	static let userID = "account_id"
 	static let userName = "account_username"
+	static let token = "token"
+}
+
+struct TokenKeys {
 	static let accessToken = "access_token"
 	static let expiresIn = "expires_in"
 	static let tokenDate = "tokenDate"

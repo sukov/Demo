@@ -22,22 +22,23 @@ class LeftMenuController: UIViewController {
 	}
 
 	func setupViews() {
+		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+
 		profileImageView = UIImageView()
 		usernameLabel = UILabel()
-		settingsButton = UIButton()
-		hotPostsButton = UIButton()
-		popularPostsButton = UIButton()
-		userPostsButton = UIButton()
-		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
 		usernameLabel.sizeToFit()
+		settingsButton = UIButton()
 		settingsButton.setImage(UIImage(named: ImageNames.gearIcon), forState: .Normal)
 		settingsButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		settingsButton.addTarget(self, action: #selector(settingsButtonTapped), forControlEvents: .TouchUpInside)
+		hotPostsButton = UIButton()
 		hotPostsButton.customBlueButton("Hot posts")
-		popularPostsButton.customBlueButton("Popular posts")
-		userPostsButton.customBlueButton("User posts")
 		hotPostsButton.addTarget(self, action: #selector(hotPostsButtonTapped), forControlEvents: .TouchUpInside)
+		popularPostsButton = UIButton()
+		popularPostsButton.customBlueButton("Popular posts")
 		popularPostsButton.addTarget(self, action: #selector(popularPostsButtonTapped), forControlEvents: .TouchUpInside)
+		userPostsButton = UIButton()
+		userPostsButton.customBlueButton("User posts")
 		userPostsButton.addTarget(self, action: #selector(userPostsButtonTapped), forControlEvents: .TouchUpInside)
 
 		view.addSubview(profileImageView)
@@ -90,7 +91,6 @@ class LeftMenuController: UIViewController {
 
 	// This goes to Presenter
 	func setContent() {
-		profileImageView.layoutIfNeeded()
 		profileImageView.sd_setImageWithURL(NSURL(
 			string: "https://thenypost.files.wordpress.com/2015/08/spongebob-e1441057213584.jpg?quality=90&strip=all&w=664&h=441&crop=1")!)
 		usernameLabel.text = UserManager.sharedInstance.user?.userName

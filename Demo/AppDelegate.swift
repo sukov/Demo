@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-		UserManager.sharedInstance.parseToken(url)
+		TokenProvider.sharedInstance.parseToken(url)
 		return true
 	}
 

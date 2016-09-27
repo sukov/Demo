@@ -41,11 +41,14 @@ class SettingsController: UIViewController {
 
 	func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
+
 		syncSwitch = UISwitch()
-		syncLabel = UILabel()
-		logoutButton = UIButton()
 		syncSwitch.addTarget(presenter, action: #selector(presenter.syncSwitched(_:)), forControlEvents: .ValueChanged)
+
+		syncLabel = UILabel()
 		syncLabel.text = "Sync"
+
+		logoutButton = UIButton()
 		logoutButton.customBlueButton("Logout")
 		logoutButton.addTarget(presenter, action: #selector(presenter.logOut), forControlEvents: .TouchUpInside)
 

@@ -55,7 +55,7 @@ class CoreDataManager {
 		}
 	}
 
-	func getPosts(type: PostsType) -> [[String: AnyObject]]? {
+	func getPostsByType(type: PostsType) -> [[String: AnyObject]]? {
 		if let postsManagedObjects = getPostsManagedObjects(type) {
 			var posts = [[String: AnyObject]]()
 			for postManagedObject in postsManagedObjects {

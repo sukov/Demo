@@ -12,8 +12,33 @@ import UIKit
 class TokenProvider {
 	private let clientID = "3c2821bc2936232"
 	private let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
+	var token: Token?
 
 	static var sharedInstance = TokenProvider()
+
+	func parseToken(url: NSURL) {
+		var userDict: [String: AnyObject] = [:]
+		for param: String in url.absoluteString.componentsSeparatedByString("#")[1].componentsSeparatedByString("&") {
+			var item = param.componentsSeparatedByString("=")
+			userDict[item[0]] = item[1]
+		}
+		userDict[TokenKeys.tokenDate] = NSDate()
+
+		if let user = User(userDict: userDict) { // if not nil = token is valid
+			UserManager.sharedInstance.user = user
+			token = user.token
+			NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userLoggedIn, object: nil)
+		}
+	}
+
+	func updateToken(token: String, expiresIn: Double) {
+		self.token?.accessToken = token
+		self.token?.expiresIn = expiresIn
+		self.token?.tokenDate = NSDate()
+		if let _token = self.token {
+			UserManager.sharedInstance.user?.token = _token
+		}
+	}
 
 	func requestToken() {
 		if let authURL = NSURL(string: "https://api.imgur.com/oauth2/authorize?client_id=3c2821bc2936232&response_type=token&state=APPLICATION_STATE") {
@@ -22,11 +47,11 @@ class TokenProvider {
 	}
 
 	func refreshToken() {
-		guard UserManager.sharedInstance.user != nil else {
+		guard token != nil else {
 			return
 		}
 
-		let params = ["refresh_token": UserManager.sharedInstance.user!.refreshToken, "client_id": clientID, "client_secret": clientSecret, "grant_type": "refresh_token"]
+		let params = ["refresh_token": token!.refreshToken, "client_id": clientID, "client_secret": clientSecret, "grant_type": "refresh_token"]
 
 		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			Group.sharedInstance.enter(.RefreshToken)
@@ -48,9 +73,9 @@ class TokenProvider {
 							let json = try NSJSONSerialization.JSONObjectWithData(_data, options: .AllowFragments)
 							if let newToken = json as? [String: AnyObject] {
 								if (newToken["success"] as? Int != 0) {
-									UserManager.sharedInstance.updateToken(
-										newToken[UserKeys.accessToken] as! String,
-										expiresIn: newToken[UserKeys.expiresIn] as! Double)
+									self.updateToken(
+										newToken[TokenKeys.accessToken] as! String,
+										expiresIn: newToken[TokenKeys.expiresIn] as! Double)
 								}
 							}
 						}
@@ -64,8 +89,8 @@ class TokenProvider {
 	}
 
 	func isTokenExpired() -> Bool {
-		if let user = UserManager.sharedInstance.user {
-			if (NSDate().timeIntervalSinceDate(user.tokenDate) > (user.expiresIn - 2)) {
+		if let token = token {
+			if (NSDate().timeIntervalSinceDate(token.tokenDate) > (token.expiresIn - 2)) {
 				return true
 			}
 		}
