@@ -13,7 +13,6 @@ class CacheManager {
 	private let cache: NSCache
 	var isCachingOn: Bool {
 		willSet(value) {
-			print(value)
 			userDefaults.setBool(value, forKey: UserDefaultsKeys.caching)
 		}
 	}
