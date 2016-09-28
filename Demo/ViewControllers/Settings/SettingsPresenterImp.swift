@@ -17,7 +17,7 @@ extension SettingsPresenterImp: SettingsPresenter {
 	@objc func attachView(view: SettingsView) {
 		if (self.view == nil) {
 			self.view = view
-			view.setSwitch(CacheManager.sharedInstance.isCachingON())
+			view.setSwitch(CacheManager.sharedInstance.isCachingOn)
 		}
 	}
 
@@ -39,10 +39,11 @@ extension SettingsPresenterImp: SettingsPresenter {
 	}
 
 	@objc func syncSwitched(sender: UISwitch) {
+		print(sender.on)
 		if (sender.on) {
-			CacheManager.sharedInstance.setCachingON()
+			CacheManager.sharedInstance.isCachingOn = true
 		} else {
-			CacheManager.sharedInstance.setCachingOFF()
+			CacheManager.sharedInstance.isCachingOn = false
 		}
 	}
 }

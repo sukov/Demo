@@ -11,7 +11,12 @@ import Foundation
 class CacheManager {
 	static let sharedInstance = CacheManager()
 	private let cache: NSCache
-	private var isCachingOn: Bool
+	var isCachingOn: Bool {
+		willSet(value) {
+			print(value)
+			userDefaults.setBool(value, forKey: UserDefaultsKeys.caching)
+		}
+	}
 
 	init() {
 		cache = NSCache()
@@ -36,26 +41,7 @@ class CacheManager {
 	}
 
 	func getCachedPostsByType(type: PostsType) -> [[String: AnyObject]]? {
-		if (!isCachingOn) {
-			return nil
-		} else if let posts = cache.objectForKey(type.rawValue) as? [[String: AnyObject]] {
-			return posts
-		} else {
-			return nil
-		}
+		return isCachingOn ? (cache.objectForKey(type.rawValue) as? [[String: AnyObject]]) : nil
 	}
 
-	func setCachingON() {
-		isCachingOn = true
-		userDefaults.setBool(true, forKey: UserDefaultsKeys.caching)
-	}
-
-	func setCachingOFF() {
-		isCachingOn = false
-		userDefaults.setBool(false, forKey: UserDefaultsKeys.caching)
-	}
-
-	func isCachingON() -> Bool {
-		return isCachingOn
-	}
 }

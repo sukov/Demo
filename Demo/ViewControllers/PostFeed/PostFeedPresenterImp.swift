@@ -59,7 +59,7 @@ class PostFeedPresenterImp {
 					CacheManager.sharedInstance.updateCacheForType(_posts, type: _self.postType)
 				}
 			} else {
-				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingON()) {
+				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingOn) {
 					self?.lastTryConnection = false
 					self?.pagination.resetPageNumber()
 					if posts != nil {
