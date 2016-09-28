@@ -14,6 +14,11 @@ class LeftMenuController: BaseViewController {
 	private var popularPostsButton: UIButton!
 	private var userPostsButton: UIButton!
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setContent()
+	}
+
 	override func setupViews() {
 		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
 
@@ -94,10 +99,10 @@ class LeftMenuController: BaseViewController {
 			if (!(navigationViewControllers[navigationViewControllers.count - 1] is SettingsController)) {
 				(revealViewController().frontViewController as? UINavigationController)?.pushViewController(
 					MainAssembly.sharedInstance.getSettingsController(),
-					animated: true)
+					animated: false)
 			}
 		}
-		revealViewController().revealToggleAnimated(false)
+		revealViewController().revealToggleAnimated(true)
 	}
 
 	func hotPostsButtonTapped() {
