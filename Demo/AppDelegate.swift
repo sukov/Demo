@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.rootViewController = MainAssembly.sharedInstance.getRootController()
 		window?.makeKeyAndVisible()
-		addObservers()
 		return true
 	}
 
@@ -29,22 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
 	}
 
-	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loggedIn), name: NotificationKeys.userLoggedIn, object: nil)
-	}
-
-	func removeObservers() {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-	}
-
-	func loggedIn() {
-		window?.rootViewController = MainAssembly.sharedInstance.getRootController()
-	}
-
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		self.saveContext()
-		removeObservers()
 	}
 
 	// MARK: - Core Data stack

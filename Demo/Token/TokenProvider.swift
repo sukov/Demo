@@ -14,7 +14,7 @@ class TokenProvider {
 	private let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
 	var token: Token?
 
-	static var sharedInstance = TokenProvider()
+	static let sharedInstance = TokenProvider()
 
 	func parseToken(url: NSURL) {
 		var userDict: [String: AnyObject] = [:]
@@ -27,7 +27,7 @@ class TokenProvider {
 		if let token = Token(userDict: userDict) { // if not nil = token is valid
 			self.token = token
 			UserManager.sharedInstance.user = User(userDict: userDict)
-			NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userLoggedIn, object: nil)
+			MainWindowManager.sharedInstance.changeWindow()
 		}
 	}
 
