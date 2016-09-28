@@ -13,7 +13,7 @@ class CoreDataManager {
 	static var sharedInstance = CoreDataManager()
 	let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
-	func savePosts(postsData: [[String: AnyObject]], type: PostsType) {
+	func savePostsByType(postsData: [[String: AnyObject]], type: PostsType) {
 		let postEntity = NSEntityDescription.entityForName(CoreDataKeys.postEntity, inManagedObjectContext: managedContext)
 
 		for postData in postsData {
@@ -30,7 +30,7 @@ class CoreDataManager {
 		} catch { }
 	}
 
-	func removePosts(type: PostsType) {
+	func removePostsByType(type: PostsType) {
 		let fetchRequest = NSFetchRequest(entityName: CoreDataKeys.postEntity)
 		fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
 		let coord = (UIApplication.sharedApplication().delegate as! AppDelegate).persistentStoreCoordinator

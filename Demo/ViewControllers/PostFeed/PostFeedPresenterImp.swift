@@ -30,14 +30,14 @@ class PostFeedPresenterImp {
 
 	deinit {
 		if (posts.count > 0) {
-			CoreDataManager.sharedInstance.savePosts(posts, type: postType)
+			CoreDataManager.sharedInstance.savePostsByType(posts, type: postType)
 		}
 		removeObservers()
 	}
 
 	func loadDiscCache() {
 		if let savedCache = CoreDataManager.sharedInstance.getPostsByType(postType) {
-			CacheManager.sharedInstance.setCacheForType(savedCache, type: postType)
+			CacheManager.sharedInstance.updateCacheForType(savedCache, type: postType)
 		}
 	}
 
@@ -48,15 +48,15 @@ class PostFeedPresenterImp {
 				if let _posts = posts, _self = self {
 					if (_self.pagination.getPageNumber() == 0) {
 						_self.posts = []
-						CacheManager.sharedInstance.clearCachedPosts(_self.postType)
-						CoreDataManager.sharedInstance.removePosts(_self.postType)
+						CacheManager.sharedInstance.clearPostsByType(_self.postType)
+						CoreDataManager.sharedInstance.removePostsByType(_self.postType)
 						SDWebImageManager.sharedManager().imageCache?.cleanDisk()
 						_self.posts.appendContentsOf(_posts)
 						_self.view?.scrollToTop()
 					} else {
 						_self.posts.appendContentsOf(_posts)
 					}
-					CacheManager.sharedInstance.cachePosts(_posts, type: _self.postType)
+					CacheManager.sharedInstance.updateCacheForType(_posts, type: _self.postType)
 				}
 			} else {
 				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingON()) {
@@ -65,7 +65,7 @@ class PostFeedPresenterImp {
 					if posts != nil {
 						return
 					}
-					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPosts(_self.postType) {
+					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPostsByType(_self.postType) {
 						_self.posts = _posts
 					}
 				} else if (error?.code >= 500 || error?.code < 0) {

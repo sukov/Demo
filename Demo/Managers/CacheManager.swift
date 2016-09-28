@@ -18,7 +18,7 @@ class CacheManager {
 		isCachingOn = userDefaults.boolForKey(UserDefaultsKeys.caching)
 	}
 
-	func cachePosts(posts: [[String: AnyObject]], type: PostsType) {
+	func updateCacheForType(posts: [[String: AnyObject]], type: PostsType) {
 		if var cachedPosts = cache.objectForKey(type.rawValue) as? [[String: AnyObject]] {
 			cachedPosts.appendContentsOf(posts)
 			cache.setObject(cachedPosts, forKey: type.rawValue)
@@ -27,7 +27,7 @@ class CacheManager {
 		}
 	}
 
-	func clearCachedPosts(type: PostsType) {
+	func clearPostsByType(type: PostsType) {
 		cache.removeObjectForKey(type.rawValue)
 	}
 
@@ -35,7 +35,7 @@ class CacheManager {
 		cache.removeAllObjects()
 	}
 
-	func getCachedPosts(type: PostsType) -> [[String: AnyObject]]? {
+	func getCachedPostsByType(type: PostsType) -> [[String: AnyObject]]? {
 		if (!isCachingOn) {
 			return nil
 		} else if let posts = cache.objectForKey(type.rawValue) as? [[String: AnyObject]] {
@@ -43,10 +43,6 @@ class CacheManager {
 		} else {
 			return nil
 		}
-	}
-
-	func setCacheForType(posts: [[String: AnyObject]], type: PostsType) {
-		cache.setObject(posts, forKey: type.rawValue)
 	}
 
 	func setCachingON() {
