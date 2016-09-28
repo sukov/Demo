@@ -25,17 +25,14 @@ class CacheManager {
 		} else {
 			cache.setObject(posts, forKey: type.rawValue)
 		}
-		CoreDataManager.sharedInstance.savePosts(posts, type: type)
 	}
 
 	func clearCachedPosts(type: PostsType) {
 		cache.removeObjectForKey(type.rawValue)
-		CoreDataManager.sharedInstance.removePosts(type)
 	}
 
 	func clearAllCache() {
 		cache.removeAllObjects()
-		CoreDataManager.sharedInstance.removeAllPosts()
 	}
 
 	func getCachedPosts(type: PostsType) -> [[String: AnyObject]]? {
@@ -44,16 +41,12 @@ class CacheManager {
 		} else if let posts = cache.objectForKey(type.rawValue) as? [[String: AnyObject]] {
 			return posts
 		} else {
-			return loadDiscCache(type)
+			return nil
 		}
 	}
 
-	func loadDiscCache(type: PostsType) -> [[String: AnyObject]]? {
-		if let savedCache = CoreDataManager.sharedInstance.getPostsByType(type) {
-			cache.setObject(savedCache, forKey: type.rawValue)
-			return savedCache
-		}
-		return nil
+	func setCacheForType(posts: [[String: AnyObject]], type: PostsType) {
+		cache.setObject(posts, forKey: type.rawValue)
 	}
 
 	func setCachingON() {
