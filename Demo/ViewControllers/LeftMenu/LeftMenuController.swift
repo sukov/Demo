@@ -6,7 +6,7 @@
 //  Copyright © 2016 WF | Gorjan Shukov. All rights reserved.
 //
 
-class LeftMenuController: UIViewController {
+class LeftMenuController: BaseViewController {
 	private var profileImageView: UIImageView!
 	private var usernameLabel: UILabel!
 	private var settingsButton: UIButton!
@@ -14,14 +14,7 @@ class LeftMenuController: UIViewController {
 	private var popularPostsButton: UIButton!
 	private var userPostsButton: UIButton!
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupViews()
-		setupConstraints()
-		setContent()
-	}
-
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
 
 		profileImageView = UIImageView()
@@ -49,7 +42,7 @@ class LeftMenuController: UIViewController {
 		view.addSubview(userPostsButton)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		profileImageView.snp_makeConstraints { (make) in
 			let imageHeight = (UIScreen.mainScreen().bounds.width / 1.5) / 1.7
 			make.top.equalTo(20)

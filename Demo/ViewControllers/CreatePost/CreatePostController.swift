@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import SnapKit
 
-class CreatePostController: UIViewController, CreatePostView {
+class CreatePostController: BaseViewController, CreatePostView {
 	private var presenter: CreatePostPresenter
 	private var imagePicker: UIImagePickerController!
 	private var cancelPostButton: UIButton!
@@ -30,13 +30,6 @@ class CreatePostController: UIViewController, CreatePostView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupViews()
-		setupConstraints()
-		setDelegates()
-	}
-
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		presenter.attachView(self)
@@ -47,10 +40,11 @@ class CreatePostController: UIViewController, CreatePostView {
 		presenter.detachView(self)
 	}
 
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
 
 		imagePicker = UIImagePickerController()
+		imagePicker.delegate = self
 
 		selectedImageView = UIImageView()
 		selectedImageView.layer.borderWidth = 1
@@ -93,7 +87,7 @@ class CreatePostController: UIViewController, CreatePostView {
 		view.addSubview(postDescription)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		selectedImageView.snp_makeConstraints { (make) in
 			make.left.equalTo(self.view)
 			make.right.equalTo(self.view)
@@ -138,10 +132,6 @@ class CreatePostController: UIViewController, CreatePostView {
 			make.width.equalTo(self.view.frame.width / 3)
 			make.height.equalTo(40)
 		}
-	}
-
-	func setDelegates() {
-		imagePicker.delegate = self
 	}
 
 	func cancelButtonTapped() {

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LoginController: UIViewController, LoginView {
+class LoginController: BaseViewController, LoginView {
 	private var presenter: LoginPresenter
 	private var imgurImageView: UIImageView!
 	private var loginButton: UIButton!
@@ -22,12 +22,6 @@ class LoginController: UIViewController, LoginView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupViews()
-		setupConstraints()
-	}
-
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		presenter.attachView(self)
@@ -38,7 +32,7 @@ class LoginController: UIViewController, LoginView {
 		presenter.detachView(self)
 	}
 
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
 
 		imgurImageView = UIImageView()
@@ -52,7 +46,7 @@ class LoginController: UIViewController, LoginView {
 		view.addSubview(loginButton)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		imgurImageView.snp_makeConstraints { (make) in
 			make.width.equalTo(150)
 			make.height.equalTo(70)

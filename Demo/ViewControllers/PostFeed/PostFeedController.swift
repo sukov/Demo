@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import SVPullToRefresh
 
-class PostFeedController: UIViewController {
+class PostFeedController: BaseViewController {
 	private var presenter: PostFeedPresenter
 	private var collectionView: UICollectionView!
 	private var floatingButton: UIButton!
@@ -28,9 +28,7 @@ class PostFeedController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
 		setupNavigationBar()
-		setupConstraints()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -54,7 +52,7 @@ class PostFeedController: UIViewController {
 		revealBtn.addTarget(revealController, action: #selector(revealController.revealToggle(_:)), forControlEvents: .TouchUpInside)
 	}
 
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
 
 		floatingButton = UIButton()
@@ -80,7 +78,7 @@ class PostFeedController: UIViewController {
 		view.addSubview(floatingButton)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		collectionView.snp_makeConstraints { (make) in
 			make.left.right.equalTo(self.view)
 			make.top.equalTo(self.view).offset(65)

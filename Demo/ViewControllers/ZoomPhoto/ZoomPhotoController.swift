@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ZoomPhotoController: UIViewController {
+class ZoomPhotoController: BaseViewController {
 	private var presenter: ZoomPhotoPresenter
 	private var imageScrollView: ImageScrollView!
 
@@ -22,8 +22,6 @@ class ZoomPhotoController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupViews()
-		setupConstraints()
 		presenter.attachView(self)
 	}
 
@@ -31,7 +29,7 @@ class ZoomPhotoController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
 
 		imageScrollView = ImageScrollView(frame: view.frame)
@@ -40,7 +38,7 @@ class ZoomPhotoController: UIViewController {
 		view.addSubview(imageScrollView)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		imageScrollView.snp_makeConstraints { (make) in
 			make.left.right.bottom.equalTo(self.view)
 			make.top.equalTo(view).offset(60)

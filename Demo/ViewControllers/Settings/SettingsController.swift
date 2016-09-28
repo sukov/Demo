@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsController: UIViewController {
+class SettingsController: BaseViewController {
 	private var presenter: SettingsPresenter
 	private var syncSwitch: UISwitch!
 	private var syncLabel: UILabel!
@@ -23,12 +23,6 @@ class SettingsController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupViews()
-		setupConstraints()
-	}
-
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		presenter.attachView(self)
@@ -39,7 +33,7 @@ class SettingsController: UIViewController {
 		presenter.detachView(self)
 	}
 
-	func setupViews() {
+	override func setupViews() {
 		view.backgroundColor = UIColor.whiteColor()
 
 		syncSwitch = UISwitch()
@@ -57,7 +51,7 @@ class SettingsController: UIViewController {
 		view.addSubview(logoutButton)
 	}
 
-	func setupConstraints() {
+	override func setupConstraints() {
 		syncSwitch.snp_makeConstraints { (make) in
 			make.left.top.equalTo(self.view).offset(80)
 		}
