@@ -24,7 +24,7 @@ class TokenProvider {
 		}
 		userDict[TokenKeys.tokenDate] = NSDate()
 
-		if let token = Token(userDict: userDict) { // if not nil = token is valid
+		if let token = Token(userDict: userDict) {
 			self.token = token
 			UserManager.sharedInstance.user = User(userDict: userDict)
 			MainWindowManager.sharedInstance.changeWindow()
