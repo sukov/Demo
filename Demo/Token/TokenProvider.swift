@@ -12,9 +12,21 @@ import UIKit
 class TokenProvider {
 	private let clientID = "3c2821bc2936232"
 	private let clientSecret = "65c4223ede9163278443b6255eeb7f3959d52b20"
-	var token: Token?
+	var token: Token? {
+		didSet {
+			saveToken()
+		}
+	}
 
 	static let sharedInstance = TokenProvider()
+
+	init() {
+		if let decoded = userDefaults.objectForKey(UserDefaultsKeys.token) as? NSData {
+			if let token = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as? Token {
+				self.token = token
+			}
+		}
+	}
 
 	func parseToken(url: NSURL) {
 		var userDict: [String: AnyObject] = [:]
@@ -27,7 +39,8 @@ class TokenProvider {
 		if let token = Token(userDict: userDict) {
 			self.token = token
 			UserManager.sharedInstance.user = User(userDict: userDict)
-			MainWindowManager.sharedInstance.changeWindow()
+			let app = (UIApplication.sharedApplication().delegate as? AppDelegate)
+			app?.setRootController(MainAssembly.sharedInstance.getRootController())
 		}
 	}
 
@@ -35,9 +48,6 @@ class TokenProvider {
 		self.token?.accessToken = token
 		self.token?.expiresIn = expiresIn
 		self.token?.tokenDate = NSDate()
-		if let token = self.token {
-			UserManager.sharedInstance.user?.token = token
-		}
 	}
 
 	func requestToken() {
@@ -95,6 +105,14 @@ class TokenProvider {
 			}
 		}
 		return false
+	}
+
+	func saveToken() {
+		if let token = token {
+			let encodedData = NSKeyedArchiver.archivedDataWithRootObject(token)
+			userDefaults.setObject(encodedData, forKey: UserDefaultsKeys.token)
+			userDefaults.synchronize()
+		}
 	}
 
 	func removeToken() {

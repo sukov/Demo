@@ -29,6 +29,7 @@ struct TokenKeys {
 struct UserDefaultsKeys {
 	static let user = "user"
 	static let caching = "caching"
+	static let token = "token"
 }
 
 struct PostKeys {

@@ -14,7 +14,6 @@
 		1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB491D79A36E00F2366E /* Constants.swift */; };
 		1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB5C1D79BA2200F2366E /* User.swift */; };
 		1F2956F81D9BCC06005D31FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2956F71D9BCC06005D31FF /* BaseViewController.swift */; };
-		1F2956FA1D9BF33A005D31FF /* MainWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2956F91D9BF33A005D31FF /* MainWindowManager.swift */; };
 		1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616721D9526AC00F6D7B4 /* CacheManager.swift */; };
 		1F4616751D9526AC00F6D7B4 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */; };
 		1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616761D9526EA00F6D7B4 /* UserManager.swift */; };
@@ -62,7 +61,6 @@
 		1F1DDB491D79A36E00F2366E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		1F1DDB5C1D79BA2200F2366E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F2956F71D9BCC06005D31FF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		1F2956F91D9BF33A005D31FF /* MainWindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowManager.swift; sourceTree = "<group>"; };
 		1F4616721D9526AC00F6D7B4 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
 		1F4616761D9526EA00F6D7B4 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				1F4616761D9526EA00F6D7B4 /* UserManager.swift */,
 				1F4616721D9526AC00F6D7B4 /* CacheManager.swift */,
 				1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */,
-				1F2956F91D9BF33A005D31FF /* MainWindowManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -514,7 +511,6 @@
 				1F4616AD1D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift in Sources */,
 				1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */,
 				1F4616AB1D95270C00F6D7B4 /* ZoomPhotoController.swift in Sources */,
-				1F2956FA1D9BF33A005D31FF /* MainWindowManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

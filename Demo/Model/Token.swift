@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Token: AnyObject {
+class Token: NSObject, NSCoding {
 	var accessToken: String
 	var expiresIn: Double
 	var tokenDate: NSDate

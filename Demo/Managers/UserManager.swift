@@ -18,15 +18,14 @@ class UserManager {
 
 	init() {
 		if let decoded = userDefaults.objectForKey(UserDefaultsKeys.user) as? NSData {
-			if let user = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as? User, token = user.token {
+			if let user = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as? User {
 				self.user = user
-				TokenProvider.sharedInstance.token = token
 			}
 		}
 	}
 
 	func isLoggedIn() -> Bool {
-		return UserManager.sharedInstance.user != nil
+		return (UserManager.sharedInstance.user != nil && TokenProvider.sharedInstance.token != nil)
 	}
 
 	private func saveUser() {

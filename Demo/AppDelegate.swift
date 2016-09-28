@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
+	func setRootController(controller: UIViewController) {
+		window?.rootViewController = controller
+	}
+
 	func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
 		TokenProvider.sharedInstance.parseToken(url)
 		return true
