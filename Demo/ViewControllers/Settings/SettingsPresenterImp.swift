@@ -29,9 +29,11 @@ extension SettingsPresenterImp: SettingsPresenter {
 
 	@objc func logOut() {
 		CacheManager.sharedInstance.clearAllCache()
+		CoreDataManager.sharedInstance.removeAllPosts()
 		SDWebImageManager.sharedManager().imageCache?.clearMemory()
 		SDWebImageManager.sharedManager().imageCache?.clearDisk()
-		UserManager.sharedInstance.removeSavedUser()
+		UserManager.sharedInstance.removeUser()
+		TokenProvider.sharedInstance.removeToken()
 		NetworkManager.sharedInstance.cancelAllRequests()
 		view?.showLoginPage()
 	}

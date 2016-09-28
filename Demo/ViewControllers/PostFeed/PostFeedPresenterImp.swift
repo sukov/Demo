@@ -19,25 +19,37 @@ class PostFeedPresenterImp {
 	private var postType: PostsType
 	private var pagination = Pagination()
 	private var posts: [[String: AnyObject]]
+	private var lastTryConnection: Bool = true
 
 	init(postType: PostsType) {
 		self.postType = postType
 		posts = []
+		loadDiscCache()
 		addObservers()
 	}
 
 	deinit {
+		if (posts.count > 0) {
+			CoreDataManager.sharedInstance.savePosts(posts, type: postType)
+		}
 		removeObservers()
+	}
+
+	func loadDiscCache() {
+		if let savedCache = CoreDataManager.sharedInstance.getPostsByType(postType) {
+			CacheManager.sharedInstance.setCacheForType(savedCache, type: postType)
+		}
 	}
 
 	func getPosts(complete: () -> Void) {
 		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](posts, error) in
 			if (error == nil) {
-				self?.pagination.connectionIsON()
+				self?.lastTryConnection = true
 				if let _posts = posts, _self = self {
 					if (_self.pagination.getPageNumber() == 0) {
 						_self.posts = []
 						CacheManager.sharedInstance.clearCachedPosts(_self.postType)
+						CoreDataManager.sharedInstance.removePosts(_self.postType)
 						SDWebImageManager.sharedManager().imageCache?.cleanDisk()
 						_self.posts.appendContentsOf(_posts)
 						_self.view?.scrollToTop()
@@ -48,7 +60,8 @@ class PostFeedPresenterImp {
 				}
 			} else {
 				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingON()) {
-					self?.pagination.connectionIsOFF()
+					self?.lastTryConnection = false
+					self?.pagination.resetPageNumber()
 					if posts != nil {
 						return
 					}
@@ -57,7 +70,8 @@ class PostFeedPresenterImp {
 					}
 				} else if (error?.code >= 500 || error?.code < 0) {
 					self?.view?.showLoginPage()
-					UserManager.sharedInstance.removeSavedUser()
+					UserManager.sharedInstance.removeUser()
+					TokenProvider.sharedInstance.removeToken()
 				}
 			}
 			complete()
@@ -113,7 +127,9 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 
 	@objc func loadNew() {
 		view?.startAnimating()
-		pagination.nextPage()
+		if (lastTryConnection) {
+			pagination.nextPage()
+		}
 		getPosts { [weak self] in
 			if let _self = self {
 				_self.view?.showPosts(_self.posts)
