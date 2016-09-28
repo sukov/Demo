@@ -11,9 +11,9 @@ import Foundation
 class User: NSObject, NSCoding {
 	var userID: Int
 	var userName: String
-	var token: Token
+	var token: Token?
 
-	init(userID: Int, userName: String, token: Token) {
+	init(userID: Int, userName: String, token: Token?) {
 		self.userID = userID
 		self.userName = userName
 		self.token = token
@@ -40,6 +40,6 @@ class User: NSObject, NSCoding {
 	func encodeWithCoder(aCoder: NSCoder) {
 		aCoder.encodeInt(Int32(userID), forKey: UserKeys.userID)
 		aCoder.encodeObject(userName, forKey: UserKeys.userName)
-		token.encodeWithCoder(aCoder)
+		token?.encodeWithCoder(aCoder)
 	}
 }

@@ -18,9 +18,10 @@ class UserManager {
 
 	init() {
 		if let decoded = userDefaults.objectForKey(UserDefaultsKeys.user) as? NSData {
-			let user = NSKeyedUnarchiver.unarchiveObjectWithData(decoded)
-			self.user = user as? User
-			TokenProvider.sharedInstance.token = self.user?.token
+			if let user = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as? User, token = user.token {
+				self.user = user
+				TokenProvider.sharedInstance.token = token
+			}
 		}
 	}
 
@@ -36,7 +37,7 @@ class UserManager {
 		}
 	}
 
-	func removeSavedUser() {
+	func removeUser() {
 		user = nil
 		let encodedData = NSKeyedArchiver.archivedDataWithRootObject("nil")
 		userDefaults.setObject(encodedData, forKey: UserDefaultsKeys.user)

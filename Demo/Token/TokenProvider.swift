@@ -24,9 +24,9 @@ class TokenProvider {
 		}
 		userDict[TokenKeys.tokenDate] = NSDate()
 
-		if let user = User(userDict: userDict) { // if not nil = token is valid
-			UserManager.sharedInstance.user = user
-			token = user.token
+		if let token = Token(userDict: userDict) { // if not nil = token is valid
+			self.token = token
+			UserManager.sharedInstance.user = User(userDict: userDict)
 			NSNotificationCenter.defaultCenter().postNotificationName(NotificationKeys.userLoggedIn, object: nil)
 		}
 	}
@@ -35,8 +35,8 @@ class TokenProvider {
 		self.token?.accessToken = token
 		self.token?.expiresIn = expiresIn
 		self.token?.tokenDate = NSDate()
-		if let _token = self.token {
-			UserManager.sharedInstance.user?.token = _token
+		if let token = self.token {
+			UserManager.sharedInstance.user?.token = token
 		}
 	}
 
@@ -95,5 +95,9 @@ class TokenProvider {
 			}
 		}
 		return false
+	}
+
+	func removeToken() {
+		token = nil
 	}
 }
