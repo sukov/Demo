@@ -8,17 +8,13 @@
 
 class Pagination {
 	private var pageNum: Int
-	private var isConnectionOn: Bool
 
 	init() {
 		pageNum = 0
-		isConnectionOn = true
 	}
 
 	func nextPage() {
-		if (isConnectionOn) {
-			pageNum += 1
-		}
+		pageNum += 1
 	}
 
 	func getPageNumber() -> Int {
@@ -27,14 +23,5 @@ class Pagination {
 
 	func resetPageNumber() {
 		pageNum = 0
-	}
-
-	func connectionIsOFF() {
-		isConnectionOn = false
-		resetPageNumber()
-	}
-
-	func connectionIsON() {
-		isConnectionOn = true
 	}
 }
