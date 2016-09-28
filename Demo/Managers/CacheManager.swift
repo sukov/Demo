@@ -12,8 +12,8 @@ class CacheManager {
 	static let sharedInstance = CacheManager()
 	private let cache: NSCache
 	var isCachingOn: Bool {
-		willSet(value) {
-			userDefaults.setBool(value, forKey: UserDefaultsKeys.caching)
+		willSet(newValue) {
+			userDefaults.setBool(newValue, forKey: UserDefaultsKeys.caching)
 		}
 	}
 
