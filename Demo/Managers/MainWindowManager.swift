@@ -11,7 +11,7 @@ import Foundation
 class MainWindowManager {
 	static let sharedInstance = MainWindowManager()
 
-	@objc func changeWindow() {
+	func changeWindow() {
 		if let app = UIApplication.sharedApplication().delegate as? AppDelegate {
 			app.window?.rootViewController = MainAssembly.sharedInstance.getRootController()
 		}

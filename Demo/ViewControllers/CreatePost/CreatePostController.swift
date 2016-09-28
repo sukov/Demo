@@ -41,6 +41,8 @@ class CreatePostController: BaseViewController, CreatePostView {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.whiteColor()
 
 		imagePicker = UIImagePickerController()
@@ -88,6 +90,8 @@ class CreatePostController: BaseViewController, CreatePostView {
 	}
 
 	override func setupConstraints() {
+		super.setupConstraints()
+
 		selectedImageView.snp_makeConstraints { (make) in
 			make.left.equalTo(self.view)
 			make.right.equalTo(self.view)

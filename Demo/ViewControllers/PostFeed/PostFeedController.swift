@@ -53,6 +53,8 @@ class PostFeedController: BaseViewController {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.whiteColor()
 
 		floatingButton = UIButton()
@@ -79,6 +81,8 @@ class PostFeedController: BaseViewController {
 	}
 
 	override func setupConstraints() {
+		super.setupConstraints()
+
 		collectionView.snp_makeConstraints { (make) in
 			make.left.right.equalTo(self.view)
 			make.top.equalTo(self.view).offset(65)

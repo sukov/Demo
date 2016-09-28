@@ -34,6 +34,8 @@ class SettingsController: BaseViewController {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.whiteColor()
 
 		syncSwitch = UISwitch()
@@ -52,6 +54,8 @@ class SettingsController: BaseViewController {
 	}
 
 	override func setupConstraints() {
+        super.setupConstraints()
+        
 		syncSwitch.snp_makeConstraints { (make) in
 			make.left.top.equalTo(self.view).offset(80)
 		}

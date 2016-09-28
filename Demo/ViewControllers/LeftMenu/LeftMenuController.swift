@@ -20,6 +20,8 @@ class LeftMenuController: BaseViewController {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
 
 		profileImageView = UIImageView()
@@ -48,6 +50,8 @@ class LeftMenuController: BaseViewController {
 	}
 
 	override func setupConstraints() {
+		super.setupConstraints()
+
 		profileImageView.snp_makeConstraints { (make) in
 			let imageHeight = (UIScreen.mainScreen().bounds.width / 1.5) / 1.7
 			make.top.equalTo(20)

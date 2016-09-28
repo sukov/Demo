@@ -30,6 +30,8 @@ class ZoomPhotoController: BaseViewController {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.whiteColor()
 
 		imageScrollView = ImageScrollView(frame: view.frame)
@@ -39,6 +41,8 @@ class ZoomPhotoController: BaseViewController {
 	}
 
 	override func setupConstraints() {
+		super.setupConstraints()
+
 		imageScrollView.snp_makeConstraints { (make) in
 			make.left.right.bottom.equalTo(self.view)
 			make.top.equalTo(view).offset(60)

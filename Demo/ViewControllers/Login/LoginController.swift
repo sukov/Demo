@@ -33,6 +33,8 @@ class LoginController: BaseViewController, LoginView {
 	}
 
 	override func setupViews() {
+		super.setupViews()
+
 		view.backgroundColor = UIColor.whiteColor()
 
 		imgurImageView = UIImageView()
@@ -47,6 +49,8 @@ class LoginController: BaseViewController, LoginView {
 	}
 
 	override func setupConstraints() {
+		super.setupConstraints()
+
 		imgurImageView.snp_makeConstraints { (make) in
 			make.width.equalTo(150)
 			make.height.equalTo(70)
