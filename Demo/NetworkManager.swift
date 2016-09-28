@@ -15,7 +15,7 @@ class NetworkManager {
 	private var allowRefreshToken: Bool = true
 	private var lock = NSLock()
 
-	static var sharedInstance = NetworkManager()
+	static let sharedInstance = NetworkManager()
 
 	func activityIndicatorON() {
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = true

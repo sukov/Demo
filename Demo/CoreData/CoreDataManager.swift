@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-	static var sharedInstance = CoreDataManager()
+	static let sharedInstance = CoreDataManager()
 	let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
 	func savePostsByType(postsData: [[String: AnyObject]], type: PostsType) {

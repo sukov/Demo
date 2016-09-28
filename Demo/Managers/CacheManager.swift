@@ -9,7 +9,7 @@
 import Foundation
 
 class CacheManager {
-	static var sharedInstance = CacheManager()
+	static let sharedInstance = CacheManager()
 	private let cache: NSCache
 	private var isCachingOn: Bool
 

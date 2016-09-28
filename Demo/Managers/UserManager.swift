@@ -9,7 +9,7 @@
 import Foundation
 
 class UserManager {
-	static var sharedInstance = UserManager()
+	static let sharedInstance = UserManager()
 	var user: User? {
 		didSet {
 			saveUser()

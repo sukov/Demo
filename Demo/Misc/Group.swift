@@ -15,7 +15,7 @@ enum GroupType: Int {
 class Group {
 	private var groups: [dispatch_group_t]
 
-	static var sharedInstance = Group()
+	static let sharedInstance = Group()
 
 	init() {
 		groups = []

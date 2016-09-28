@@ -35,7 +35,7 @@ class PostFeedPresenterImp {
 		removeObservers()
 	}
 
-	func loadDiscCache() {
+	private func loadDiscCache() {
 		if let savedCache = CoreDataManager.sharedInstance.getPostsByType(postType) {
 			CacheManager.sharedInstance.updateCacheForType(savedCache, type: postType)
 		}

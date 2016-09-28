@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class LocalNotificationsManager {
-	static var sharedInstance = LocalNotificationsManager()
+	static let sharedInstance = LocalNotificationsManager()
 
 	init() {
 		askForNotificationsPermission()

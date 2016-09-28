@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MainAssembly {
-	static var sharedInstance = MainAssembly()
+	static let sharedInstance = MainAssembly()
 
 	// Root
 	func getRootController() -> UIViewController {
