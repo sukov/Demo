@@ -9,8 +9,11 @@ import UIKit
 import SDWebImage
 
 class PostFeedCell: UICollectionViewCell {
+	static let titleFontSize: CGFloat = 17
+	static let descriptionFontSize: CGFloat = 12
+
 	private var titleLabel: UILabel = UILabel()
-	private var descriptionText: UITextView = UITextView()
+	private var descriptionLabel: UILabel = UILabel()
 	private var imageView: UIImageView = UIImageView()
 	private var post: [String: AnyObject]?
 	weak var delegate: PostFeedCellDelegate?
@@ -25,16 +28,30 @@ class PostFeedCell: UICollectionViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		imageView.image = nil
+		titleLabel.text = ""
+		imageView.sd_cancelCurrentImageLoad()
+		descriptionLabel.text = ""
+	}
+
 	func setupViews() {
 		backgroundColor = UIColor.whiteColor()
 
-		descriptionText.userInteractionEnabled = false
+		titleLabel.lineBreakMode = .ByWordWrapping
+		titleLabel.numberOfLines = 0
+		titleLabel.font.fontWithSize(PostFeedCell.titleFontSize)
+		descriptionLabel.lineBreakMode = .ByWordWrapping
+		descriptionLabel.numberOfLines = 0
+		descriptionLabel.font = descriptionLabel.font.fontWithSize(PostFeedCell.descriptionFontSize)
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
 		imageView.userInteractionEnabled = true
+		imageView.contentMode = UIViewContentMode.ScaleAspectFit
 		imageView.addGestureRecognizer(tapGestureRecognizer)
 
 		addSubview(titleLabel)
-		addSubview(descriptionText)
+		addSubview(descriptionLabel)
 		addSubview(imageView)
 	}
 
@@ -47,12 +64,12 @@ class PostFeedCell: UICollectionViewCell {
 		imageView.snp_makeConstraints { (make) in
 			make.left.right.equalTo(self)
 			make.top.equalTo(titleLabel.snp_bottom).offset(10)
-			make.height.equalTo(80)
+			make.height.equalTo(100)
 		}
-		descriptionText.snp_makeConstraints { (make) in
+		descriptionLabel.snp_makeConstraints { (make) in
 			make.left.right.equalTo(self)
 			make.top.equalTo(imageView.snp_bottom).offset(5)
-			make.height.equalTo(50)
+			make.height.equalTo(15)
 		}
 	}
 
@@ -69,19 +86,54 @@ class PostFeedCell: UICollectionViewCell {
 	func setContent(post: [String: AnyObject]) {
 		self.post = post
 		titleLabel.text = post[PostKeys.title] as? String ?? ""
-		imageView.contentMode = UIViewContentMode.ScaleAspectFit
+		descriptionLabel.text = post[PostKeys.description] as? String ?? ""
+
 		if let url = NSURL(string: post[PostKeys.imageLink] as? String ?? "") {
 			imageView.sd_setImageWithURL(url)
 		}
-		descriptionText.text = post[PostKeys.description] as? String ?? ""
+		updateSnpConstraints()
 	}
 
-	override func prepareForReuse() {
-		super.prepareForReuse()
-		imageView.image = nil
-		titleLabel.text = ""
-		imageView.sd_cancelCurrentImageLoad()
-		descriptionText.text = ""
+	func updateSnpConstraints() {
+		titleLabel.snp_updateConstraints(closure: { (make) in
+			make.height.equalTo(PostFeedCell.calculateFontHeight(titleLabel.text!, fontSize: titleLabel.font.pointSize))
+			}
+		)
+
+		if let imgHeight = post?[PostKeys.height] as? CGFloat, imgWidth = post?[PostKeys.width] as? CGFloat {
+			var reducer = imgWidth / frame.width
+			reducer = (reducer > 1) ? reducer : 1
+			imageView.snp_updateConstraints(closure: { (make) in
+				make.height.equalTo(imgHeight / reducer)
+			})
+		}
+
+		descriptionLabel.snp_updateConstraints(closure: { (make) in
+			make.height.equalTo(PostFeedCell.calculateFontHeight(descriptionLabel.text!, fontSize: descriptionLabel.font.pointSize))
+			}
+		)
+	}
+
+	static func calculateFontHeight(text: String, fontSize: CGFloat) -> CGFloat {
+		let maxLineCharacters = (UIScreen.mainScreen().bounds.width / fontSize) * 1.95
+		let fontHeight = fontSize + 7
+		return ceil(CGFloat(text.characters.count) / maxLineCharacters) * fontHeight
+	}
+
+	static func getCellHeightFromPost(post: [String: AnyObject]) -> CGFloat {
+		var cellHeight: CGFloat = 0
+		let titileHeight = calculateFontHeight((post[PostKeys.title] as? String ?? ""), fontSize: PostFeedCell.titleFontSize)
+		let descriptionHeight = calculateFontHeight((post[PostKeys.description] as? String ?? ""), fontSize: PostFeedCell.descriptionFontSize)
+		let constraintOffsets: CGFloat = 20
+
+		if let imgHeight = post[PostKeys.height] as? CGFloat, imgWidth = post[PostKeys.width] as? CGFloat {
+			var reducer = imgWidth / UIScreen.mainScreen().bounds.width
+			reducer = (reducer > 1) ? reducer : 1
+			cellHeight += imgHeight / reducer
+		}
+		cellHeight += titileHeight + descriptionHeight + constraintOffsets
+
+		return cellHeight
 	}
 }
 

@@ -152,7 +152,11 @@ extension PostFeedController: PostFeedCellDelegate {
 
 extension PostFeedController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSizeMake(view.frame.width - 10, 150)
+		if let post = posts?[indexPath.item] {
+			return CGSizeMake(view.frame.width, PostFeedCell.getCellHeightFromPost(post))
+		} else {
+			return CGSizeMake(view.frame.width, 150)
+		}
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -163,10 +167,11 @@ extension PostFeedController: UICollectionViewDelegateFlowLayout {
 extension PostFeedController: UICollectionViewDataSource {
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! PostFeedCell
-		if let image = posts?[indexPath.item] {
-			cell.setContent(image)
+		if let post = posts?[indexPath.item] {
+			cell.setContent(post)
 		}
 		cell.delegate = self
+
 		return cell
 	}
 
