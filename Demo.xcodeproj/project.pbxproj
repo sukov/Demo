@@ -15,6 +15,9 @@
 		1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB5C1D79BA2200F2366E /* User.swift */; };
 		1F2956F81D9BCC06005D31FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2956F71D9BCC06005D31FF /* BaseViewController.swift */; };
 		1F3BB9C21D9E65A70083EBD5 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BB9C11D9E65A70083EBD5 /* NotificationBanner.swift */; };
+		1F3BB9C41D9E75660083EBD5 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BB9C31D9E75660083EBD5 /* LeftMenuView.swift */; };
+		1F3BB9C61D9E756F0083EBD5 /* LeftMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BB9C51D9E756F0083EBD5 /* LeftMenuPresenter.swift */; };
+		1F3BB9C81D9E757A0083EBD5 /* LeftMenuPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BB9C71D9E757A0083EBD5 /* LeftMenuPresenterImp.swift */; };
 		1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616721D9526AC00F6D7B4 /* CacheManager.swift */; };
 		1F4616751D9526AC00F6D7B4 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */; };
 		1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616761D9526EA00F6D7B4 /* UserManager.swift */; };
@@ -62,6 +65,9 @@
 		1F1DDB5C1D79BA2200F2366E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F2956F71D9BCC06005D31FF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1F3BB9C11D9E65A70083EBD5 /* NotificationBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
+		1F3BB9C31D9E75660083EBD5 /* LeftMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
+		1F3BB9C51D9E756F0083EBD5 /* LeftMenuPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuPresenter.swift; sourceTree = "<group>"; };
+		1F3BB9C71D9E757A0083EBD5 /* LeftMenuPresenterImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuPresenterImp.swift; sourceTree = "<group>"; };
 		1F4616721D9526AC00F6D7B4 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
 		1F4616761D9526EA00F6D7B4 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -218,6 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				1F4616801D95270C00F6D7B4 /* LeftMenuController.swift */,
+				1F3BB9C31D9E75660083EBD5 /* LeftMenuView.swift */,
+				1F3BB9C51D9E756F0083EBD5 /* LeftMenuPresenter.swift */,
+				1F3BB9C71D9E757A0083EBD5 /* LeftMenuPresenterImp.swift */,
 			);
 			path = LeftMenu;
 			sourceTree = "<group>";
@@ -481,12 +490,14 @@
 				1F4616A61D95270C00F6D7B4 /* SettingsController.swift in Sources */,
 				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
 				1F4800021D8AD335003A1B04 /* TokenProvider.swift in Sources */,
+				1F3BB9C41D9E75660083EBD5 /* LeftMenuView.swift in Sources */,
 				1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */,
 				1F4616B11D9528AA00F6D7B4 /* UIButton.swift in Sources */,
 				1F46169D1D95270C00F6D7B4 /* LoginController.swift in Sources */,
 				1F4616AE1D95270C00F6D7B4 /* ZoomPhotoView.swift in Sources */,
 				1F1DDB3C1D7974F700F2366E /* MainAssembly.swift in Sources */,
 				1F1DDB481D797E9F00F2366E /* NetworkManager.swift in Sources */,
+				1F3BB9C81D9E757A0083EBD5 /* LeftMenuPresenterImp.swift in Sources */,
 				1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */,
 				1F4616A81D95270C00F6D7B4 /* SettingsPresenterImp.swift in Sources */,
 				1F4616B31D9529AC00F6D7B4 /* AlertFactory.swift in Sources */,
@@ -510,6 +521,7 @@
 				1F4616AD1D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift in Sources */,
 				1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */,
 				1F3BB9C21D9E65A70083EBD5 /* NotificationBanner.swift in Sources */,
+				1F3BB9C61D9E756F0083EBD5 /* LeftMenuPresenter.swift in Sources */,
 				1F4616AB1D95270C00F6D7B4 /* ZoomPhotoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

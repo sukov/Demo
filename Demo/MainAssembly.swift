@@ -30,8 +30,12 @@ class MainAssembly {
 	}
 
 	// LeftMenu
+	func getLeftMenuPresenter() -> LeftMenuPresenter {
+		return LeftMenuPresenterImp()
+	}
+
 	func getLeftMenuController() -> LeftMenuController {
-		return LeftMenuController()
+		return LeftMenuController(presenter: MainAssembly.sharedInstance.getLeftMenuPresenter())
 	}
 
 	func getLeftMenuContainerController() -> MainController {

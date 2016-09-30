@@ -7,6 +7,7 @@
 //
 
 class LeftMenuController: BaseViewController {
+	private var presenter: LeftMenuPresenter
 	private var profileImageView: UIImageView!
 	private var usernameLabel: UILabel!
 	private var settingsButton: UIButton!
@@ -14,9 +15,10 @@ class LeftMenuController: BaseViewController {
 	private var popularPostsButton: UIButton!
 	private var userPostsButton: UIButton!
 
-	override init() {
+	init(presenter: LeftMenuPresenter) {
+		self.presenter = presenter
 		super.init()
-		addObservers()
+		view.layoutIfNeeded()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -24,11 +26,12 @@ class LeftMenuController: BaseViewController {
 	}
 
 	deinit {
-		removeObservers()
+		presenter.detachView(self)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		presenter.attachView(self)
 		setContent()
 	}
 
@@ -111,17 +114,6 @@ class LeftMenuController: BaseViewController {
 		usernameLabel.text = UserManager.sharedInstance.user?.userName
 	}
 
-	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: #selector(showUserPosts),
-			name: NotificationKeys.showUserPosts,
-			object: nil)
-	}
-
-	func removeObservers() {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-	}
-
 	func settingsButtonTapped() {
 		if let navigationViewControllers = (revealViewController().frontViewController as? UINavigationController)?.viewControllers {
 			if (!(navigationViewControllers[navigationViewControllers.count - 1] is SettingsController)) {
@@ -145,6 +137,9 @@ class LeftMenuController: BaseViewController {
 		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.User), animated: true)
 	}
 
+}
+
+extension LeftMenuController: LeftMenuView {
 	func showUserPosts() {
 		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.User), animated: true)
 	}
