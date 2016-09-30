@@ -19,7 +19,7 @@ class PostFeedController: BaseViewController {
 
 	init(presenter: PostFeedPresenter) {
 		self.presenter = presenter
-		super.init(nibName: nil, bundle: nil)
+		super.init()
 	}
 
 	required init?(coder aDecoder: NSCoder) {

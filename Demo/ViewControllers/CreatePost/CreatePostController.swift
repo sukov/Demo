@@ -23,7 +23,7 @@ class CreatePostController: BaseViewController, CreatePostView {
 
 	init(presenter: CreatePostPresenter) {
 		self.presenter = presenter
-		super.init(nibName: nil, bundle: nil)
+		super.init()
 	}
 
 	required init?(coder aDecoder: NSCoder) {

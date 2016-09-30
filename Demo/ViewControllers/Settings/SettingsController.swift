@@ -16,7 +16,7 @@ class SettingsController: BaseViewController {
 
 	init(presenter: SettingsPresenter) {
 		self.presenter = presenter
-		super.init(nibName: nil, bundle: nil)
+		super.init()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -54,8 +54,8 @@ class SettingsController: BaseViewController {
 	}
 
 	override func setupConstraints() {
-        super.setupConstraints()
-        
+		super.setupConstraints()
+
 		syncSwitch.snp_makeConstraints { (make) in
 			make.left.top.equalTo(self.view).offset(80)
 		}

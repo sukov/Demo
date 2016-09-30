@@ -14,8 +14,8 @@ class LeftMenuController: BaseViewController {
 	private var popularPostsButton: UIButton!
 	private var userPostsButton: UIButton!
 
-	init() {
-		super.init(nibName: nil, bundle: nil)
+	override init() {
+		super.init()
 		addObservers()
 	}
 

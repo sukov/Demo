@@ -13,7 +13,7 @@ class ZoomPhotoController: BaseViewController {
 
 	init(presenter: ZoomPhotoPresenter) {
 		self.presenter = presenter
-		super.init(nibName: nil, bundle: nil)
+		super.init()
 	}
 
 	deinit {
