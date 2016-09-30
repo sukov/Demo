@@ -11,6 +11,7 @@ struct NotificationKeys {
 	static let userLoggedIn = "userLoggedIn"
 	static let tokenExpired = "tokenExpired"
 	static let uploadFailed = "uploadFailed"
+	static let showUserPosts = "showUserPosts"
 }
 
 struct UserKeys {

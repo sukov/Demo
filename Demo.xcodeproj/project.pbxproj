@@ -14,6 +14,7 @@
 		1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB491D79A36E00F2366E /* Constants.swift */; };
 		1F1DDB5D1D79BA2200F2366E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DDB5C1D79BA2200F2366E /* User.swift */; };
 		1F2956F81D9BCC06005D31FF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2956F71D9BCC06005D31FF /* BaseViewController.swift */; };
+		1F3BB9C21D9E65A70083EBD5 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BB9C11D9E65A70083EBD5 /* NotificationBanner.swift */; };
 		1F4616741D9526AC00F6D7B4 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616721D9526AC00F6D7B4 /* CacheManager.swift */; };
 		1F4616751D9526AC00F6D7B4 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */; };
 		1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4616761D9526EA00F6D7B4 /* UserManager.swift */; };
@@ -44,7 +45,6 @@
 		1F49A2151D9AAE4D00971BDE /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49A2141D9AAE4D00971BDE /* Token.swift */; };
 		1F49A2181D9AC80E00971BDE /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49A2171D9AC80E00971BDE /* MainController.swift */; };
 		1F4E330A1D82FEA300D7ED4C /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */; };
-		1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4FD5B91D8043B3005ED930 /* Pagination.swift */; };
 		1F599A0A1D8BEE81004D7F89 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */; };
 		1F6E79991D901EB6004B9088 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E79971D901EB6004B9088 /* CoreData.xcdatamodeld */; };
 		1F6E799B1D90243E004B9088 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E799A1D90243E004B9088 /* CoreDataManager.swift */; };
@@ -61,6 +61,7 @@
 		1F1DDB491D79A36E00F2366E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		1F1DDB5C1D79BA2200F2366E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F2956F71D9BCC06005D31FF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1F3BB9C11D9E65A70083EBD5 /* NotificationBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		1F4616721D9526AC00F6D7B4 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1F4616731D9526AC00F6D7B4 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
 		1F4616761D9526EA00F6D7B4 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		1F49A2141D9AAE4D00971BDE /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		1F49A2171D9AC80E00971BDE /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
-		1F4FD5B91D8043B3005ED930 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1F599A081D8BEE81004D7F89 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		1F599A091D8BEE81004D7F89 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		1F599A101D8BEFBE004D7F89 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -294,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4E33091D82FEA300D7ED4C /* ImageScrollView.swift */,
+				1F3BB9C11D9E65A70083EBD5 /* NotificationBanner.swift */,
 			);
 			name = CustomViews;
 			path = Demo/CustomViews;
@@ -304,7 +305,6 @@
 			children = (
 				1F1DDB3B1D7974F700F2366E /* MainAssembly.swift */,
 				1F1DDB491D79A36E00F2366E /* Constants.swift */,
-				1F4FD5B91D8043B3005ED930 /* Pagination.swift */,
 				1F48FFFA1D8A989F003A1B04 /* Group.swift */,
 				1F4616B21D9529AC00F6D7B4 /* AlertFactory.swift */,
 			);
@@ -477,7 +477,6 @@
 				1F46169C1D95270C00F6D7B4 /* LeftMenuController.swift in Sources */,
 				1F4616771D9526EA00F6D7B4 /* UserManager.swift in Sources */,
 				1F2956F81D9BCC06005D31FF /* BaseViewController.swift in Sources */,
-				1F4FD5BA1D8043B3005ED930 /* Pagination.swift in Sources */,
 				1F4616A21D95270C00F6D7B4 /* PostFeedController.swift in Sources */,
 				1F4616A61D95270C00F6D7B4 /* SettingsController.swift in Sources */,
 				1F48FFFB1D8A989F003A1B04 /* Group.swift in Sources */,
@@ -510,6 +509,7 @@
 				1F4616A11D95270C00F6D7B4 /* PostFeedCell.swift in Sources */,
 				1F4616AD1D95270C00F6D7B4 /* ZoomPhotoPresenterImp.swift in Sources */,
 				1F1DDB4A1D79A36E00F2366E /* Constants.swift in Sources */,
+				1F3BB9C21D9E65A70083EBD5 /* NotificationBanner.swift in Sources */,
 				1F4616AB1D95270C00F6D7B4 /* ZoomPhotoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,19 @@ class LeftMenuController: BaseViewController {
 	private var popularPostsButton: UIButton!
 	private var userPostsButton: UIButton!
 
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		addObservers()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	deinit {
+		removeObservers()
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setContent()
@@ -98,6 +111,17 @@ class LeftMenuController: BaseViewController {
 		usernameLabel.text = UserManager.sharedInstance.user?.userName
 	}
 
+	func addObservers() {
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: #selector(showUserPosts),
+			name: NotificationKeys.showUserPosts,
+			object: nil)
+	}
+
+	func removeObservers() {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
 	func settingsButtonTapped() {
 		if let navigationViewControllers = (revealViewController().frontViewController as? UINavigationController)?.viewControllers {
 			if (!(navigationViewControllers[navigationViewControllers.count - 1] is SettingsController)) {
@@ -118,6 +142,10 @@ class LeftMenuController: BaseViewController {
 	}
 
 	func userPostsButtonTapped() {
+		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.User), animated: true)
+	}
+
+	func showUserPosts() {
 		revealViewController().pushFrontViewController(MainAssembly.sharedInstance.getPostFeedController(.User), animated: true)
 	}
 }

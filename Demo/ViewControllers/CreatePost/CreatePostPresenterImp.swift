@@ -30,7 +30,12 @@ extension CreatePostPresenterImp: CreatePostPresenter {
 	@objc func postSubmit(image: UIImage, title: String, description: String) {
 		NetworkManager.sharedInstance.uploadImage(image, title: title, description: description, complete: { error in
 			if (error == nil) {
-				LocalNotificationsManager.sharedInstance.displaySuccess()
+				let notificationBanner = NotificationBanner(title: "Upload Sucess!", subtitle: "Tap to see your post", image: nil, backgroundColor: UIColor.greenColor(), didTapBlock: {
+					NSNotificationCenter.defaultCenter().postNotificationName(
+						NotificationKeys.showUserPosts, object: nil)
+				})
+				notificationBanner.dismissesOnTap = true
+				notificationBanner.show(duration: 5.0)
 			} else {
 				LocalNotificationsManager.sharedInstance.displayFailure()
 			}
