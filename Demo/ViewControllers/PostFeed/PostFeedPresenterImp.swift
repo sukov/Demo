@@ -17,7 +17,7 @@ enum PostsType: String {
 class PostFeedPresenterImp {
 	weak private var view: PostFeedView?
 	private var postType: PostsType
-	private var pagination = Pagination()
+	private var pagination: Int = 0
 	private var posts: [[String: AnyObject]]
 	private var lastTryConnection: Bool = true
 
@@ -42,11 +42,11 @@ class PostFeedPresenterImp {
 	}
 
 	func getPosts(complete: () -> Void) {
-		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination.getPageNumber()) { [weak self](posts, error) in
+		NetworkManager.sharedInstance.getPosts(postType, pageNumber: pagination) { [weak self](posts, error) in
 			if (error == nil) {
 				self?.lastTryConnection = true
 				if let _posts = posts, _self = self {
-					if (_self.pagination.getPageNumber() == 0) {
+					if (_self.pagination == 0) {
 						_self.posts = []
 						CacheManager.sharedInstance.clearPostsByType(_self.postType)
 						CoreDataManager.sharedInstance.removePostsByType(_self.postType)
@@ -61,7 +61,7 @@ class PostFeedPresenterImp {
 			} else {
 				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingOn) {
 					self?.lastTryConnection = false
-					self?.pagination.resetPageNumber()
+					self?.pagination = 0
 					if posts != nil {
 						return
 					}
@@ -128,7 +128,7 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 	@objc func loadNew() {
 		view?.startAnimating()
 		if (lastTryConnection) {
-			pagination.nextPage()
+			pagination += 1
 		}
 		getPosts { [weak self] in
 			if let _self = self {
@@ -139,7 +139,7 @@ extension PostFeedPresenterImp: PostFeedPresenter {
 	}
 
 	@objc func refreshData() {
-		pagination.resetPageNumber()
+		pagination = 0
 		getPosts { [weak self] in
 			if let _self = self {
 				_self.view?.stopRefreshing()
