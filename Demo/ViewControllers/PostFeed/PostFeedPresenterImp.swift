@@ -59,14 +59,16 @@ class PostFeedPresenterImp {
 					CacheManager.sharedInstance.updateCacheForType(_posts, type: _self.postType)
 				}
 			} else {
-				if (error?.code == ErrorNumbers.connection && CacheManager.sharedInstance.isCachingOn) {
+				if (error?.code == ErrorNumbers.connection) {
 					self?.lastTryConnection = false
 					self?.pagination = 0
-					if posts != nil {
-						return
-					}
-					if let _self = self, _posts = CacheManager.sharedInstance.getCachedPostsByType(_self.postType) {
-						_self.posts = _posts
+					if (CacheManager.sharedInstance.isCachingOn) {
+						if posts != nil {
+							return
+						}
+						if let _self = self, _posts = CacheManager.sharedInstance.getCachedPostsByType(_self.postType) {
+							_self.posts = _posts
+						}
 					}
 				} else if (error?.code >= 500 || error?.code < 0) {
 					self?.view?.showLoginPage()
