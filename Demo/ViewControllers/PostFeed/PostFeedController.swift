@@ -15,10 +15,12 @@ class PostFeedController: BaseViewController {
 	private var collectionView: UICollectionView!
 	private var floatingButton: UIButton!
 	private var posts: [[String: AnyObject]]?
+	private var cellsHeight: [Int: CGFloat]
 	private let cellID = "postFeedCellID"
 
 	init(presenter: PostFeedPresenter) {
 		self.presenter = presenter
+		cellsHeight = [:]
 		super.init()
 	}
 
@@ -73,8 +75,8 @@ class PostFeedController: BaseViewController {
 		collectionView.addInfiniteScrollingWithActionHandler { [weak self] in
 			self?.presenter.loadNew()
 		}
-		collectionView.triggerPullToRefresh()
 		collectionView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+		collectionView.triggerPullToRefresh()
 
 		view.addSubview(collectionView)
 		view.addSubview(floatingButton)
@@ -153,7 +155,10 @@ extension PostFeedController: PostFeedCellDelegate {
 extension PostFeedController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		if let post = posts?[indexPath.item] {
-			return CGSizeMake(view.frame.width, PostFeedCell.getCellHeightFromPost(post))
+			if (cellsHeight[indexPath.item] == nil) {
+				cellsHeight[indexPath.item] = PostFeedCell.getCellHeightFromPost(post)
+			}
+			return CGSizeMake(view.frame.width, cellsHeight[indexPath.item]!)
 		} else {
 			return CGSizeMake(view.frame.width, 150)
 		}

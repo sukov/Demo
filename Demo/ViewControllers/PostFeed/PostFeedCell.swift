@@ -114,6 +114,20 @@ class PostFeedCell: UICollectionViewCell {
 		)
 	}
 
+	static func heightOfFont (string: String, constrainedToWidth width: Double = Double(UIScreen.mainScreen().bounds.width), fontSize: CGFloat) -> CGFloat {
+		return NSString(string: string).boundingRectWithSize(CGSize(width: width, height: DBL_MAX),
+			options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+			attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)],
+			context: nil).size.height
+	}
+
+	func sizeOfString (string: String, constrainedToHeight height: Double) -> CGSize {
+		return NSString(string: string).boundingRectWithSize(CGSize(width: DBL_MAX, height: height),
+			options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+			attributes: [NSFontAttributeName: self],
+			context: nil).size
+	}
+
 	static func calculateFontHeight(text: String, fontSize: CGFloat) -> CGFloat {
 		let maxLineCharacters = (UIScreen.mainScreen().bounds.width / fontSize) * 1.95
 		let fontHeight = fontSize + 7
@@ -132,7 +146,6 @@ class PostFeedCell: UICollectionViewCell {
 			cellHeight += imgHeight / reducer
 		}
 		cellHeight += titileHeight + descriptionHeight + constraintOffsets
-
 		return cellHeight
 	}
 }
